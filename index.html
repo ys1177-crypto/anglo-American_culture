@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Civil War & Reconstruction</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef2f9;
+  --white: #ffffff;
+  --surface: #f5f7fc;
+  --border: #d4dcea;
+  --border2: #b0bdd6;
+  --ink: #0f1e36;
+  --ink2: #3a4f6e;
+  --ink3: #8294b0;
+
+  --navy: #1a3a6e;
+  --navy-lt: #2450a0;
+  --navy-bg: #e8eef9;
+  --navy-bd: #adc0e8;
+
+  --sky: #0e7fbe;
+  --sky-bg: #e6f4fc;
+  --sky-bd: #90cef0;
+
+  --teal: #0c8a78;
+  --teal-bg: #e6f7f4;
+  --teal-bd: #8ed6cc;
+
+  --coral: #d94f3a;
+  --coral-bg: #fdf0ee;
+  --coral-bd: #f0b0a6;
+
+  --amber: #c47a0a;
+  --amber-bg: #fdf6e6;
+  --amber-bd: #f0d080;
+
+  --lime: #4d8c1e;
+  --lime-bg: #eef7e6;
+  --lime-bd: #b0d890;
+
+  --shadow: 0 2px 20px rgba(26,58,110,.09);
+  --shadow-lg: 0 8px 48px rgba(26,58,110,.14);
+  --r: 12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;min-height:100vh;}
+
+/* ── HEADER ── */
+header{background:var(--navy);border-bottom:none;padding:1rem 2rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(10,20,50,.25);}
+.hdr{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;}
+.hdr-badge{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:6px;padding:.25rem .65rem;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);flex-shrink:0;}
+.hdr-titles{flex:1;}
+.hdr-h1{font-size:clamp(.88rem,2.2vw,1.1rem);font-weight:700;color:#fff;letter-spacing:.01em;}
+.hdr-prog{width:155px;flex-shrink:0;display:none;}
+.hdr-prog-lbl{font-size:.62rem;color:rgba(255,255,255,.55);text-align:right;margin-bottom:.25rem;font-weight:500;}
+.hdr-bar{height:5px;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden;}
+.hdr-fill{height:100%;background:linear-gradient(90deg,#5eb3f5,#38e0c0);border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+
+/* ── START SCREEN ── */
+#start-screen{max-width:400px;margin:4rem auto;padding:0 1.5rem;animation:up .4s ease;}
+.start-card{background:var(--white);border:2px solid var(--navy-bd);border-radius:var(--r);padding:2.2rem 2rem;box-shadow:var(--shadow-lg);}
+.start-card h2{font-size:1.35rem;font-weight:800;margin-bottom:.25rem;color:var(--navy);}
+.start-card>.sub{font-size:.84rem;color:var(--ink2);margin-bottom:1.5rem;}
+.flabel{display:block;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:.3rem;}
+.member-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.3rem;}
+.member-wrap{}
+.member-label{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-lt);margin-bottom:.28rem;display:block;}
+.member-input{padding:.58rem .78rem;border:2px solid var(--border);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);background:var(--white);outline:none;transition:border-color .18s;width:100%;font-weight:500;}
+.member-input:focus{border-color:var(--navy-lt);}
+.btn-go{width:100%;padding:.82rem;background:var(--navy);color:#fff;border:none;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:background .18s;letter-spacing:.02em;}
+.btn-go:hover{background:var(--navy-lt);}
+
+/* ── MAIN ── */
+main{display:none;max-width:880px;margin:0 auto;padding:2rem 1.5rem 6rem;}
+
+/* ── CARD ── */
+.act-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);animation:up .4s ease;margin-bottom:1rem;}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.act-head{display:flex;align-items:center;gap:.65rem;padding:.82rem 1.4rem;border-bottom:2px solid var(--border);background:var(--surface);}
+.type-pill{font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .65rem;border-radius:20px;flex-shrink:0;}
+.p-tl {background:var(--navy-bg); color:var(--navy);    border:1.5px solid var(--navy-bd);}
+.p-ev {background:var(--amber-bg);color:var(--amber);   border:1.5px solid var(--amber-bd);}
+.p-map{background:var(--sky-bg);  color:var(--sky);     border:1.5px solid var(--sky-bd);}
+.p-fl {background:var(--lime-bg); color:var(--lime);    border:1.5px solid var(--lime-bd);}
+.p-rj {background:var(--coral-bg);color:var(--coral);   border:1.5px solid var(--coral-bd);}
+.p-mt {background:var(--amber-bg);color:var(--amber);   border:1.5px solid var(--amber-bd);}
+.p-rk {background:var(--teal-bg); color:var(--teal);    border:1.5px solid var(--teal-bd);}
+.p-vd {background:var(--sky-bg);  color:var(--sky);     border:1.5px solid var(--sky-bd);}
+.act-rdg{font-size:.66rem;color:var(--ink3);font-weight:600;}
+.act-num{font-size:.66rem;font-weight:800;background:var(--navy-bg);color:var(--navy);padding:.18rem .6rem;border-radius:20px;margin-left:auto;}
+.act-body{padding:1.5rem 1.4rem;}
+.q-en{font-size:1rem;font-weight:700;line-height:1.52;color:var(--ink);margin-bottom:.22rem;}
+.q-ko{font-size:.85rem;color:var(--ink2);line-height:1.52;margin-bottom:1.1rem;font-weight:400;}
+
+/* ── BUTTONS ── */
+.sub-row{display:flex;justify-content:flex-end;margin-top:1rem;}
+.btn-sub{padding:.54rem 1.4rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.84rem;cursor:pointer;transition:all .18s;}
+.btn-sub:hover{background:var(--navy-lt);transform:translateY(-1px);}
+.btn-sub:disabled{background:var(--border2);color:var(--ink3);cursor:default;transform:none;}
+.done-badge{display:inline-flex;align-items:center;gap:.45rem;margin-top:1rem;background:var(--teal-bg);border:1.5px solid var(--teal-bd);border-radius:8px;padding:.52rem 1rem;font-size:.82rem;color:var(--teal);font-weight:600;}
+.btn-next-q{display:block;width:100%;margin-top:.65rem;background:var(--navy);color:#fff;border:none;border-radius:9px;padding:.72rem;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .18s;text-align:center;}
+.btn-next-q:hover{background:var(--navy-lt);transform:translateY(-1px);}
+
+/* ── SECTION DIV ── */
+.sec-div{display:flex;align-items:center;gap:1rem;margin:2.2rem 0 1.5rem;}
+.sec-div::before,.sec-div::after{content:'';flex:1;height:2px;background:var(--navy-bd);}
+.sec-div span{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);white-space:nowrap;background:var(--navy-bg);padding:.28rem .85rem;border-radius:20px;}
+
+/* ── TIMELINE ── */
+.tl-hint{font-size:.8rem;color:var(--ink2);margin-bottom:.85rem;font-weight:500;}
+.tl-list{display:flex;flex-direction:column;gap:.42rem;}
+.drag-item{display:flex;align-items:center;gap:.8rem;background:var(--surface);border:2px solid var(--border);border-radius:9px;padding:.62rem .95rem;cursor:grab;user-select:none;transition:border-color .15s,box-shadow .15s,transform .1s;}
+.drag-item:hover{border-color:var(--navy-bd);box-shadow:0 2px 10px rgba(26,58,110,.1);}
+.drag-item:active{cursor:grabbing;}
+.drag-item.dragging{opacity:.22;}
+.drag-item.drag-over{border-color:var(--navy-lt);box-shadow:0 0 0 3px var(--navy-bg);}
+.drag-n{font-size:.95rem;font-weight:800;color:var(--navy);width:24px;flex-shrink:0;text-align:center;}
+.drag-handle{color:var(--border2);font-size:.9rem;flex-shrink:0;}
+.drag-text{font-size:.88rem;line-height:1.42;flex:1;font-weight:500;}
+
+/* ── EVIDENCE ── */
+.ev-note{font-size:.83rem;color:var(--ink2);margin-bottom:1rem;background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:.7rem 1rem;font-weight:500;}
+.ev-slots{display:flex;flex-direction:column;gap:.6rem;margin-bottom:.9rem;}
+.ev-slot{background:var(--surface);border:2px dashed var(--border2);border-radius:9px;padding:.75rem 1rem;}
+.ev-slot-label{font-size:.62rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:.38rem;}
+.ev-ta{width:100%;min-height:60px;background:var(--white);border:2px solid var(--border);border-radius:7px;padding:.58rem .82rem;font-family:'Outfit',sans-serif;font-size:.87rem;color:var(--ink);outline:none;resize:none;transition:border-color .18s;line-height:1.55;font-weight:400;}
+.ev-ta:focus{border-color:var(--amber);}
+.ev-ta::placeholder{color:var(--ink3);}
+
+/* ── MAP ── */
+.map-intro{font-size:.83rem;color:var(--ink2);background:var(--sky-bg);border:1.5px solid var(--sky-bd);border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:.7rem 1rem;margin-bottom:1rem;font-weight:500;}
+.map-qs{display:flex;flex-direction:column;gap:.8rem;}
+.map-q{background:var(--surface);border:2px solid var(--border);border-radius:9px;padding:1rem 1.1rem;}
+.map-q-text{font-size:.92rem;font-weight:600;margin-bottom:.7rem;color:var(--ink);}
+.map-opts{display:flex;flex-direction:column;gap:.4rem;}
+.map-opt{display:flex;align-items:flex-start;gap:.6rem;padding:.52rem .82rem;border:2px solid var(--border);border-radius:7px;cursor:pointer;font-size:.85rem;background:var(--white);transition:border-color .18s,background .18s;text-align:left;width:100%;font-family:'Outfit',sans-serif;color:var(--ink);font-weight:500;}
+.map-opt:hover:not(:disabled){border-color:var(--sky);background:var(--sky-bg);}
+.map-opt.picked{border-color:var(--sky);background:var(--sky-bg);color:var(--sky);font-weight:600;}
+.map-opt:disabled{cursor:default;}
+
+/* ── FILL ── */
+.fill-sent{font-size:.97rem;line-height:2.5;color:var(--ink);margin-bottom:.9rem;font-weight:500;}
+.blank{display:inline-block;min-width:105px;border-bottom:3px solid var(--lime);padding:0 .32rem;margin:0 .2rem;color:var(--lime);font-style:italic;font-weight:600;cursor:pointer;vertical-align:bottom;transition:border-color .15s;}
+.blank.filled{color:var(--ink);font-style:normal;font-weight:600;border-color:var(--border2);}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.9rem;}
+.chip{padding:.3rem .9rem;border:2px solid var(--border2);border-radius:20px;font-size:.83rem;cursor:pointer;background:var(--white);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:600;transition:all .18s;}
+.chip:hover:not(.used):not(:disabled){border-color:var(--lime);background:var(--lime-bg);color:var(--lime);}
+.chip.used{opacity:.28;cursor:default;}
+
+/* ── GROUP PICK ── */
+.grouppick-btn{display:flex;align-items:flex-start;gap:.85rem;background:var(--white);border:2px solid var(--border);border-radius:9px;padding:.85rem 1rem;cursor:pointer;text-align:left;width:100%;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--ink);line-height:1.45;transition:all .18s;font-weight:500;}
+.grouppick-btn:hover:not(:disabled){border-color:var(--coral-bd);background:var(--coral-bg);}
+.grouppick-btn.gp-sel{border-color:var(--coral);background:var(--coral-bg);color:var(--coral);}
+.grouppick-btn:disabled{cursor:default;}
+.gp-icon{font-size:1rem;flex-shrink:0;color:var(--ink3);margin-top:1px;transition:color .15s;}
+.grouppick-btn.gp-sel .gp-icon{color:var(--coral);}
+.gp-text{flex:1;}
+
+/* ── RANK & JUSTIFY ── */
+.rj-note{font-size:.82rem;color:var(--ink2);background:var(--coral-bg);border:1.5px solid var(--coral-bd);border-left:4px solid var(--coral);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.rj-list{display:flex;flex-direction:column;gap:.42rem;margin-bottom:1rem;}
+.rj-reasons{display:flex;flex-direction:column;gap:.55rem;background:var(--coral-bg);border:1.5px solid var(--coral-bd);border-radius:9px;padding:.9rem 1rem;}
+.rj-reasons-title{font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin-bottom:.1rem;}
+.rj-reason-row{display:flex;align-items:flex-start;gap:.6rem;}
+.rj-reason-num{font-size:.8rem;font-weight:800;color:var(--coral);flex-shrink:0;width:18px;text-align:right;margin-top:.55rem;}
+.reason-ta{width:100%;min-height:52px;padding:.52rem .78rem;border:2px solid var(--coral-bd);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.86rem;color:var(--ink);background:var(--white);outline:none;resize:none;transition:border-color .18s;font-weight:400;}
+.reason-ta:focus{border-color:var(--coral);}
+
+/* ── MATCH ── */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.match-col-lbl{font-size:.64rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:.48rem;}
+.match-items{display:flex;flex-direction:column;gap:.4rem;}
+.match-item{padding:.62rem .82rem;border:2px solid var(--border);border-radius:8px;font-size:.84rem;line-height:1.4;cursor:pointer;background:var(--white);transition:all .18s;font-weight:500;}
+.match-item:hover:not(.matched){border-color:var(--amber);background:var(--amber-bg);}
+.match-item.sel{border-color:var(--navy-lt);background:var(--navy-bg);color:var(--navy);}
+.match-item.matched{border-color:var(--teal-bd);background:var(--teal-bg);cursor:default;color:var(--teal);font-weight:600;}
+.match-hint{font-size:.78rem;color:var(--ink2);font-style:italic;margin-bottom:.75rem;font-weight:500;}
+
+/* ── DRAG RANK (Q7) ── */
+.rank-note{font-size:.82rem;color:var(--ink2);background:var(--teal-bg);border:1.5px solid var(--teal-bd);border-left:4px solid var(--teal);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.rank-reasons{display:flex;flex-direction:column;gap:.55rem;background:var(--teal-bg);border:1.5px solid var(--teal-bd);border-radius:9px;padding:.9rem 1rem;margin-top:1rem;}
+.rank-reasons-title{font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.1rem;}
+.rank-reason-row{display:flex;align-items:flex-start;gap:.6rem;}
+.rank-reason-num{font-size:.8rem;font-weight:800;color:var(--teal);flex-shrink:0;width:18px;text-align:right;margin-top:.55rem;}
+.rank-ta{width:100%;min-height:52px;padding:.52rem .78rem;border:2px solid var(--teal-bd);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.86rem;color:var(--ink);background:var(--white);outline:none;resize:none;transition:border-color .18s;font-weight:400;}
+.rank-ta:focus{border-color:var(--teal);}
+
+/* ── VERDICT (Q8) ── */
+.verdict-note{font-size:.82rem;color:var(--ink2);background:var(--sky-bg);border:1.5px solid var(--sky-bd);border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.verdict-opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.65rem;margin-bottom:1rem;}
+@media(max-width:480px){.verdict-opts{grid-template-columns:1fr;}}
+.verdict-btn{padding:1rem .6rem;border:2px solid var(--border);border-radius:9px;background:var(--white);cursor:pointer;text-align:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.88rem;color:var(--ink);transition:all .18s;}
+.verdict-btn .vi{font-size:1.5rem;display:block;margin-bottom:.35rem;}
+.verdict-btn:hover:not(:disabled){border-color:var(--sky);background:var(--sky-bg);}
+.verdict-btn.sel{border-color:var(--sky);background:var(--sky-bg);color:var(--sky);}
+.verdict-btn:disabled{cursor:default;}
+.verdict-reason{background:var(--sky-bg);border:1.5px solid var(--sky-bd);border-radius:9px;padding:.9rem 1rem;display:none;}
+.verdict-reason-lbl{font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--sky);display:block;margin-bottom:.38rem;}
+.verdict-ta{width:100%;min-height:70px;padding:.58rem .82rem;border:2px solid var(--sky-bd);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);background:var(--white);outline:none;resize:none;transition:border-color .18s;font-weight:400;}
+.verdict-ta:focus{border-color:var(--sky);}
+
+/* ── FINAL ── */
+#final-screen{display:none;max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 6rem;animation:up .5s ease;}
+.final-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--sky) 100%);border-radius:var(--r);padding:2.5rem;text-align:center;margin-bottom:1.5rem;box-shadow:0 8px 36px rgba(14,58,120,.28);}
+.final-hero .fi{font-size:2.4rem;margin-bottom:.7rem;}
+.final-hero h2{font-size:1.65rem;font-weight:800;color:#fff;margin-bottom:.3rem;}
+.final-hero p{font-size:.9rem;color:rgba(255,255,255,.75);}
+.final-group-tag{display:inline-block;margin-top:1rem;background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:20px;padding:.35rem 1.2rem;font-size:.82rem;font-weight:700;}
+.score-row{display:inline-flex;gap:2.5rem;margin-top:1.2rem;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.28);border-radius:10px;padding:.7rem 2rem;}
+.score-item{text-align:center;}
+.score-n{font-size:1.9rem;font-weight:800;color:#fff;display:block;}
+.score-l{font-size:.62rem;color:rgba(255,255,255,.6);letter-spacing:.12em;text-transform:uppercase;}
+
+.ans-section{margin-bottom:1.5rem;}
+.ans-section-title{font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;}
+.ans-section-title::after{content:'';flex:1;height:2px;background:var(--navy-bd);}
+.ans-cards{display:flex;flex-direction:column;gap:.7rem;}
+.ans-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.ans-head{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.1rem;border-bottom:2px solid var(--border);background:var(--surface);}
+.ans-qtext{font-size:.8rem;color:var(--ink2);flex:1;font-weight:500;}
+.ans-body{padding:.9rem 1.1rem;}
+.ans-response{font-size:.87rem;line-height:1.65;white-space:pre-wrap;color:var(--ink);font-weight:400;}
+.ans-model{margin-top:.8rem;padding:.8rem 1rem;border-top:2px dashed var(--border);font-size:.83rem;line-height:1.68;color:var(--ink2);background:var(--amber-bg);border-radius:0 0 10px 10px;}
+.ans-model strong{color:var(--ink);font-weight:700;}
+.ans-model ul,.ans-model ol{padding-left:1rem;}
+.ans-model li{margin-bottom:.3rem;}
+
+.copy-box{background:var(--white);border:2px solid var(--navy-bd);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);}
+.copy-box h3{font-size:1.05rem;font-weight:800;margin-bottom:.25rem;color:var(--navy);}
+.copy-box p{font-size:.8rem;color:var(--ink2);margin-bottom:.9rem;}
+#copy-ta{width:100%;height:160px;background:var(--surface);border:2px solid var(--border);border-radius:8px;padding:.75rem;font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--ink2);resize:none;outline:none;font-weight:400;}
+.copy-btns{display:flex;gap:.7rem;margin-top:.8rem;}
+.btn-copy{flex:1;padding:.65rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .18s;}
+.btn-copy:hover{background:var(--navy-lt);}
+.btn-copy.ok{background:var(--teal);}
+.btn-restart{padding:.65rem 1.2rem;background:var(--surface);border:2px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--ink2);cursor:pointer;font-weight:600;transition:all .18s;}
+.btn-restart:hover{border-color:var(--navy);color:var(--navy);}
+.hidden{display:none!important;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr">
+    <div class="hdr-badge">History</div>
+    <div class="hdr-titles">
+      <div class="hdr-h1">Civil War, Emancipation & Reconstruction</div>
+    </div>
+    <div class="hdr-prog" id="hdr-prog">
+      <div class="hdr-prog-lbl" id="prog-lbl">0 / 8 done</div>
+      <div class="hdr-bar"><div class="hdr-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- START SCREEN -->
+<div id="start-screen">
+  <div class="start-card">
+    <h2>👋 Let's Begin</h2>
+    <p class="sub">구성원 이름을 입력하세요.</p>
+    <label class="flabel" style="margin-bottom:.5rem;">Members / 구성원 이름</label>
+    <div class="member-grid">
+      <div class="member-wrap"><div class="member-label">1</div><input class="member-input" id="m1" type="text" placeholder="이름"></div>
+      <div class="member-wrap"><div class="member-label">2</div><input class="member-input" id="m2" type="text" placeholder="이름 (선택)"></div>
+      <div class="member-wrap"><div class="member-label">3</div><input class="member-input" id="m3" type="text" placeholder="이름 (선택)"></div>
+      <div class="member-wrap"><div class="member-label">4</div><input class="member-input" id="m4" type="text" placeholder="이름 (선택)"></div>
+    </div>
+    <button class="btn-go" onclick="startActivity()">Start Activity →</button>
+  </div>
+</div>
+
+<main id="main"></main>
+<div id="final-screen"></div>
+
+<script>
+// ═══════════════════════════════════
+// DATA
+// ═══════════════════════════════════
+const Qs = [
+
+  // Q1 — TIMELINE
+  { id:'q1', r:5, type:'timeline',
+    en:"Drag these events into the correct chronological order.",
+    ko:"다음 사건들을 시간 순서대로 드래그하여 배열하시오.",
+    items:[
+      "Lincoln's first inaugural address — promises not to interfere with slavery",
+      "Civil War begins at Fort Sumter",
+      "Lincoln drafts the first version of the Emancipation Proclamation",
+      "Battle of Antietam — Union military victory",
+      "Emancipation Proclamation officially issued",
+      "13th Amendment abolishes slavery everywhere in the United States",
+    ],
+    model:`<strong>Correct order:</strong>
+    <ol style="padding-left:1.1rem;margin-top:.4rem;">
+      <li>Lincoln's first inaugural address (Mar 1861)</li>
+      <li>Civil War begins at Fort Sumter (Apr 1861)</li>
+      <li>Lincoln drafts the Emancipation Proclamation (Jul 1862)</li>
+      <li>Battle of Antietam (Sep 1862)</li>
+      <li>Emancipation Proclamation officially issued (Jan 1, 1863)</li>
+      <li>13th Amendment (Jan 1865)</li>
+    </ol>
+    <br>Notice: <strong>over two years</strong> passed between the war's start and the Proclamation — and another two full years before slavery was permanently abolished everywhere.`
+  },
+
+  // Q2 — EVIDENCE HUNT
+  { id:'q2', r:5, type:'evidence',
+    en:"Find THREE sentences from the reading that show Lincoln's primary goal was NOT the abolition of slavery. Copy them exactly.",
+    ko:"링컨의 주된 목표가 노예해방이 아니었음을 보여주는 문장을 텍스트에서 세 개 찾아 그대로 써넣으시오.",
+    model:`<strong>Key sentences from the text (any 3 of these):</strong>
+    <ul>
+      <li>"I have no purpose, directly or indirectly, to interfere with the institution of slavery in the States where it exists."</li>
+      <li>"Although he personally opposed slavery, he believed he had no legal authority to end it in states where it already existed."</li>
+      <li>"His primary goal was to save the Union, not to end slavery."</li>
+      <li>"In fact, he said he would have accepted slavery's continuation in the South if it meant the Confederate states would return to the United States."</li>
+      <li>"When Lincoln first became president, he was antislavery but not an abolitionist."</li>
+      <li>"Because the proclamation was a war measure, Lincoln did not free enslaved people in the border states; keeping those states loyal remained essential."</li>
+      <li>"He also gave the Confederate states a final chance to return to the Union before the proclamation took effect."</li>
+    </ul>`
+  },
+
+  // Q3 — MAP QUESTIONS
+  { id:'q3', r:5, type:'map',
+    en:"Answer these questions about why the Emancipation Proclamation freed no one at the time of its proclamation.",
+    ko:"노예해방선언이 선포 당시 아무도 해방하지 못한 이유를 파악하는 질문에 답하시오.",
+    mapqs:[
+      { qt:"The Proclamation applied to 'states in rebellion.' Which states does this refer to?",
+        opts:["The 11 Confederate states (the South)","The 4 border slave states (MD, DE, KY, MO)","All 15 slave states in the US"] },
+      { qt:"Why were the 4 border slave states (MD, DE, KY, MO) excluded from the Proclamation?",
+        opts:["They had already abolished slavery voluntarily","Lincoln needed their loyalty — losing them could cost the Union the war","They were not considered part of the United States"] },
+      { qt:"So where could the Proclamation actually be enforced on January 1, 1863?",
+        opts:["Nowhere — no Union authority in Confederate territory, and border states were excluded","In all Northern (Union) states immediately","Only in Washington D.C."] }
+    ],
+    model:`<ul>
+      <li><strong>Q1: The 11 Confederate states</strong> — "in rebellion" referred to the seceded Southern states. But the Union had no authority there to enforce anything on Jan 1, 1863.</li>
+      <li><strong>Q2: Lincoln needed their loyalty</strong> — Maryland bordered Washington D.C. If it seceded, the capital would be surrounded by enemy territory.</li>
+      <li><strong>Q3: Nowhere</strong> — The Proclamation applied only where the Union had no authority, and deliberately excluded where it did. Enslaved people were freed only as Union armies physically advanced into Confederate territory.</li>
+    </ul>`
+  },
+
+  // Q4 — FILL IN THE BLANK
+  { id:'q4', r:5, type:'fill',
+    en:"Fill in each blank with the most appropriate word.",
+    ko:"각 빈칸에 가장 적절한 단어를 채워 넣으시오.",
+    sent:"Enslaved people who fled to Union camps were called [A], classified as seized enemy [B]. Lincoln wrote the Proclamation in dense [C] language to make it legally [D]. Slavery was permanently abolished everywhere only with the [E] Amendment.",
+    blanks:[
+      {id:'A',ans:'contrabands'},
+      {id:'B',ans:'property'},
+      {id:'C',ans:'legal'},
+      {id:'D',ans:'airtight'},
+      {id:'E',ans:'13th'},
+    ],
+    choices:['contrabands','property','legal','airtight','13th','refugees','moral','12th'],
+    model:`<ul>
+      <li><strong>A: contrabands</strong> — the official term; legally classified as seized enemy property, not freed people.</li>
+      <li><strong>B: property</strong> — this dehumanizing classification paradoxically allowed officers to keep them from being returned to enslavers.</li>
+      <li><strong>C: legal</strong> — Lincoln deliberately avoided eloquent language; he wanted legal precision, not rhetoric.</li>
+      <li><strong>D: airtight</strong> — the goal was to leave no room for courts or future presidents to overturn it.</li>
+      <li><strong>E: 13th</strong> — ratified January 1865, two full years after the Proclamation.</li>
+    </ul>`
+  },
+
+  // Q5 — GROUP PICK (1 factor chosen by group, with reason)
+  { id:'q5', r:5, type:'grouppick',
+    en:"Which of these three factors contributed MOST to emancipation? Discuss as a group, choose one, and explain your reasoning. There is no correct answer.",
+    ko:"아래 세 요인 중 노예해방에 가장 크게 기여한 것은 무엇인가? 그룹 토론 후 하나를 선택하고 이유를 써주세요. 정답은 없습니다.",
+    items:[
+      "Lincoln's political decision to issue the Emancipation Proclamation",
+      "The Union military victory at the Battle of Antietam",
+      "Radical Republican pressure in Congress to abolish slavery",
+    ],
+    model:`<strong>There is no single correct ranking.</strong> The argument matters more than the order.<br><br>
+    <ul>
+      <li><strong>Lincoln's decision:</strong> He had the authority and chose to act at the right moment. Without the Proclamation, the 13th Amendment likely doesn't pass in 1865.</li>
+      <li><strong>Antietam:</strong> Without a military victory first, the Proclamation would have looked like desperation — possibly weakening the Union position rather than strengthening it.</li>
+      <li><strong>Radical Republicans:</strong> Without Congressional pressure, Lincoln might have continued delaying. They kept the moral framing alive and forced the issue politically.</li>
+    </ul>`
+  },
+
+  // Q6 — MATCHING (Black Codes)
+  { id:'q6', r:6, type:'match',
+    en:"Match each Black Code restriction to the purpose it served.",
+    ko:"각 Black Code 제한 조항을 그 목적과 연결하시오.",
+    lefts:[
+      {id:'l1',t:"Barred from serving on juries or testifying against white people"},
+      {id:'l2',t:"Prohibited from joining militias"},
+      {id:'l3',t:"Required yearly labor contracts; refusal = arrest & forced labor"},
+      {id:'l4',t:"Restricted from moving without employer permission"},
+    ],
+    rights:[
+      {id:'r1',t:"Recreate coerced labor without formally restoring slavery",m:'l3'},
+      {id:'r2',t:"Keep Black communities disarmed and unable to defend themselves",m:'l2'},
+      {id:'r3',t:"Prevent Black Americans from using the legal system for protection",m:'l1'},
+      {id:'r4',t:"Maintain physical control over Black workers' movement",m:'l4'},
+    ],
+    model:`<ul>
+      <li><strong>Jury/testimony ban → legal exclusion:</strong> No court access meant no recourse against violence, wage theft, or abuse.</li>
+      <li><strong>Militia ban → disarmament:</strong> An armed Black community could resist. White Southerners needed to prevent this.</li>
+      <li><strong>Labor contracts → coerced labor:</strong> Refusal meant arrest and forced work — slavery under a different legal name.</li>
+      <li><strong>Movement restrictions → physical control:</strong> Workers couldn't leave bad conditions, seek better wages, or organize.</li>
+    </ul>
+    <strong>The pattern:</strong> Black Codes preserved slavery's outcomes while abolishing only the word.`
+  },
+
+  // Q7 — GROUP PICK (1 factor chosen by group, with reason)
+  { id:'q7', r:6, type:'grouppick',
+    en:"Which of these three factors was MOST responsible for the end of Reconstruction? Discuss as a group, choose one, and explain your reasoning. There is no correct answer.",
+    ko:"아래 세 요인 중 재건 시대 종식에 가장 큰 책임이 있는 것은 무엇인가? 그룹 토론 후 하나를 선택하고 이유를 써주세요. 정답은 없습니다.",
+    items:[
+      "KKK violence — terror campaigns against Black voters, leaders, and allies",
+      "Compromise of 1877 — Hayes becomes president; last federal troops withdrawn",
+      "No land reform — Black families had no economic foundation for political independence",
+    ],
+    model:`<strong>There is no single correct ranking.</strong><br><br>
+    <ul>
+      <li><strong>Compromise of 1877</strong> — the formal decisive end: once troops left, every protection collapsed overnight.</li>
+      <li><strong>KKK violence</strong> — the daily mechanism making Black political participation impossible on the ground before 1877.</li>
+      <li><strong>No land reform</strong> — the structural root: without economic independence, political rights had no material foundation. Sharecropping recreated dependency.</li>
+    </ul>`
+  },
+
+  // Q8 — VERDICT (3 options, no description, reason required)
+  { id:'q8', r:6, type:'verdict',
+    en:"Was Reconstruction a success, a failure, or unfinished? There is no correct answer. Choose one and explain your reasoning with evidence from the text.",
+    ko:"재건 시대는 성공이었나, 실패였나, 미완성이었나? 정답은 없습니다. 하나를 선택하고, 텍스트의 근거를 들어 이유를 설명하시오.",
+    options:[
+      {lbl:"SUCCESS",    icon:"✅"},
+      {lbl:"FAILURE",    icon:"❌"},
+      {lbl:"UNFINISHED", icon:"⏳"},
+    ],
+    model:`<strong>All three positions are defensible — reasoning is what matters.</strong><br><br>
+    <ul>
+      <li><strong>"Success":</strong> 13th, 14th, 15th Amendments permanently altered the Constitution. ~700 Black men elected to office. Freedmen's Bureau built 3,000+ schools. These were real, unprecedented gains.</li>
+      <li><strong>"Failure":</strong> By 1877 nearly every gain was reversed. Jim Crow lasted until the 1960s. Without land reform, 'freedom' was economically hollow. Lynching became a tool of racial terror.</li>
+      <li><strong>"Unfinished":</strong> The Civil Rights Movement of the 1950s–60s was essentially a second attempt to fulfill Reconstruction's promises — suggesting it was cut short, not simply completed or failed.</li>
+    </ul>`
+  },
+];
+
+// ═══════════════════════════════════
+// STATE
+// ═══════════════════════════════════
+let members=[];
+let cur=0;
+let submitted=new Array(Qs.length).fill(false);
+let responses=new Array(Qs.length).fill('');
+let fillSt={}, matchSt={}, mapSt={};
+
+const LABELS={timeline:'📅 Timeline',evidence:'📌 Evidence Hunt',map:'🗺️ Map Questions',fill:'✏️ Fill in the Blank',grouppick:'💬 Group Discussion',match:'📋 Matching',verdict:'🗳️ Verdict'};
+const PILLS={timeline:'p-tl',evidence:'p-ev',map:'p-map',fill:'p-fl',grouppick:'p-rj',match:'p-mt',verdict:'p-vd'};
+
+// ═══════════════════════════════════
+// START
+// ═══════════════════════════════════
+function startActivity(){
+  members=['m1','m2','m3','m4'].map(id=>document.getElementById(id).value.trim()).filter(Boolean);
+  if(!members.length){alert('이름을 최소 한 명 입력해 주세요.');return;}
+  document.getElementById('start-screen').style.display='none';
+  document.getElementById('main').style.display='block';
+  document.getElementById('hdr-prog').style.display='block';
+  render();
+}
+
+// ═══════════════════════════════════
+// PROGRESS
+// ═══════════════════════════════════
+function updProg(){
+  const n=submitted.filter(Boolean).length;
+  document.getElementById('prog-fill').style.width=Math.round(n/Qs.length*100)+'%';
+  document.getElementById('prog-lbl').textContent=`${n} / ${Qs.length} done`;
+}
+
+// ═══════════════════════════════════
+// RENDER
+// ═══════════════════════════════════
+function render(){
+  const el=document.getElementById('main');
+  if(cur>=Qs.length){showFinal();return;}
+  const q=Qs[cur];
+  const prevR=cur>0?Qs[cur-1].r:null;
+  let html='';
+  if(q.r===6&&prevR===5) html+=`<div class="sec-div"><span>Reading 6 — Reconstruction</span></div>`;
+  html+=buildCard(q);
+  el.innerHTML=html;
+  updProg();
+  if(q.type==='timeline')    initDrag(`tl-${q.id}`,updNums);
+  if(q.type==='fill')        fillSt[q.id]={};
+  if(q.type==='match')       matchSt[q.id]={leftSel:null,pairs:{}};
+  if(q.type==='map')         mapSt[q.id]=new Array(q.mapqs.length).fill(null);
+}
+
+function buildCard(q){
+  let h=`<div class="act-card">
+    <div class="act-head">
+      <span class="type-pill ${PILLS[q.type]}">${LABELS[q.type]}</span>
+      <span class="act-rdg">Reading ${q.r}</span>
+      <span class="act-num">Q${cur+1} / ${Qs.length}</span>
+    </div>
+    <div class="act-body">
+      <div class="q-en">${q.en}</div>
+      <div class="q-ko">${q.ko}</div>`;
+  if(q.type==='timeline')    h+=buildTL(q);
+  if(q.type==='evidence')    h+=buildEV(q);
+  if(q.type==='map')         h+=buildMap(q);
+  if(q.type==='fill')        h+=buildFill(q);
+  if(q.type==='grouppick')   h+=buildGroupPick(q);
+  if(q.type==='match')       h+=buildMatch(q);
+  if(q.type==='verdict')     h+=buildVerdict(q);
+  h+=`</div></div>`;
+  return h;
+}
+
+// ── TIMELINE ──
+function buildTL(q){
+  const sh=[...q.items].sort(()=>Math.random()-.5);
+  let h=`<div class="tl-hint">⠿ Drag to reorder, then click Continue</div>
+  <div class="tl-list" id="tl-${q.id}">`;
+  sh.forEach((t,i)=>{
+    h+=`<div class="drag-item" draggable="true">
+      <span class="drag-handle">⠿</span><span class="drag-n">${i+1}</span>
+      <span class="drag-text">${t}</span>
+    </div>`;
+  });
+  h+=`</div><div class="sub-row"><button class="btn-sub" onclick="subTL('${q.id}')">Continue →</button></div>`;
+  return h;
+}
+function subTL(qid){
+  const list=document.getElementById(`tl-${qid}`);
+  responses[cur]=Array.from(list.querySelectorAll('.drag-text')).map((el,i)=>`${i+1}. ${el.textContent}`).join('\n');
+  list.querySelectorAll('.drag-item').forEach(el=>el.setAttribute('draggable','false'));
+  document.querySelector(`[onclick="subTL('${qid}')"]`).disabled=true;
+  markDone(qid);
+}
+
+// ── EVIDENCE ──
+function buildEV(q){
+  return `<div class="ev-note">📖 텍스트에서 해당 문장을 찾아 그대로 옮겨 적으세요.</div>
+  <div class="ev-slots">
+    <div class="ev-slot"><div class="ev-slot-label">Sentence 1</div><textarea class="ev-ta" id="ev1-${q.id}" placeholder="Copy a sentence from the reading…"></textarea></div>
+    <div class="ev-slot"><div class="ev-slot-label">Sentence 2</div><textarea class="ev-ta" id="ev2-${q.id}" placeholder="Copy another sentence…"></textarea></div>
+    <div class="ev-slot"><div class="ev-slot-label">Sentence 3</div><textarea class="ev-ta" id="ev3-${q.id}" placeholder="Copy a third sentence…"></textarea></div>
+  </div>
+  <div class="sub-row"><button class="btn-sub" onclick="subEV('${q.id}')">Submit →</button></div>`;
+}
+function subEV(qid){
+  const vals=[1,2,3].map(n=>document.getElementById(`ev${n}-${qid}`).value.trim());
+  if(vals.some(v=>!v)){alert('세 문장 모두 입력해 주세요.');return;}
+  responses[cur]=vals.map((v,i)=>`Sentence ${i+1}: ${v}`).join('\n');
+  [1,2,3].forEach(n=>document.getElementById(`ev${n}-${qid}`).disabled=true);
+  document.querySelector(`[onclick="subEV('${qid}')"]`).disabled=true;
+  markDone(qid);
+}
+
+// ── MAP ──
+function buildMap(q){
+  let h=`<div class="map-intro">💡 Use your reading to answer each question below.</div>
+  <div class="map-qs">`;
+  q.mapqs.forEach((mq,i)=>{
+    h+=`<div class="map-q" id="mq-${q.id}-${i}">
+      <div class="map-q-text">${i+1}. ${mq.qt}</div>
+      <div class="map-opts">`;
+    mq.opts.forEach((opt,j)=>{
+      h+=`<button class="map-opt" id="mo-${q.id}-${i}-${j}" onclick="pickMap('${q.id}',${i},${j})">${opt}</button>`;
+    });
+    h+=`</div></div>`;
+  });
+  h+=`</div><div class="sub-row" style="margin-top:.9rem;">
+    <button class="btn-sub" id="map-sub-${q.id}" onclick="subMap('${q.id}')" disabled>Continue →</button>
+  </div>`;
+  return h;
+}
+function pickMap(qid,qi,oi){
+  const q=Qs[cur];
+  q.mapqs[qi].opts.forEach((_,j)=>{
+    const b=document.getElementById(`mo-${qid}-${qi}-${j}`);
+    if(b) b.classList.remove('picked');
+  });
+  document.getElementById(`mo-${qid}-${qi}-${oi}`).classList.add('picked');
+  mapSt[qid][qi]=q.mapqs[qi].opts[oi];
+  if(mapSt[qid].every(a=>a!==null)) document.getElementById(`map-sub-${qid}`).disabled=false;
+}
+function subMap(qid){
+  const q=Qs[cur];
+  responses[cur]=q.mapqs.map((mq,i)=>`Q${i+1}: ${mapSt[qid][i]||'(no answer)'}`).join('\n');
+  document.getElementById(`map-sub-${qid}`).disabled=true;
+  document.querySelectorAll(`[id^="mo-${qid}"]`).forEach(b=>b.disabled=true);
+  markDone(qid);
+}
+
+// ── FILL ──
+function buildFill(q){
+  let s=q.sent;
+  q.blanks.forEach(b=>{
+    s=s.replace(`[${b.id}]`,`<span class="blank" id="bl-${q.id}-${b.id}" onclick="rmBlank('${q.id}','${b.id}')">_____</span>`);
+  });
+  const sh=[...q.choices].sort(()=>Math.random()-.5);
+  let h=`<div class="fill-sent">${s}</div>
+  <div class="chips" id="ch-${q.id}">`;
+  sh.forEach(c=>{h+=`<button class="chip" onclick="placeChip('${q.id}','${c}')">${c}</button>`;});
+  h+=`</div><div class="sub-row"><button class="btn-sub" id="fsub-${q.id}" onclick="subFill('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function placeChip(qid,word){
+  const q=Qs[cur]; const st=fillSt[qid]||{};
+  const empty=q.blanks.find(b=>!st[b.id]); if(!empty) return;
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).find(c=>c.textContent===word&&!c.classList.contains('used'))?.classList.add('used');
+  st[empty.id]=word; fillSt[qid]=st;
+  const slot=document.getElementById(`bl-${qid}-${empty.id}`);
+  slot.textContent=word; slot.classList.add('filled');
+}
+function rmBlank(qid,bid){
+  const st=fillSt[qid]||{}; const word=st[bid]; if(!word) return;
+  delete st[bid]; fillSt[qid]=st;
+  const slot=document.getElementById(`bl-${qid}-${bid}`);
+  slot.textContent='_____'; slot.classList.remove('filled');
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).find(c=>c.textContent===word&&c.classList.contains('used'))?.classList.remove('used');
+}
+function subFill(qid){
+  const q=Qs[cur]; const st=fillSt[qid]||{};
+  if(!q.blanks.every(b=>st[b.id])){alert('모든 빈칸을 채워 주세요.');return;}
+  responses[cur]=q.blanks.map(b=>`[${b.id}] ${st[b.id]}`).join('\n');
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).forEach(c=>c.disabled=true);
+  document.getElementById(`fsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// ── GROUP PICK (Q5, Q7) ──
+function buildGroupPick(q){
+  let h=`<div class="rj-note">💬 그룹 토론 후 가장 중요하다고 생각하는 요인 하나를 선택하고, 이유를 써주세요.</div>
+  <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;">`;
+  q.items.forEach((t,i)=>{
+    h+=`<button class="grouppick-btn" id="gp-${q.id}-${i}" onclick="pickGP('${q.id}',${i})">
+      <span class="gp-icon">○</span>
+      <span class="gp-text">${t}</span>
+    </button>`;
+  });
+  h+=`</div>
+  <div class="rj-reasons" id="gp-reason-wrap-${q.id}" style="display:none;">
+    <div class="rj-reasons-title">Group's Reasoning / 그룹의 이유</div>
+    <textarea class="reason-ta" id="gp-ta-${q.id}" placeholder="선택한 이유를 써주세요…" style="border-color:var(--coral-bd);margin-top:.4rem;"></textarea>
+  </div>
+  <div class="sub-row"><button class="btn-sub" id="gp-sub-${q.id}" onclick="subGP('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function pickGP(qid,idx){
+  const q=Qs[cur]; q._gpPick=idx;
+  document.querySelectorAll(`[id^="gp-${qid}-"]`).forEach((b,i)=>{
+    b.classList.toggle('gp-sel', i===idx);
+    b.querySelector('.gp-icon').textContent = i===idx ? '●' : '○';
+  });
+  document.getElementById(`gp-reason-wrap-${qid}`).style.display='block';
+  document.getElementById(`gp-sub-${qid}`).disabled=false;
+}
+function subGP(qid){
+  const q=Qs[cur];
+  const reason=document.getElementById(`gp-ta-${qid}`).value.trim();
+  if(!reason){alert('이유를 입력해 주세요.');return;}
+  const picked=q._gpPick!==undefined?q.items[q._gpPick]:'—';
+  responses[cur]=`Choice: ${picked}\nReason: ${reason}`;
+  document.querySelectorAll(`[id^="gp-${qid}-"]`).forEach(b=>b.disabled=true);
+  document.getElementById(`gp-ta-${qid}`).disabled=true;
+  document.getElementById(`gp-sub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// ── MATCH ──
+function buildMatch(q){
+  const shR=[...q.rights].sort(()=>Math.random()-.5);
+  let h=`<div class="match-hint">왼쪽을 클릭한 후 오른쪽에서 짝을 클릭하세요.</div>
+  <div class="match-grid">
+    <div><div class="match-col-lbl">Black Code Restriction</div>
+    <div class="match-items" id="ml-${q.id}">`;
+  q.lefts.forEach(l=>{h+=`<div class="match-item" id="ml-${l.id}" onclick="clkL('${q.id}','${l.id}')">${l.t}</div>`;});
+  h+=`</div></div><div><div class="match-col-lbl">Purpose / 목적</div>
+    <div class="match-items" id="mr-${q.id}">`;
+  shR.forEach(r=>{h+=`<div class="match-item" id="mr-${r.id}" onclick="clkR('${q.id}','${r.id}','${r.m}')">${r.t}</div>`;});
+  h+=`</div></div></div>
+  <div class="sub-row" style="margin-top:.9rem;">
+    <button class="btn-sub" id="msub-${q.id}" onclick="subMatch('${q.id}')" disabled>Submit →</button>
+  </div>`;
+  return h;
+}
+function clkL(qid,lid){
+  const st=matchSt[qid]; if(!st) return;
+  document.querySelectorAll(`#ml-${qid} .match-item`).forEach(el=>el.classList.remove('sel'));
+  const el=document.getElementById(`ml-${lid}`); if(el.classList.contains('matched')) return;
+  st.leftSel=lid; el.classList.add('sel');
+}
+function clkR(qid,rid,mLid){
+  const st=matchSt[qid]; if(!st||!st.leftSel) return;
+  const rEl=document.getElementById(`mr-${rid}`);
+  const lEl=document.getElementById(`ml-${st.leftSel}`);
+  if(rEl.classList.contains('matched')||lEl.classList.contains('matched')) return;
+  rEl.classList.add('matched'); lEl.classList.add('matched');
+  st.pairs[st.leftSel]=rid;
+  lEl.classList.remove('sel'); st.leftSel=null;
+  const q=Qs[cur];
+  if(Object.keys(st.pairs).length===q.lefts.length) document.getElementById(`msub-${qid}`).disabled=false;
+}
+function subMatch(qid){
+  const q=Qs[cur]; const st=matchSt[qid];
+  const lines=q.lefts.map(l=>{const r=q.rights.find(r=>r.id===st.pairs[l.id]);return `${l.t}\n  → ${r?r.t:'(unmatched)'}`;});
+  responses[cur]=lines.join('\n\n');
+  document.getElementById(`msub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// ── VERDICT (Q8) ──
+function buildVerdict(q){
+  let h=`<div class="verdict-note">💡 정답은 없습니다. 하나를 선택하고 이유를 써주세요.</div>
+  <div class="verdict-opts">`;
+  q.options.forEach((o,i)=>{
+    h+=`<button class="verdict-btn" onclick="pickVerdict('${q.id}',${i})">
+      <span class="vi">${o.icon}</span>${o.lbl}
+    </button>`;
+  });
+  h+=`</div>
+  <div class="verdict-reason" id="vr-${q.id}">
+    <label class="verdict-reason-lbl">Reasoning / 이유와 근거 (텍스트에서 근거를 들어 설명)</label>
+    <textarea class="verdict-ta" id="vta-${q.id}" placeholder="Because… (use evidence from the text)"></textarea>
+    <div class="sub-row"><button class="btn-sub" onclick="subVerdict('${q.id}')">Submit →</button></div>
+  </div>`;
+  return h;
+}
+function pickVerdict(qid,idx){
+  const q=Qs[cur]; q._verdict=idx;
+  document.querySelectorAll('.verdict-btn').forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll('.verdict-btn')[idx].classList.add('sel');
+  document.getElementById(`vr-${qid}`).style.display='block';
+}
+function subVerdict(qid){
+  const q=Qs[cur];
+  const reason=document.getElementById(`vta-${qid}`).value.trim();
+  if(!reason){alert('이유를 입력해 주세요.');return;}
+  const picked=q._verdict!==undefined?q.options[q._verdict].lbl:'—';
+  responses[cur]=`Verdict: ${picked}\nReason: ${reason}`;
+  document.querySelectorAll('.verdict-btn').forEach(b=>b.disabled=true);
+  document.getElementById(`vta-${qid}`).disabled=true;
+  document.querySelector(`[onclick="subVerdict('${qid}')"]`).disabled=true;
+  markDone(qid);
+}
+
+// ── DRAG INIT ──
+function initDrag(listId,updFn){
+  const list=document.getElementById(listId); if(!list) return;
+  let dragEl=null;
+  list.querySelectorAll('[draggable="true"]').forEach(item=>{
+    item.addEventListener('dragstart',()=>{dragEl=item;setTimeout(()=>item.classList.add('dragging'),0);});
+    item.addEventListener('dragend',()=>{item.classList.remove('dragging');updFn(list);});
+    item.addEventListener('dragover',e=>{e.preventDefault();item.classList.add('drag-over');});
+    item.addEventListener('dragleave',()=>item.classList.remove('drag-over'));
+    item.addEventListener('drop',e=>{e.preventDefault();item.classList.remove('drag-over');if(dragEl&&dragEl!==item)list.insertBefore(dragEl,item);updFn(list);});
+  });
+}
+function updNums(list){
+  list.querySelectorAll('.drag-n').forEach((el,i)=>el.textContent=i+1);
+}
+
+// ── MARK DONE ──
+function markDone(qid){
+  submitted[cur]=true; updProg();
+  const body=document.querySelector('.act-body');
+  const badge=document.createElement('div');
+  badge.className='done-badge';
+  badge.innerHTML='✅ Answer recorded &mdash; 모범답안은 결과 화면에서 확인하세요';
+  body.appendChild(badge);
+  const btn=document.createElement('button');
+  btn.className='btn-next-q';
+  btn.textContent=cur+1<Qs.length?'Next Question →':'See Results ✓';
+  btn.onclick=nextQ;
+  body.appendChild(btn);
+}
+function nextQ(){cur++;document.getElementById('main').innerHTML='';render();window.scrollTo({top:0,behavior:'smooth'});}
+
+// ═══════════════════════════════════
+// FINAL SCREEN
+// ═══════════════════════════════════
+function showFinal(){
+  document.getElementById('main').style.display='none';
+  const screen=document.getElementById('final-screen');
+  screen.style.display='block';
+
+  const memberStr=members.join(' · ');
+  let copyText=`=== CIVIL WAR & RECONSTRUCTION ===\nMembers: ${memberStr}\n\n`;
+  Qs.forEach((q,i)=>{copyText+=`[Q${i+1} · ${LABELS[q.type]}]\n${q.en}\n→ ${responses[i]||'(no answer)'}\n\n`;});
+
+  let html=`<div class="final-hero">
+    <div class="fi">🎉</div>
+    <h2>Activity Complete!</h2>
+    <p>수고하셨습니다! 아래 답변을 패들렛에 올리세요.</p>
+    <div class="final-group-tag">👥 ${memberStr}</div>
+    <div class="score-row">
+      <div class="score-item"><span class="score-n">${Qs.length}</span><span class="score-l">Questions</span></div>
+      <div class="score-item"><span class="score-n">${submitted.filter(Boolean).length}</span><span class="score-l">Completed</span></div>
+    </div>
+  </div>
+  <div class="ans-section"><div class="ans-section-title">Reading 5 — Emancipation</div><div class="ans-cards">`;
+  Qs.forEach((q,i)=>{if(q.r===6)return;html+=ansCard(q,i);});
+  html+=`</div></div>
+  <div class="ans-section"><div class="ans-section-title">Reading 6 — Reconstruction</div><div class="ans-cards">`;
+  Qs.forEach((q,i)=>{if(q.r===5)return;html+=ansCard(q,i);});
+  html+=`</div></div>
+  <div class="copy-box">
+    <h3>📋 패들렛에 올리기</h3>
+    <p>아래 텍스트를 복사해서 패들렛에 붙여넣으세요.</p>
+    <textarea id="copy-ta" readonly onclick="this.select()">${copyText.trim()}</textarea>
+    <div class="copy-btns">
+      <button class="btn-copy" id="bcopy" onclick="doCopy()">📋 Copy All</button>
+      <button class="btn-restart" onclick="location.reload()">↺ Restart</button>
+    </div>
+  </div>`;
+  screen.innerHTML=html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function ansCard(q,i){
+  return `<div class="ans-card">
+    <div class="ans-head">
+      <span class="type-pill ${PILLS[q.type]}" style="font-size:.57rem;">${LABELS[q.type]}</span>
+      <span class="ans-qtext">${q.en}</span>
+    </div>
+    <div class="ans-body">
+      <div class="ans-response">${responses[i]||'(no answer)'}</div>
+      <div class="ans-model"><strong>💡 Model Answer:</strong><br>${q.model}</div>
+    </div>
+  </div>`;
+}
+function doCopy(){
+  const ta=document.getElementById('copy-ta'); ta.select();
+  navigator.clipboard.writeText(ta.value).then(()=>{
+    const b=document.getElementById('bcopy');
+    b.textContent='✓ Copied!'; b.classList.add('ok');
+    setTimeout(()=>{b.textContent='📋 Copy All';b.classList.remove('ok');},2500);
+  }).catch(()=>document.execCommand('copy'));
+}
+</script>
+</body>
+</html>
