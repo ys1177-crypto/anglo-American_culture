@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gilded Age & Westward Expansion</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef2f9;
+  --white: #ffffff;
+  --surface: #f5f7fc;
+  --border: #d4dcea;
+  --border2: #b0bdd6;
+  --ink: #0f1e36;
+  --ink2: #3a4f6e;
+  --ink3: #8294b0;
+  --navy: #1a3a6e;
+  --navy-lt: #2450a0;
+  --navy-bg: #e8eef9;
+  --navy-bd: #adc0e8;
+  --sky: #0e7fbe;
+  --sky-bg: #e6f4fc;
+  --sky-bd: #90cef0;
+  --teal: #0c8a78;
+  --teal-bg: #e6f7f4;
+  --teal-bd: #8ed6cc;
+  --coral: #d94f3a;
+  --coral-bg: #fdf0ee;
+  --coral-bd: #f0b0a6;
+  --amber: #c47a0a;
+  --amber-bg: #fdf6e6;
+  --amber-bd: #f0d080;
+  --lime: #4d8c1e;
+  --lime-bg: #eef7e6;
+  --lime-bd: #b0d890;
+  --shadow: 0 2px 20px rgba(26,58,110,.09);
+  --shadow-lg: 0 8px 48px rgba(26,58,110,.14);
+  --r: 12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;min-height:100vh;}
+header{background:var(--navy);padding:1rem 2rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(10,20,50,.25);}
+.hdr{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;}
+.hdr-badge{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:6px;padding:.25rem .65rem;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);flex-shrink:0;}
+.hdr-titles{flex:1;}
+.hdr-h1{font-size:clamp(.78rem,1.9vw,.98rem);font-weight:700;color:#fff;}
+.hdr-prog{width:155px;flex-shrink:0;display:none;}
+@media(max-width:480px){.hdr-prog{display:none!important;}.hdr-h1{font-size:.78rem;}}
+.hdr-prog-lbl{font-size:.62rem;color:rgba(255,255,255,.55);text-align:right;margin-bottom:.25rem;font-weight:500;}
+.hdr-bar{height:5px;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden;}
+.hdr-fill{height:100%;background:linear-gradient(90deg,#5eb3f5,#38e0c0);border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+
+#start-screen{max-width:400px;margin:4rem auto;padding:0 1.5rem;animation:up .4s ease;}
+.start-card{background:var(--white);border:2px solid var(--navy-bd);border-radius:var(--r);padding:2.2rem 2rem;box-shadow:var(--shadow-lg);}
+.start-card h2{font-size:1.35rem;font-weight:800;margin-bottom:.25rem;color:var(--navy);}
+.start-card>.sub{font-size:.84rem;color:var(--ink2);margin-bottom:1.5rem;}
+.member-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.3rem;}
+.member-label{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-lt);margin-bottom:.28rem;display:block;}
+.member-input{padding:.58rem .78rem;border:2px solid var(--border);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);background:var(--white);outline:none;transition:border-color .18s;width:100%;font-weight:500;}
+.member-input:focus{border-color:var(--navy-lt);}
+.btn-go{width:100%;padding:.82rem;background:var(--navy);color:#fff;border:none;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:background .18s;}
+.btn-go:hover{background:var(--navy-lt);}
+
+main{display:none;max-width:880px;margin:0 auto;padding:2rem 1.5rem 6rem;}
+.act-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);animation:up .4s ease;margin-bottom:1rem;}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.act-head{display:flex;align-items:center;gap:.65rem;padding:.82rem 1.4rem;border-bottom:2px solid var(--border);background:var(--surface);flex-wrap:wrap;}
+.type-pill{font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .65rem;border-radius:20px;flex-shrink:0;}
+.p-tf   {background:var(--teal-bg);  color:var(--teal);   border:1.5px solid var(--teal-bd);}
+.p-fl   {background:var(--lime-bg);  color:var(--lime);   border:1.5px solid var(--lime-bd);}
+.p-mt   {background:var(--amber-bg); color:var(--amber);  border:1.5px solid var(--amber-bd);}
+.p-rj   {background:var(--coral-bg); color:var(--coral);  border:1.5px solid var(--coral-bd);}
+.p-amend{background:var(--sky-bg);   color:var(--sky);    border:1.5px solid var(--sky-bd);}
+.p-sa   {background:var(--navy-bg);  color:var(--navy);   border:1.5px solid var(--navy-bd);}
+.act-rdg{font-size:.66rem;color:var(--ink3);font-weight:600;}
+.act-num{font-size:.66rem;font-weight:800;background:var(--navy-bg);color:var(--navy);padding:.18rem .6rem;border-radius:20px;margin-left:auto;}
+.act-body{padding:1.5rem 1.4rem;}
+.q-en{font-size:1rem;font-weight:700;line-height:1.52;color:var(--ink);margin-bottom:1.1rem;}
+
+.sub-row{display:flex;justify-content:flex-end;margin-top:1rem;}
+.btn-sub{padding:.54rem 1.4rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.84rem;cursor:pointer;transition:all .18s;}
+.btn-sub:hover{background:var(--navy-lt);transform:translateY(-1px);}
+.btn-sub:disabled{background:var(--border2);color:var(--ink3);cursor:default;transform:none;}
+.done-badge{display:inline-flex;align-items:center;gap:.45rem;margin-top:1rem;background:var(--teal-bg);border:1.5px solid var(--teal-bd);border-radius:8px;padding:.52rem 1rem;font-size:.82rem;color:var(--teal);font-weight:600;}
+.btn-next-q{display:block;width:100%;margin-top:.65rem;background:var(--navy);color:#fff;border:none;border-radius:9px;padding:.72rem;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .18s;text-align:center;}
+.btn-next-q:hover{background:var(--navy-lt);}
+.sec-div{display:flex;align-items:center;gap:1rem;margin:2.2rem 0 1.5rem;}
+.sec-div::before,.sec-div::after{content:'';flex:1;height:2px;background:var(--navy-bd);}
+.sec-div span{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);white-space:nowrap;background:var(--navy-bg);padding:.28rem .85rem;border-radius:20px;}
+
+/* TRUE/FALSE */
+.tf-table{width:100%;border-collapse:collapse;margin-bottom:.5rem;}
+.tf-table th{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);padding:.5rem .75rem;text-align:left;border-bottom:2px solid var(--border);}
+.tf-table th.th-tf{text-align:center;width:148px;}
+.tf-row td{padding:.72rem .75rem;border-bottom:1px solid var(--border);font-size:.88rem;line-height:1.5;vertical-align:middle;}
+.tf-row:last-child td{border-bottom:none;}
+.tf-btns{display:flex;gap:.4rem;justify-content:center;}
+.tf-btn{padding:.38rem .95rem;border:2px solid var(--border2);border-radius:20px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;background:var(--white);color:var(--ink2);transition:all .18s;min-width:52px;}
+.tf-btn:hover:not(:disabled){border-color:var(--teal);background:var(--teal-bg);color:var(--teal);}
+.tf-btn.sel-t{border-color:var(--teal);background:var(--teal-bg);color:var(--teal);}
+.tf-btn.sel-f{border-color:var(--coral);background:var(--coral-bg);color:var(--coral);}
+.tf-btn:disabled{cursor:default;opacity:.65;}
+@media(max-width:500px){
+  .tf-table th.th-tf{width:108px;}
+  .tf-btn{padding:.3rem .52rem;font-size:.74rem;min-width:40px;}
+}
+
+/* FILL IN THE BLANK */
+.fill-sent{font-size:.92rem;line-height:2.7;color:var(--ink);margin-bottom:.9rem;font-weight:500;word-break:break-word;}
+.blank{display:inline-block;min-width:80px;border-bottom:3px solid var(--lime);padding:0 .28rem;margin:0 .12rem;color:var(--lime);font-style:italic;font-weight:600;cursor:pointer;vertical-align:bottom;text-align:center;white-space:nowrap;}
+.blank.filled{color:var(--ink);font-style:normal;font-weight:600;border-color:var(--border2);}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.9rem;}
+.chip{padding:.35rem .9rem;border:2px solid var(--border2);border-radius:20px;font-size:.83rem;cursor:pointer;background:var(--white);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:600;transition:all .18s;touch-action:manipulation;}
+.chip:hover:not(.used):not(:disabled){border-color:var(--lime);background:var(--lime-bg);color:var(--lime);}
+.chip.used{opacity:.28;cursor:default;}
+
+/* MATCHING */
+.match-hint{font-size:.78rem;color:var(--ink2);font-style:italic;margin-bottom:.75rem;font-weight:500;background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:.6rem .9rem;}
+.match-sel-banner{display:none;background:var(--navy-bg);border:2px solid var(--navy-bd);border-radius:8px;padding:.55rem .9rem;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.7rem;}
+.match-sel-banner.active{display:block;}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:540px){.match-grid{grid-template-columns:1fr;gap:.5rem;}}
+.match-col-lbl{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);margin-bottom:.48rem;}
+.match-items{display:flex;flex-direction:column;gap:.4rem;}
+.match-item{padding:.65rem .85rem;border:2px solid var(--border);border-radius:8px;font-size:.83rem;line-height:1.4;cursor:pointer;background:var(--white);transition:all .18s;font-weight:500;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.match-item:active{opacity:.8;}
+.match-item.sel{border-color:var(--navy-lt);background:var(--navy-bg);color:var(--navy);font-weight:700;box-shadow:0 0 0 3px rgba(36,80,160,.18);}
+.match-item.matched{border-color:var(--teal-bd);background:var(--teal-bg);color:var(--teal);font-weight:600;}
+.match-item.matched::before{content:'✓ ';font-weight:800;}
+
+/* AMENDMENT — card layout (works on all screen sizes) */
+.amend-note{font-size:.82rem;color:var(--ink2);background:var(--sky-bg);border:1.5px solid var(--sky-bd);border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.amend-cards{display:flex;flex-direction:column;gap:.75rem;}
+.amend-card{background:var(--surface);border:2px solid var(--border);border-radius:10px;overflow:hidden;}
+.amend-card-head{background:var(--navy-bg);border-bottom:2px solid var(--navy-bd);padding:.55rem 1rem;}
+.amend-card-num{font-size:.85rem;font-weight:800;color:var(--navy);}
+.amend-card-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+@media(max-width:480px){.amend-card-body{grid-template-columns:1fr;}}
+.amend-field{padding:.7rem .9rem;border-right:1px solid var(--border);}
+.amend-field:last-child{border-right:none;}
+@media(max-width:480px){.amend-field{border-right:none;border-bottom:1px solid var(--border);}.amend-field:last-child{border-bottom:none;}}
+.amend-field-lbl{font-size:.6rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--sky);margin-bottom:.35rem;display:block;}
+.amend-ta{width:100%;min-height:60px;padding:.42rem .6rem;border:2px solid var(--border);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.83rem;color:var(--ink);background:var(--white);outline:none;resize:none;font-weight:400;transition:border-color .18s;line-height:1.5;}
+.amend-ta:focus{border-color:var(--sky);}
+
+/* SHORT ANSWER */
+.sa-note{font-size:.82rem;color:var(--ink2);background:var(--navy-bg);border:1.5px solid var(--navy-bd);border-left:4px solid var(--navy);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.sa-sub-q{font-size:.9rem;font-weight:700;color:var(--ink);margin:.85rem 0 .38rem;}
+.sa-ta{width:100%;min-height:78px;padding:.62rem .85rem;border:2px solid var(--border);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.87rem;color:var(--ink);background:var(--white);outline:none;resize:none;transition:border-color .18s;font-weight:400;line-height:1.55;}
+.sa-ta:focus{border-color:var(--navy-lt);}
+.sa-ta::placeholder{color:var(--ink3);}
+
+/* GROUP DISCUSSION */
+.rj-note{font-size:.82rem;color:var(--ink2);background:var(--coral-bg);border:1.5px solid var(--coral-bd);border-left:4px solid var(--coral);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1.1rem;font-weight:500;}
+.disc-subqs{display:flex;flex-direction:column;gap:1rem;margin-bottom:1rem;}
+.disc-subq{background:var(--surface);border:2px solid var(--border);border-radius:9px;padding:.9rem 1rem;}
+.disc-subq-label{font-size:.63rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:.5rem;display:block;}
+.disc-subq-q{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.55rem;line-height:1.5;}
+.disc-ta{width:100%;min-height:80px;padding:.55rem .8rem;border:2px solid var(--coral-bd);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.86rem;color:var(--ink);background:var(--white);outline:none;resize:none;transition:border-color .18s;font-weight:400;line-height:1.5;}
+.disc-ta:focus{border-color:var(--coral);}
+.disc-ta::placeholder{color:var(--ink3);}
+
+/* FINAL */
+#final-screen{display:none;max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 6rem;animation:up .5s ease;}
+.final-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--sky) 100%);border-radius:var(--r);padding:2.5rem;text-align:center;margin-bottom:1.5rem;box-shadow:0 8px 36px rgba(14,58,120,.28);}
+.final-hero .fi{font-size:2.4rem;margin-bottom:.7rem;}
+.final-hero h2{font-size:1.65rem;font-weight:800;color:#fff;margin-bottom:.3rem;}
+.final-hero p{font-size:.9rem;color:rgba(255,255,255,.75);}
+.final-group-tag{display:inline-block;margin-top:1rem;background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:20px;padding:.35rem 1.2rem;font-size:.82rem;font-weight:700;}
+.score-row{display:inline-flex;gap:2.5rem;margin-top:1.2rem;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.28);border-radius:10px;padding:.7rem 2rem;}
+.score-item{text-align:center;}
+.score-n{font-size:1.9rem;font-weight:800;color:#fff;display:block;}
+.score-l{font-size:.62rem;color:rgba(255,255,255,.6);letter-spacing:.12em;text-transform:uppercase;}
+.ans-section{margin-bottom:1.5rem;}
+.ans-section-title{font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;}
+.ans-section-title::after{content:'';flex:1;height:2px;background:var(--navy-bd);}
+.ans-cards{display:flex;flex-direction:column;gap:.7rem;}
+.ans-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.ans-head{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.1rem;border-bottom:2px solid var(--border);background:var(--surface);flex-wrap:wrap;}
+.ans-qtext{font-size:.8rem;color:var(--ink2);flex:1;font-weight:500;}
+.ans-body{padding:.9rem 1.1rem;}
+.ans-response{font-size:.87rem;line-height:1.65;white-space:pre-wrap;color:var(--ink);font-weight:400;}
+.ans-model{margin-top:.8rem;padding:.8rem 1rem;border-top:2px dashed var(--border);font-size:.83rem;line-height:1.7;color:var(--ink2);background:var(--amber-bg);border-radius:0 0 10px 10px;}
+.ans-model strong{color:var(--ink);font-weight:700;}
+.ans-model ul,.ans-model ol{padding-left:1.1rem;}
+.ans-model li{margin-bottom:.35rem;}
+.ans-model table{border-collapse:collapse;width:100%;font-size:.81rem;margin-top:.5rem;}
+.ans-model th,.ans-model td{border:1px solid var(--border);padding:.4rem .6rem;text-align:left;}
+.ans-model th{background:var(--surface);font-weight:700;}
+.copy-box{background:var(--white);border:2px solid var(--navy-bd);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);}
+.copy-box h3{font-size:1.05rem;font-weight:800;margin-bottom:.25rem;color:var(--navy);}
+.copy-box p{font-size:.8rem;color:var(--ink2);margin-bottom:.9rem;}
+#copy-ta{width:100%;height:160px;background:var(--surface);border:2px solid var(--border);border-radius:8px;padding:.75rem;font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--ink2);resize:none;outline:none;font-weight:400;}
+.copy-btns{display:flex;gap:.7rem;margin-top:.8rem;}
+.btn-copy{flex:1;padding:.65rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .18s;}
+.btn-copy:hover{background:var(--navy-lt);}
+.btn-copy.ok{background:var(--teal);}
+.btn-restart{padding:.65rem 1.2rem;background:var(--surface);border:2px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--ink2);cursor:pointer;font-weight:600;transition:all .18s;}
+.btn-restart:hover{border-color:var(--navy);color:var(--navy);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr">
+    <div class="hdr-badge">History</div>
+    <div class="hdr-titles">
+      <div class="hdr-h1">Social Darwinism · Gold Rush · Progressivism · Reservations</div>
+    </div>
+    <div class="hdr-prog" id="hdr-prog">
+      <div class="hdr-prog-lbl" id="prog-lbl">0 / 8 done</div>
+      <div class="hdr-bar"><div class="hdr-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<div id="start-screen">
+  <div class="start-card">
+    <h2>👋 Let's Begin</h2>
+    <p class="sub">Enter your group members' names.</p>
+    <div class="member-grid">
+      <div><div class="member-label">1</div><input class="member-input" id="m1" type="text" placeholder="Name"></div>
+      <div><div class="member-label">2</div><input class="member-input" id="m2" type="text" placeholder="Name (optional)"></div>
+      <div><div class="member-label">3</div><input class="member-input" id="m3" type="text" placeholder="Name (optional)"></div>
+      <div><div class="member-label">4</div><input class="member-input" id="m4" type="text" placeholder="Name (optional)"></div>
+    </div>
+    <button class="btn-go" onclick="startActivity()">Start Activity →</button>
+  </div>
+</div>
+
+<main id="main"></main>
+<div id="final-screen"></div>
+
+<script>
+const Qs = [
+
+// ══════════════════ Q1 · R7 — Social Darwinism ══════════════════
+{ id:'q1', r:7, type:'tf',
+  en:'Decide whether each statement is True or False.',
+  rows:[
+    { en:'Herbert Spencer, not Charles Darwin, coined the phrase "survival of the fittest."', ans:'T' },
+    { en:'Social Darwinism was a scientifically accurate extension of Darwin\'s theory of natural selection.', ans:'F' },
+    { en:'The Chinese Exclusion Act (1882) was the first major federal law to restrict a specific immigrant group.', ans:'T' },
+    { en:'Forced sterilization laws in the U.S. were all repealed immediately after World War II.', ans:'F' },
+    { en:'In Buck v. Bell (1927), the Supreme Court ruled that the government could forcibly sterilize people it considered "unfit."', ans:'T' },
+  ],
+  model:`<table>
+  <tr><th>Statement</th><th>T/F</th><th>Explanation</th></tr>
+  <tr><td>"Survival of the fittest" — Spencer, not Darwin</td><td><strong>T</strong></td><td>Darwin never used the phrase; Spencer applied it to human society to justify inequality</td></tr>
+  <tr><td>Social Darwinism was accurate science</td><td><strong>F</strong></td><td>It <em>misused</em> Darwin's ideas — the biology of organisms does not apply to human social rankings</td></tr>
+  <tr><td>Chinese Exclusion Act — first targeted law</td><td><strong>T</strong></td><td>1882 — first federal law targeting one ethnic group; denied citizenship and blocked further immigration from China</td></tr>
+  <tr><td>Sterilization laws all repealed after WWII</td><td><strong>F</strong></td><td>Some laws stayed until the <strong>1970s</strong>; over 70,000 people were forcibly sterilized in total</td></tr>
+  <tr><td>Buck v. Bell — government could sterilize</td><td><strong>T</strong></td><td>Opened the door to 70,000+ forced sterilizations; today remembered as a tragic abuse of pseudoscience</td></tr>
+  </table>`
+},
+
+// ══════════════════ Q2 · R8 — Gold Rush ══════════════════
+{ id:'q2', r:8, type:'fill',
+  en:'Choose the correct word for each blank.',
+  sent:'The 300,000 migrants who came to California in 1849 were called [A]. Although many came hoping to get rich, gold panning rarely found anything valuable and the work was [B]. In the mining camps, [C] and racial hatred were common — Chinese and Latin American immigrants were often attacked by white settlers. The state of California even paid [D] to white settlers for Native American scalps. By [E], California\'s Native population had been almost completely wiped out.',
+  blanks:[
+    {id:'A', ans:'forty-niners'},
+    {id:'B', ans:'back-breaking'},
+    {id:'C', ans:'xenophobia'},
+    {id:'D', ans:'bounties'},
+    {id:'E', ans:'1890'},
+  ],
+  choices:['forty-niners','back-breaking','xenophobia','bounties','1890','prospectors','rewards','1870','sixty-niners'],
+  model:`<ul>
+    <li><strong>A: forty-niners</strong> — named for 1849, the year they flooded into California</li>
+    <li><strong>B: back-breaking</strong> — painful, exhausting physical labor; most miners found very little gold</li>
+    <li><strong>C: xenophobia</strong> — fear and hatred of foreigners; this drove violent attacks on non-white miners</li>
+    <li><strong>D: bounties</strong> — cash payments; Governor Burnett used public money to pay for Native scalps — government-funded killing</li>
+    <li><strong>E: 1890</strong> — within just a few decades of the Gold Rush, California's Native population was nearly destroyed</li>
+  </ul>`
+},
+
+// ══════════════════ Q3 · R9 — Amendments ══════════════════
+{ id:'q3', r:9, type:'amend',
+  en:'For each Amendment, write what it did and what problem it solved. Use your own words.',
+  rows:[
+    { num:'16th Amendment' },
+    { num:'17th Amendment' },
+    { num:'18th Amendment' },
+    { num:'19th Amendment' },
+  ],
+  model:`<table>
+  <tr><th>Amendment</th><th>What it did</th><th>Problem it solved</th></tr>
+  <tr><td><strong>16th</strong></td><td>Created a federal income tax — people pay a percentage of their earnings to the government</td><td>The government had no steady source of money to pay for public programs</td></tr>
+  <tr><td><strong>17th</strong></td><td>Let ordinary voters choose their own senators by direct election</td><td>Before this, state lawmakers picked senators — not the public. This meant powerful politicians and wealthy groups controlled who became senator, not regular citizens. The 17th Amendment gave that power to voters.</td></tr>
+  <tr><td><strong>18th</strong></td><td>Made it illegal to make or sell alcohol (Prohibition)</td><td>Progressives believed alcohol caused poverty, crime, and broken families — though this law was very hard to enforce and was later cancelled</td></tr>
+  <tr><td><strong>19th</strong></td><td>Gave women the right to vote</td><td>Half the population could not vote — women had been fighting for this right for decades</td></tr>
+  </table>`
+},
+
+// ══════════════════ Q4 · R9 — Dark Side of Progressivism ══════════════════
+{ id:'q4', r:9, type:'tf',
+  en:'These statements are about the dark side of Progressivism. Decide True or False.',
+  rows:[
+    { en:'Under President Woodrow Wilson, the federal government became racially segregated.', ans:'T' },
+    { en:'Most Progressive-era labor unions welcomed immigrants and fought for their rights.', ans:'F' },
+    { en:'The Immigration Act of 1917 and the National Quota Law of 1921 limited immigration and blocked most people from Asia.', ans:'T' },
+    { en:'Some Progressive leaders supported eugenics — using government power to control who could have children.', ans:'T' },
+    { en:'The harmful policies of the Progressive Era had no lasting effects because they were quickly stopped.', ans:'F' },
+  ],
+  model:`<table>
+  <tr><th>Statement</th><th>T/F</th><th>Explanation</th></tr>
+  <tr><td>Wilson — government became segregated</td><td><strong>T</strong></td><td>A Progressive president re-segregated federal workplaces; this period also saw more KKK activity and violence against Black Americans</td></tr>
+  <tr><td>Unions welcomed immigrants</td><td><strong>F</strong></td><td>Many unions blamed immigrants for low wages — they pushed to <em>limit</em> immigration, not protect immigrant workers</td></tr>
+  <tr><td>Immigration acts blocked Asians</td><td><strong>T</strong></td><td>Nativist beliefs became federal law — a "reform" movement using government power to harm specific groups</td></tr>
+  <tr><td>Some Progressives backed eugenics</td><td><strong>T</strong></td><td>Thousands of people — especially those with disabilities, immigrants, and people of color — were forcibly sterilized under laws that Progressive supporters backed</td></tr>
+  <tr><td>Dark side had no lasting effects</td><td><strong>F</strong></td><td>The harm was serious and long-lasting; these ideas influenced Nazi Germany; some sterilization laws stayed on the books until the 1970s</td></tr>
+  </table>`
+},
+
+// ══════════════════ Q5 · R9 — Laws & Problems ══════════════════
+{ id:'q5', r:9, type:'sa',
+  en:'For each law below, explain the problem it was trying to fix.',
+  subqs:[
+    { q:'Pure Food and Drug Act' },
+    { q:'Clayton Antitrust Act' },
+  ],
+  model:`<strong>Pure Food and Drug Act:</strong><br>
+  Food and medicine were often unsafe or had false labels, and there was no government oversight. Companies could put anything in their products. This law required honest labels and government inspection to protect consumers.<br><br>
+  <strong>Clayton Antitrust Act:</strong><br>
+  Large corporations were using monopolies, price tricks, and exclusive deals to destroy smaller competitors and take over entire industries. Earlier laws were not strong enough to stop them. The Clayton Act banned these specific practices — and also protected workers' right to form unions and go on strike.`
+},
+
+// ══════════════════ Q6 · R10 — Laws & Policies Matching ══════════════════
+{ id:'q6', r:10, type:'match',
+  en:'Click a law on the left, then click its matching description on the right.',
+  lefts:[
+    {id:'l1', t:'Indian Removal Act (1830)'},
+    {id:'l2', t:'Indian Appropriations Act (1851)'},
+    {id:'l3', t:'Dawes Act (1887)'},
+    {id:'l4', t:'Curtis Act (1898)'},
+    {id:'l5', t:'Indian Reorganization Act (1930s)'},
+  ],
+  rights:[
+    {id:'r1', t:'Made the forced relocation of eastern tribes official U.S. policy; thousands died on the Trail of Tears.', m:'l1'},
+    {id:'r2', t:'Gave the federal government the power to create reservations — areas of land set aside for Native Americans, away from land settlers wanted.', m:'l2'},
+    {id:'r3', t:'Split tribal land into individual plots; leftover land was sold to white settlers; tribal governments were weakened.', m:'l3'},
+    {id:'r4', t:'Extended land-splitting to the Five Civilized Tribes after they refused; their governments were shut down; over 90 million acres were lost.', m:'l4'},
+    {id:'r5', t:'Allowed tribes to rebuild their governments, stopped the land-splitting policy, and helped preserve reservations that still exist today.', m:'l5'},
+  ],
+  model:`<ul>
+    <li><strong>Indian Removal Act (1830) →</strong> Forced relocation / Trail of Tears — made removal of eastern tribes official government policy</li>
+    <li><strong>Indian Appropriations Act (1851) →</strong> Created reservations — land set aside to keep Native Americans away from territory settlers wanted</li>
+    <li><strong>Dawes Act (1887) →</strong> Split tribal land into individual plots; extra land sold to white settlers; tribal governments weakened; communities left poorer</li>
+    <li><strong>Curtis Act (1898) →</strong> Extended the Dawes Act to the Five Civilized Tribes who had treaty protections — those protections were removed; 90M+ acres lost</li>
+    <li><strong>Indian Reorganization Act (1930s) →</strong> Reversed the land-splitting policy; tribes allowed to rebuild governments; reservations preserved to the present day</li>
+  </ul>`
+},
+
+// ══════════════════ Q7 · R10 — Reservation System T/F ══════════════════
+{ id:'q7', r:10, type:'tf',
+  en:'Decide whether each statement about the reservation system and the Dawes Act is True or False.',
+  rows:[
+    { en:'Life on most reservations was comfortable — they usually had good farmland, jobs, and resources.', ans:'F' },
+    { en:'Under the Dawes Act, Native Americans who refused to take a land plot automatically kept their tribal land.', ans:'F' },
+    { en:'The Dawes Act required Native Americans to accept an individual land plot in order to become U.S. citizens.', ans:'T' },
+    { en:'The Curtis Act (1898) shut down the tribal governments and courts of the Five Civilized Tribes.', ans:'T' },
+  ],
+  model:`<table>
+  <tr><th>Statement</th><th>T/F</th><th>Explanation</th></tr>
+  <tr><td>Reservations were comfortable</td><td><strong>F</strong></td><td>The text says life was "often harsh" — most reservations had poor farmland, few jobs, and limited resources; poverty and hunger were common</td></tr>
+  <tr><td>Refusing a land plot = kept tribal land</td><td><strong>F</strong></td><td>The opposite was true: "any remaining land was taken by the government and sold to white settlers" — refusing meant losing everything</td></tr>
+  <tr><td>Accepting a plot was required for citizenship</td><td><strong>T</strong></td><td>This was a deliberate pressure tactic — accept a plot (and break away from tribal life) or lose the chance at citizenship</td></tr>
+  <tr><td>Curtis Act shut down Five Tribes' governments</td><td><strong>T</strong></td><td>After the Five Civilized Tribes refused land plots, Congress removed their self-governance; 90M+ acres were sold to white Americans</td></tr>
+  </table>`
+},
+
+// ══════════════════ Q8 · Group Discussion — Second Gilded Age ══════════════════
+{ id:'q8', r:0, type:'disc',
+  en:'Some people call today the "Second Gilded Age." Discuss these questions as a group, then write your answers.',
+  subqs:[
+    {
+      q:'In what ways does today look similar to the original Gilded Age from the readings? Give at least TWO examples.'
+    },
+    {
+      q:'Do you think a reform movement like Progressivism could happen today? If YES — what problems would it focus on? If NO — why not?'
+    },
+  ],
+  model:`<strong>There are no right or wrong answers — your reasoning and examples are what matter.</strong><br><br>
+  <strong>Q1 — Ways today looks like the original Gilded Age:</strong>
+  <ul>
+    <li><strong>Extreme wealth inequality</strong> — The Gilded Age had robber barons; today a small number of billionaires hold more wealth than the bottom half of the population combined</li>
+    <li><strong>Corporate monopoly power</strong> — Then: Standard Oil, railroads, steel. Now: a few tech giants dominate entire industries with very little competition</li>
+    <li><strong>Money influencing politics</strong> — Then: industrialists bribed lawmakers. Now: debates about lobbying and campaign money continue</li>
+    <li><strong>Immigration debates and nativism</strong> — Anti-immigrant sentiment existed in the Gilded Age (Chinese Exclusion Act) and similar debates continue today</li>
+    <li><strong>Worker exploitation</strong> — Then: dangerous factory conditions and low wages. Now: debates about gig workers, warehouse labor, and minimum wage</li>
+  </ul>
+  <strong>Q2 — Could a Progressive-style reform movement happen today?</strong><br><br>
+  <em>Arguments for YES:</em>
+  <ul>
+    <li>History shows that big inequality tends to push people toward demanding reform — the original Progressive Era was a direct response to the Gilded Age</li>
+    <li>Possible focus areas today: wealth gap and taxation, regulating big tech, healthcare, climate change, campaign finance</li>
+    <li>Labor movements and climate activism already look similar to Progressive-Era pressure from below</li>
+  </ul>
+  <em>Arguments for NO (or "not easily"):</em>
+  <ul>
+    <li>Political division today makes it harder to build the kind of broad coalition the Progressives needed</li>
+    <li>Wealthy interests now have more tools — social media, lobbying, news ownership — to shape public opinion and resist reform</li>
+    <li>Worth remembering: the original Progressive Era also produced harmful policies alongside good ones — reform movements are not always purely positive</li>
+  </ul>`
+},
+
+]; // end Qs
+
+// ═══════════════════════════════
+// STATE
+// ═══════════════════════════════
+let members=[], cur=0;
+let submitted=new Array(Qs.length).fill(false);
+let responses=new Array(Qs.length).fill('');
+let tfSt={}, fillSt={}, matchSt={};
+
+const LABELS={tf:'✅ True / False',fill:'✏️ Fill in the Blank',match:'📋 Matching',disc:'💬 Group Discussion',amend:'📜 Amendments',sa:'✍️ Short Answer'};
+const PILLS ={tf:'p-tf',fill:'p-fl',match:'p-mt',disc:'p-rj',amend:'p-amend',sa:'p-sa'};
+const RNAMES={7:'R7 — Social Darwinism',8:'R8 — Gold Rush',9:'R9 — Progressive Reforms',10:'R10 — Reservation & Dawes Act',0:'💬 Group Discussion'};
+
+function startActivity(){
+  members=['m1','m2','m3','m4'].map(id=>document.getElementById(id).value.trim()).filter(Boolean);
+  if(!members.length){alert('Please enter at least one name.');return;}
+  document.getElementById('start-screen').style.display='none';
+  document.getElementById('main').style.display='block';
+  document.getElementById('hdr-prog').style.display='block';
+  render();
+}
+
+function updProg(){
+  const n=submitted.filter(Boolean).length;
+  document.getElementById('prog-fill').style.width=Math.round(n/Qs.length*100)+'%';
+  document.getElementById('prog-lbl').textContent=`${n} / ${Qs.length} done`;
+}
+
+function render(){
+  const el=document.getElementById('main');
+  if(cur>=Qs.length){showFinal();return;}
+  const q=Qs[cur];
+  const prevR=cur>0?Qs[cur-1].r:null;
+  let html='';
+  if(q.r!==prevR) html+=`<div class="sec-div"><span>${RNAMES[q.r]||''}</span></div>`;
+  html+=buildCard(q);
+  el.innerHTML=html;
+  updProg();
+  if(q.type==='tf')    tfSt[q.id]=new Array(q.rows.length).fill(null);
+  if(q.type==='fill')  fillSt[q.id]={};
+  if(q.type==='match') matchSt[q.id]={leftSel:null,pairs:{}};
+}
+
+function buildCard(q){
+  let h=`<div class="act-card">
+    <div class="act-head">
+      <span class="type-pill ${PILLS[q.type]}">${LABELS[q.type]}</span>
+      ${q.r>0?`<span class="act-rdg">Reading ${q.r}</span>`:''}
+      <span class="act-num">Q${cur+1} / ${Qs.length}</span>
+    </div>
+    <div class="act-body">
+      <div class="q-en">${q.en}</div>`;
+  if(q.type==='tf')    h+=buildTF(q);
+  if(q.type==='fill')  h+=buildFill(q);
+  if(q.type==='match') h+=buildMatch(q);
+  if(q.type==='amend') h+=buildAmend(q);
+  if(q.type==='sa')    h+=buildSA(q);
+  if(q.type==='disc')  h+=buildDisc(q);
+  h+=`</div></div>`;
+  return h;
+}
+
+// TRUE/FALSE
+function buildTF(q){
+  let h=`<table class="tf-table"><tr><th>Statement</th><th class="th-tf">True / False</th></tr>`;
+  q.rows.forEach((row,i)=>{
+    h+=`<tr class="tf-row">
+      <td>${row.en}</td>
+      <td><div class="tf-btns">
+        <button class="tf-btn" id="tft-${q.id}-${i}" onclick="pickTF('${q.id}',${i},'T')">True</button>
+        <button class="tf-btn" id="tff-${q.id}-${i}" onclick="pickTF('${q.id}',${i},'F')">False</button>
+      </div></td>
+    </tr>`;
+  });
+  h+=`</table><div class="sub-row"><button class="btn-sub" id="tfsub-${q.id}" onclick="subTF('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function pickTF(qid,i,val){
+  if(!tfSt[qid]) tfSt[qid]=[];
+  tfSt[qid][i]=val;
+  document.getElementById(`tft-${qid}-${i}`).className='tf-btn'+(val==='T'?' sel-t':'');
+  document.getElementById(`tff-${qid}-${i}`).className='tf-btn'+(val==='F'?' sel-f':'');
+  const q=Qs.find(x=>x.id===qid);
+  if(tfSt[qid].filter(v=>v!=null).length===q.rows.length)
+    document.getElementById(`tfsub-${qid}`).disabled=false;
+}
+function subTF(qid){
+  const q=Qs.find(x=>x.id===qid);
+  responses[cur]=q.rows.map((row,i)=>`${i+1}. [${tfSt[qid][i]}] ${row.en}`).join('\n');
+  document.querySelectorAll(`[id^="tft-${qid}"],[id^="tff-${qid}"]`).forEach(b=>b.disabled=true);
+  document.getElementById(`tfsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// FILL IN THE BLANK
+function buildFill(q){
+  let s=q.sent;
+  q.blanks.forEach(b=>{
+    s=s.replace(`[${b.id}]`,`<span class="blank" id="bl-${q.id}-${b.id}" onclick="rmBlank('${q.id}','${b.id}')">[${b.id}]</span>`);
+  });
+  const sh=[...q.choices].sort(()=>Math.random()-.5);
+  let h=`<div class="fill-sent">${s}</div><div class="chips" id="ch-${q.id}">`;
+  sh.forEach(c=>{h+=`<button class="chip" onclick="placeChip('${q.id}','${c}')">${c}</button>`;});
+  h+=`</div><div class="sub-row"><button class="btn-sub" id="fsub-${q.id}" onclick="subFill('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function placeChip(qid,word){
+  const q=Qs.find(x=>x.id===qid); const st=fillSt[qid]||{};
+  const empty=q.blanks.find(b=>!st[b.id]); if(!empty) return;
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).find(c=>c.textContent===word&&!c.classList.contains('used'))?.classList.add('used');
+  st[empty.id]=word; fillSt[qid]=st;
+  const slot=document.getElementById(`bl-${qid}-${empty.id}`);
+  slot.textContent=word; slot.classList.add('filled');
+}
+function rmBlank(qid,bid){
+  const st=fillSt[qid]||{}; const word=st[bid]; if(!word) return;
+  delete st[bid]; fillSt[qid]=st;
+  const slot=document.getElementById(`bl-${qid}-${bid}`);
+  slot.textContent=`[${bid}]`; slot.classList.remove('filled');
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).find(c=>c.textContent===word&&c.classList.contains('used'))?.classList.remove('used');
+}
+function subFill(qid){
+  const q=Qs.find(x=>x.id===qid); const st=fillSt[qid]||{};
+  if(!q.blanks.every(b=>st[b.id])){alert('Please fill in all the blanks.');return;}
+  responses[cur]=q.blanks.map(b=>`[${b.id}] ${st[b.id]}`).join('\n');
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).forEach(c=>c.disabled=true);
+  document.getElementById(`fsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// MATCHING
+function buildMatch(q){
+  const shR=[...q.rights].sort(()=>Math.random()-.5);
+  let h=`<div class="match-hint">Tap a law on the left → then tap its matching description on the right. Tap a matched pair to undo it.</div>
+  <div class="match-sel-banner" id="msel-${q.id}">👆 Now tap a description on the right…</div>
+  <div class="match-grid">
+    <div><div class="match-col-lbl">Law / Policy</div><div class="match-items" id="ml-${q.id}">`;
+  q.lefts.forEach(l=>{h+=`<div class="match-item" id="ml-${l.id}" onclick="clkL('${q.id}','${l.id}')">${l.t}</div>`;});
+  h+=`</div></div><div><div class="match-col-lbl">Description</div><div class="match-items" id="mr-${q.id}">`;
+  shR.forEach(r=>{h+=`<div class="match-item" id="mr-${r.id}" onclick="clkR('${q.id}','${r.id}')">${r.t}</div>`;});
+  h+=`</div></div></div>
+  <div class="sub-row" style="margin-top:.9rem;"><button class="btn-sub" id="msub-${q.id}" onclick="subMatch('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function clkL(qid,lid){
+  const st=matchSt[qid]; if(!st) return;
+  const el=document.getElementById(`ml-${lid}`);
+  const banner=document.getElementById(`msel-${qid}`);
+  // If already matched, unmatch the pair
+  if(el.classList.contains('matched')){
+    const pairedRid=st.pairs[lid];
+    if(pairedRid){
+      document.getElementById(`mr-${pairedRid}`).classList.remove('matched');
+      delete st.pairs[lid];
+    }
+    el.classList.remove('matched');
+    updMatchSubmit(qid);
+    banner.classList.remove('active');
+    return;
+  }
+  // Otherwise select/deselect
+  const already=el.classList.contains('sel');
+  document.querySelectorAll(`#ml-${qid} .match-item`).forEach(e=>e.classList.remove('sel'));
+  if(!already){
+    st.leftSel=lid; el.classList.add('sel');
+    // Show which item is selected in banner
+    banner.textContent=`👆 "${el.textContent}" selected — now tap a description on the right`;
+    banner.classList.add('active');
+  } else {
+    st.leftSel=null;
+    banner.classList.remove('active');
+  }
+}
+function clkR(qid,rid){
+  const st=matchSt[qid]; if(!st) return;
+  const rEl=document.getElementById(`mr-${rid}`);
+  const banner=document.getElementById(`msel-${qid}`);
+  // If already matched, unmatch the pair
+  if(rEl.classList.contains('matched')){
+    const pairedLid=Object.keys(st.pairs).find(k=>st.pairs[k]===rid);
+    if(pairedLid){
+      document.getElementById(`ml-${pairedLid}`).classList.remove('matched');
+      delete st.pairs[pairedLid];
+    }
+    rEl.classList.remove('matched');
+    updMatchSubmit(qid);
+    banner.classList.remove('active');
+    return;
+  }
+  // Need a left item selected first
+  if(!st.leftSel) return;
+  const lEl=document.getElementById(`ml-${st.leftSel}`);
+  rEl.classList.add('matched');
+  lEl.classList.add('matched');
+  lEl.classList.remove('sel');
+  st.pairs[st.leftSel]=rid;
+  st.leftSel=null;
+  banner.classList.remove('active');
+  updMatchSubmit(qid);
+}
+function updMatchSubmit(qid){
+  const q=Qs.find(x=>x.id===qid); const st=matchSt[qid];
+  document.getElementById(`msub-${qid}`).disabled=Object.keys(st.pairs).length<q.lefts.length;
+}
+function subMatch(qid){
+  const q=Qs.find(x=>x.id===qid); const st=matchSt[qid];
+  const lines=q.lefts.map(l=>{const r=q.rights.find(r=>r.id===st.pairs[l.id]);return `${l.t}\n  → ${r?r.t:'(unmatched)'}`;});
+  responses[cur]=lines.join('\n\n');
+  document.getElementById(`msub-${qid}`).disabled=true;
+  // Lock all items after submit
+  document.querySelectorAll(`#ml-${qid} .match-item, #mr-${qid} .match-item`).forEach(el=>{
+    el.style.pointerEvents='none';
+  });
+  markDone(qid);
+}
+
+// AMENDMENT CARDS
+function buildAmend(q){
+  let h=`<div class="amend-note">📖 Use the reading to fill in each box. Write in your own words — no hints given.</div>
+  <div class="amend-cards">`;
+  q.rows.forEach((row,i)=>{
+    h+=`<div class="amend-card">
+      <div class="amend-card-head"><span class="amend-card-num">${row.num}</span></div>
+      <div class="amend-card-body">
+        <div class="amend-field">
+          <span class="amend-field-lbl">What it did</span>
+          <textarea class="amend-ta" id="at-what-${q.id}-${i}" placeholder="What did it do?"></textarea>
+        </div>
+        <div class="amend-field">
+          <span class="amend-field-lbl">Problem it solved</span>
+          <textarea class="amend-ta" id="at-prob-${q.id}-${i}" placeholder="What problem?"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  h+=`</div><div class="sub-row" style="margin-top:.75rem;"><button class="btn-sub" id="amendsub-${q.id}" onclick="subAmend('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function subAmend(qid){
+  const q=Qs.find(x=>x.id===qid);
+  const any=q.rows.some((_,i)=>document.getElementById(`at-what-${qid}-${i}`).value.trim());
+  if(!any){alert('Please fill in at least one row.');return;}
+  const lines=q.rows.map((row,i)=>{
+    const w=document.getElementById(`at-what-${qid}-${i}`).value.trim();
+    const p=document.getElementById(`at-prob-${qid}-${i}`).value.trim();
+    return `${row.num}: [Did] ${w||'—'} | [Problem] ${p||'—'}`;
+  });
+  responses[cur]=lines.join('\n');
+  q.rows.forEach((_,i)=>{
+    document.getElementById(`at-what-${qid}-${i}`).disabled=true;
+    document.getElementById(`at-prob-${qid}-${i}`).disabled=true;
+  });
+  document.getElementById(`amendsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// SHORT ANSWER
+function buildSA(q){
+  let h=`<div class="sa-note">✍️ Use evidence from the reading. Write in full sentences.</div>`;
+  q.subqs.forEach((sq,i)=>{
+    h+=`<div class="sa-sub-q">${i+1}. ${sq.q}</div>
+    <textarea class="sa-ta" id="sa-${q.id}-${i}" placeholder="Write your answer here…"></textarea>`;
+  });
+  h+=`<div class="sub-row"><button class="btn-sub" id="sasub-${q.id}" onclick="subSA('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function subSA(qid){
+  const q=Qs.find(x=>x.id===qid);
+  const vals=q.subqs.map((_,i)=>document.getElementById(`sa-${qid}-${i}`).value.trim());
+  if(vals.some(v=>!v)){alert('Please answer all questions.');return;}
+  responses[cur]=vals.map((v,i)=>`Q${i+1}: ${v}`).join('\n\n');
+  q.subqs.forEach((_,i)=>document.getElementById(`sa-${qid}-${i}`).disabled=true);
+  document.getElementById(`sasub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// GROUP DISCUSSION
+function buildDisc(q){
+  let h=`<div class="rj-note">💬 Discuss as a group first, then write your group's answers below. There are no right or wrong answers — your reasoning is what counts.</div>
+  <div class="disc-subqs">`;
+  q.subqs.forEach((sq,i)=>{
+    h+=`<div class="disc-subq">
+      <span class="disc-subq-label">Question ${i+1}</span>
+      <div class="disc-subq-q">${sq.q}</div>
+      <textarea class="disc-ta" id="disc-${q.id}-${i}" placeholder="Your group's answer…"></textarea>
+    </div>`;
+  });
+  h+=`</div><div class="sub-row"><button class="btn-sub" id="discsub-${q.id}" onclick="subDisc('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function subDisc(qid){
+  const q=Qs.find(x=>x.id===qid);
+  const vals=q.subqs.map((_,i)=>document.getElementById(`disc-${qid}-${i}`).value.trim());
+  if(vals.some(v=>!v)){alert('Please answer all questions.');return;}
+  responses[cur]=vals.map((v,i)=>`Q${i+1}: ${v}`).join('\n\n');
+  q.subqs.forEach((_,i)=>document.getElementById(`disc-${qid}-${i}`).disabled=true);
+  document.getElementById(`discsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// MARK DONE
+function markDone(qid){
+  submitted[cur]=true; updProg();
+  const body=document.querySelector('.act-body');
+  const badge=document.createElement('div');
+  badge.className='done-badge';
+  badge.innerHTML='✅ Answer recorded — check the model answer on the results screen';
+  body.appendChild(badge);
+  const btn=document.createElement('button');
+  btn.className='btn-next-q';
+  btn.textContent=cur+1<Qs.length?'Next Question →':'See Results ✓';
+  btn.onclick=nextQ;
+  body.appendChild(btn);
+}
+function nextQ(){cur++;document.getElementById('main').innerHTML='';render();window.scrollTo({top:0,behavior:'smooth'});}
+
+// FINAL SCREEN
+function showFinal(){
+  document.getElementById('main').style.display='none';
+  const screen=document.getElementById('final-screen');
+  screen.style.display='block';
+  const memberStr=members.join(' · ');
+  let copyText=`=== GILDED AGE & WESTWARD EXPANSION (R7-10) ===\nMembers: ${memberStr}\n\n`;
+  Qs.forEach((q,i)=>{copyText+=`[Q${i+1} · ${q.r>0?'R'+q.r:'Discussion'} · ${LABELS[q.type]}]\n${q.en}\n→ ${responses[i]||'(no answer)'}\n\n`;});
+
+  let html=`<div class="final-hero">
+    <div class="fi">🎉</div>
+    <h2>Activity Complete!</h2>
+    <p>Great work! Copy your answers below and post them to Padlet.</p>
+    <div class="final-group-tag">👥 ${memberStr}</div>
+    <div class="score-row">
+      <div class="score-item"><span class="score-n">${Qs.length}</span><span class="score-l">Questions</span></div>
+      <div class="score-item"><span class="score-n">${submitted.filter(Boolean).length}</span><span class="score-l">Completed</span></div>
+    </div>
+  </div>`;
+
+  [7,8,9,10,0].forEach(r=>{
+    const rQs=Qs.map((q,i)=>({q,i})).filter(({q})=>q.r===r);
+    if(!rQs.length) return;
+    html+=`<div class="ans-section"><div class="ans-section-title">${RNAMES[r]}</div><div class="ans-cards">`;
+    rQs.forEach(({q,i})=>{
+      html+=`<div class="ans-card">
+        <div class="ans-head">
+          <span class="type-pill ${PILLS[q.type]}" style="font-size:.57rem;">${LABELS[q.type]}</span>
+          <span class="ans-qtext">${q.en}</span>
+        </div>
+        <div class="ans-body">
+          <div class="ans-response">${responses[i]||'(no answer)'}</div>
+          <div class="ans-model"><strong>💡 Model Answer:</strong><br>${q.model}</div>
+        </div>
+      </div>`;
+    });
+    html+=`</div></div>`;
+  });
+
+  html+=`<div class="copy-box">
+    <h3>📋 Post to Padlet</h3>
+    <p>Copy the text below and paste it into Padlet.</p>
+    <textarea id="copy-ta" readonly onclick="this.select()">${copyText.trim()}</textarea>
+    <div class="copy-btns">
+      <button class="btn-copy" id="bcopy" onclick="doCopy()">📋 Copy All</button>
+      <button class="btn-restart" onclick="location.reload()">↺ Restart</button>
+    </div>
+  </div>`;
+  screen.innerHTML=html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function doCopy(){
+  const ta=document.getElementById('copy-ta'); ta.select();
+  navigator.clipboard.writeText(ta.value).then(()=>{
+    const b=document.getElementById('bcopy');
+    b.textContent='✓ Copied!'; b.classList.add('ok');
+    setTimeout(()=>{b.textContent='📋 Copy All';b.classList.remove('ok');},2500);
+  }).catch(()=>document.execCommand('copy'));
+}
+</script>
+</body>
+</html>
