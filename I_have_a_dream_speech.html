@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Have a Dream - Drag and Drop Activity</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 30px;
+      background: #f6f7f2;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2f4f2f;
+      margin-bottom: 10px;
+    }
+
+    .instructions {
+      text-align: center;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 18px;
+      background: #eef4e8;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .word {
+      padding: 8px 14px;
+      background: #365c35;
+      color: white;
+      border-radius: 20px;
+      cursor: grab;
+      user-select: none;
+      font-weight: bold;
+    }
+
+    .word:active {
+      cursor: grabbing;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 120px;
+      padding: 4px 10px;
+      margin: 0 3px;
+      border-bottom: 2px solid #333;
+      background: #fff8d6;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: bold;
+      color: #1f4e79;
+      vertical-align: baseline;
+    }
+
+    .blank.drag-over {
+      background: #dcefd3;
+      outline: 2px dashed #365c35;
+    }
+
+    .correct {
+      background: #d8f3dc !important;
+      border-bottom: 2px solid #2d6a4f;
+    }
+
+    .incorrect {
+      background: #ffd6d6 !important;
+      border-bottom: 2px solid #b00020;
+    }
+
+    .passage {
+      font-size: 18px;
+    }
+
+    button {
+      display: inline-block;
+      margin: 25px 10px 10px 0;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #365c35;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #294629;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .quote {
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>I Have a Dream</h1>
+    <p class="instructions">
+      Drag each word from the word bank into the correct blank.
+    </p>
+
+    <div class="word-bank" id="wordBank">
+      <span class="word" draggable="true">brotherhood</span>
+      <span class="word" draggable="true">character</span>
+      <span class="word" draggable="true">creed</span>
+      <span class="word" draggable="true">despair</span>
+      <span class="word" draggable="true">oasis</span>
+      <span class="word" draggable="true">oppression</span>
+      <span class="word" draggable="true">rough</span>
+      <span class="word" draggable="true">straight</span>
+      <span class="word" draggable="true">valley</span>
+      <span class="word" draggable="true">vicious</span>
+    </div>
+
+    <div class="passage">
+      <p>
+        Let us not wallow in the valley of
+        <span class="blank" data-answer="despair" data-number="1">#1</span>,
+        I say to you today, my friends.
+      </p>
+
+      <p>
+        And so even though we face the difficulties of today and tomorrow,
+        I still have a dream. It is a dream deeply rooted in the American dream.
+      </p>
+
+      <p>
+        I have a dream that one day this nation will rise up and live out the
+        true meaning of its
+        <span class="blank" data-answer="creed" data-number="2">#2</span>:
+        <span class="quote">"We hold these truths to be self-evident, that all men are created equal."</span>
+      </p>
+
+      <p>
+        I have a dream that one day on the red hills of Georgia, the sons of former
+        slaves and the sons of former slave owners will be able to sit down together
+        at the table of
+        <span class="blank" data-answer="brotherhood" data-number="3">#3</span>.
+      </p>
+
+      <p>
+        I have a dream that one day even the state of Mississippi, a state sweltering
+        with the heat of injustice, sweltering with the heat of
+        <span class="blank" data-answer="oppression" data-number="4">#4</span>,
+        will be transformed into an
+        <span class="blank" data-answer="oasis" data-number="5">#5</span>
+        of freedom and justice.
+      </p>
+
+      <p>
+        I have a dream that my four little children will one day live in a nation
+        where they will not be judged by the color of their skin but by the content
+        of their
+        <span class="blank" data-answer="character" data-number="6">#6</span>.
+      </p>
+
+      <p><strong>I have a dream today!</strong></p>
+
+      <p>
+        I have a dream that one day, down in Alabama, with its
+        <span class="blank" data-answer="vicious" data-number="7">#7</span>
+        racists, with its governor having his lips dripping with the words of
+        "interposition" and "nullification" — one day right there in Alabama little
+        black boys and black girls will be able to join hands with little white boys
+        and white girls as sisters and brothers.
+      </p>
+
+      <p><strong>I have a dream today!</strong></p>
+
+      <p>
+        I have a dream that one day every
+        <span class="blank" data-answer="valley" data-number="8">#8</span>
+        shall be exalted, and every hill and mountain shall be made low, the
+        <span class="blank" data-answer="rough" data-number="9">#9</span>
+        places will be made plain, and the crooked places will be made
+        <span class="blank" data-answer="straight" data-number="10">#10</span>;
+        <span class="quote">"and the glory of the Lord shall be revealed and all flesh shall see it together."</span>
+      </p>
+
+      <p>
+        This is our hope, and this is the faith that I go back to the South with.
+      </p>
+    </div>
+
+    <button onclick="checkAnswers()">Check Answers</button>
+    <button onclick="resetActivity()">Reset</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    let draggedWord = null;
+
+    const words = document.querySelectorAll(".word");
+    const blanks = document.querySelectorAll(".blank");
+    const wordBank = document.getElementById("wordBank");
+
+    words.forEach(word => {
+      word.addEventListener("dragstart", () => {
+        draggedWord = word;
+      });
+    });
+
+    blanks.forEach(blank => {
+      blank.addEventListener("dragover", event => {
+        event.preventDefault();
+        blank.classList.add("drag-over");
+      });
+
+      blank.addEventListener("dragleave", () => {
+        blank.classList.remove("drag-over");
+      });
+
+      blank.addEventListener("drop", event => {
+        event.preventDefault();
+        blank.classList.remove("drag-over");
+
+        if (draggedWord) {
+          if (blank.dataset.word) {
+            const oldWord = document.createElement("span");
+            oldWord.className = "word";
+            oldWord.draggable = true;
+            oldWord.textContent = blank.dataset.word;
+            addDragEvent(oldWord);
+            wordBank.appendChild(oldWord);
+          }
+
+          blank.textContent = draggedWord.textContent;
+          blank.dataset.word = draggedWord.textContent;
+          draggedWord.remove();
+
+          blank.classList.remove("correct", "incorrect");
+        }
+      });
+    });
+
+    function addDragEvent(word) {
+      word.addEventListener("dragstart", () => {
+        draggedWord = word;
+      });
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      blanks.forEach(blank => {
+        const userAnswer = blank.dataset.word;
+        const correctAnswer = blank.dataset.answer;
+
+        blank.classList.remove("correct", "incorrect");
+
+        if (userAnswer === correctAnswer) {
+          blank.classList.add("correct");
+          score++;
+        } else {
+          blank.classList.add("incorrect");
+        }
+      });
+
+      document.getElementById("result").textContent =
+        `Score: ${score} / ${blanks.length}`;
+    }
+
+    function resetActivity() {
+      const originalWords = [
+        "brotherhood", "character", "creed", "despair", "oasis",
+        "oppression", "rough", "straight", "valley", "vicious"
+      ];
+
+      wordBank.innerHTML = "";
+
+      originalWords.forEach(text => {
+        const word = document.createElement("span");
+        word.className = "word";
+        word.draggable = true;
+        word.textContent = text;
+        addDragEvent(word);
+        wordBank.appendChild(word);
+      });
+
+      blanks.forEach(blank => {
+        blank.textContent = "#" + blank.dataset.number;
+        delete blank.dataset.word;
+        blank.classList.remove("correct", "incorrect");
+      });
+
+      document.getElementById("result").textContent = "";
+    }
+  </script>
+</body>
+</html>
