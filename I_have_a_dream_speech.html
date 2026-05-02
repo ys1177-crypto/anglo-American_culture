@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I Have a Dream - Drag and Drop Activity</title>
+  <title>I Have a Dream - Vocabulary Activity</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       line-height: 1.7;
       margin: 0;
-      padding: 30px;
+      padding: 20px;
       background: #f6f7f2;
       color: #222;
     }
@@ -18,7 +19,7 @@
       max-width: 1000px;
       margin: auto;
       background: white;
-      padding: 30px;
+      padding: 25px;
       border-radius: 16px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.08);
     }
@@ -26,13 +27,12 @@
     h1 {
       text-align: center;
       color: #2f4f2f;
-      margin-bottom: 10px;
     }
 
     .instructions {
       text-align: center;
       color: #555;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .word-bank {
@@ -40,46 +40,44 @@
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
-      padding: 18px;
+      padding: 15px;
       background: #eef4e8;
       border-radius: 12px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       position: sticky;
       top: 0;
       z-index: 10;
     }
 
     .word {
-      padding: 8px 14px;
+      padding: 9px 15px;
       background: #365c35;
       color: white;
       border-radius: 20px;
-      cursor: grab;
+      cursor: pointer;
       user-select: none;
       font-weight: bold;
+      border: 3px solid transparent;
     }
 
-    .word:active {
-      cursor: grabbing;
+    .word.selected {
+      background: #f2c94c;
+      color: #222;
+      border-color: #222;
     }
 
     .blank {
       display: inline-block;
-      min-width: 120px;
+      min-width: 115px;
       padding: 4px 10px;
-      margin: 0 3px;
+      margin: 3px;
       border-bottom: 2px solid #333;
       background: #fff8d6;
       border-radius: 6px;
       text-align: center;
       font-weight: bold;
       color: #1f4e79;
-      vertical-align: baseline;
-    }
-
-    .blank.drag-over {
-      background: #dcefd3;
-      outline: 2px dashed #365c35;
+      cursor: pointer;
     }
 
     .correct {
@@ -97,8 +95,7 @@
     }
 
     button {
-      display: inline-block;
-      margin: 25px 10px 10px 0;
+      margin: 20px 10px 10px 0;
       padding: 12px 20px;
       border: none;
       border-radius: 8px;
@@ -121,27 +118,42 @@
     .quote {
       font-style: italic;
     }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 18px;
+      }
+
+      .passage {
+        font-size: 16px;
+      }
+
+      .blank {
+        min-width: 90px;
+        font-size: 15px;
+      }
+
+      .word {
+        font-size: 15px;
+        padding: 8px 12px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>I Have a Dream</h1>
+
     <p class="instructions">
-      Drag each word from the word bank into the correct blank.
+      Tap a word first, then tap the correct blank.
     </p>
 
-    <div class="word-bank" id="wordBank">
-      <span class="word" draggable="true">brotherhood</span>
-      <span class="word" draggable="true">character</span>
-      <span class="word" draggable="true">creed</span>
-      <span class="word" draggable="true">despair</span>
-      <span class="word" draggable="true">oasis</span>
-      <span class="word" draggable="true">oppression</span>
-      <span class="word" draggable="true">rough</span>
-      <span class="word" draggable="true">straight</span>
-      <span class="word" draggable="true">valley</span>
-      <span class="word" draggable="true">vicious</span>
-    </div>
+    <div class="word-bank" id="wordBank"></div>
 
     <div class="passage">
       <p>
@@ -220,56 +232,65 @@
   </div>
 
   <script>
-    let draggedWord = null;
+    const words = [
+      "brotherhood",
+      "character",
+      "creed",
+      "despair",
+      "oasis",
+      "oppression",
+      "rough",
+      "straight",
+      "valley",
+      "vicious"
+    ];
 
-    const words = document.querySelectorAll(".word");
-    const blanks = document.querySelectorAll(".blank");
     const wordBank = document.getElementById("wordBank");
+    const blanks = document.querySelectorAll(".blank");
 
-    words.forEach(word => {
-      word.addEventListener("dragstart", () => {
-        draggedWord = word;
+    let selectedWord = null;
+    let selectedElement = null;
+
+    function createWord(text) {
+      const span = document.createElement("span");
+      span.className = "word";
+      span.textContent = text;
+
+      span.addEventListener("click", () => {
+        document.querySelectorAll(".word").forEach(w => {
+          w.classList.remove("selected");
+        });
+
+        selectedWord = text;
+        selectedElement = span;
+        span.classList.add("selected");
       });
-    });
+
+      wordBank.appendChild(span);
+    }
+
+    function loadWords() {
+      wordBank.innerHTML = "";
+      words.forEach(createWord);
+    }
 
     blanks.forEach(blank => {
-      blank.addEventListener("dragover", event => {
-        event.preventDefault();
-        blank.classList.add("drag-over");
-      });
+      blank.addEventListener("click", () => {
+        if (!selectedWord) return;
 
-      blank.addEventListener("dragleave", () => {
-        blank.classList.remove("drag-over");
-      });
-
-      blank.addEventListener("drop", event => {
-        event.preventDefault();
-        blank.classList.remove("drag-over");
-
-        if (draggedWord) {
-          if (blank.dataset.word) {
-            const oldWord = document.createElement("span");
-            oldWord.className = "word";
-            oldWord.draggable = true;
-            oldWord.textContent = blank.dataset.word;
-            addDragEvent(oldWord);
-            wordBank.appendChild(oldWord);
-          }
-
-          blank.textContent = draggedWord.textContent;
-          blank.dataset.word = draggedWord.textContent;
-          draggedWord.remove();
-
-          blank.classList.remove("correct", "incorrect");
+        if (blank.dataset.word) {
+          createWord(blank.dataset.word);
         }
+
+        blank.textContent = selectedWord;
+        blank.dataset.word = selectedWord;
+        blank.classList.remove("correct", "incorrect");
+
+        selectedElement.remove();
+        selectedWord = null;
+        selectedElement = null;
       });
     });
-
-    function addDragEvent(word) {
-      word.addEventListener("dragstart", () => {
-        draggedWord = word;
-      });
-    }
 
     function checkAnswers() {
       let score = 0;
@@ -293,30 +314,20 @@
     }
 
     function resetActivity() {
-      const originalWords = [
-        "brotherhood", "character", "creed", "despair", "oasis",
-        "oppression", "rough", "straight", "valley", "vicious"
-      ];
-
-      wordBank.innerHTML = "";
-
-      originalWords.forEach(text => {
-        const word = document.createElement("span");
-        word.className = "word";
-        word.draggable = true;
-        word.textContent = text;
-        addDragEvent(word);
-        wordBank.appendChild(word);
-      });
-
       blanks.forEach(blank => {
         blank.textContent = "#" + blank.dataset.number;
         delete blank.dataset.word;
         blank.classList.remove("correct", "incorrect");
       });
 
+      selectedWord = null;
+      selectedElement = null;
+
       document.getElementById("result").textContent = "";
+      loadWords();
     }
+
+    loadWords();
   </script>
 </body>
 </html>
