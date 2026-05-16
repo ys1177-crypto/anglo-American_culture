@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1920s · Great Depression · Atomic Age · Baby Boom</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#eef2f9;--white:#ffffff;--surface:#f5f7fc;--border:#d4dcea;--border2:#b0bdd6;
+  --ink:#0f1e36;--ink2:#3a4f6e;--ink3:#8294b0;
+  --navy:#1a3a6e;--navy-lt:#2450a0;--navy-bg:#e8eef9;--navy-bd:#adc0e8;
+  --sky:#0e7fbe;--sky-bg:#e6f4fc;--sky-bd:#90cef0;
+  --teal:#0c8a78;--teal-bg:#e6f7f4;--teal-bd:#8ed6cc;
+  --coral:#d94f3a;--coral-bg:#fdf0ee;--coral-bd:#f0b0a6;
+  --amber:#c47a0a;--amber-bg:#fdf6e6;--amber-bd:#f0d080;
+  --lime:#4d8c1e;--lime-bg:#eef7e6;--lime-bd:#b0d890;
+  --purple:#6b3fa0;--purple-bg:#f3eefe;--purple-bd:#c9aaf0;
+  --shadow:0 2px 20px rgba(26,58,110,.09);--shadow-lg:0 8px 48px rgba(26,58,110,.14);--r:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;min-height:100vh;}
+header{background:var(--navy);padding:1rem 2rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(10,20,50,.25);}
+.hdr{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;}
+.hdr-badge{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:6px;padding:.25rem .65rem;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);flex-shrink:0;}
+.hdr-titles{flex:1;}
+.hdr-h1{font-size:clamp(.78rem,1.9vw,.98rem);font-weight:700;color:#fff;}
+.hdr-prog{width:155px;flex-shrink:0;}
+@media(max-width:480px){.hdr-prog{display:none!important;}.hdr-h1{font-size:.78rem;}}
+.hdr-prog-lbl{font-size:.62rem;color:rgba(255,255,255,.55);text-align:right;margin-bottom:.25rem;font-weight:500;}
+.hdr-bar{height:5px;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden;}
+.hdr-fill{height:100%;background:linear-gradient(90deg,#5eb3f5,#38e0c0);border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+#start-screen{max-width:400px;margin:4rem auto;padding:0 1.5rem;animation:up .4s ease;}
+.start-card{background:var(--white);border:2px solid var(--navy-bd);border-radius:var(--r);padding:2.2rem 2rem;box-shadow:var(--shadow-lg);}
+.start-card h2{font-size:1.35rem;font-weight:800;margin-bottom:.25rem;color:var(--navy);}
+.start-card>.sub{font-size:.84rem;color:var(--ink2);margin-bottom:1.5rem;}
+.member-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.3rem;}
+.member-label{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-lt);margin-bottom:.28rem;display:block;}
+.member-input{padding:.58rem .78rem;border:2px solid var(--border);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);background:var(--white);outline:none;transition:border-color .18s;width:100%;font-weight:500;}
+.member-input:focus{border-color:var(--navy-lt);}
+.btn-go{width:100%;padding:.82rem;background:var(--navy);color:#fff;border:none;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:background .18s;}
+.btn-go:hover{background:var(--navy-lt);}
+main{display:none;max-width:880px;margin:0 auto;padding:2rem 1.5rem 6rem;}
+.act-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);animation:up .4s ease;margin-bottom:1rem;}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.act-head{display:flex;align-items:center;gap:.65rem;padding:.82rem 1.4rem;border-bottom:2px solid var(--border);background:var(--surface);flex-wrap:wrap;}
+.type-pill{font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .65rem;border-radius:20px;flex-shrink:0;}
+.p-tf{background:var(--teal-bg);color:var(--teal);border:1.5px solid var(--teal-bd);}
+.p-fl{background:var(--lime-bg);color:var(--lime);border:1.5px solid var(--lime-bd);}
+.p-mt{background:var(--amber-bg);color:var(--amber);border:1.5px solid var(--amber-bd);}
+.p-rj{background:var(--coral-bg);color:var(--coral);border:1.5px solid var(--coral-bd);}
+.p-mc{background:var(--purple-bg);color:var(--purple);border:1.5px solid var(--purple-bd);}
+.p-sq{background:var(--sky-bg);color:var(--sky);border:1.5px solid var(--sky-bd);}
+.p-ce{background:var(--sky-bg);color:var(--sky);border:1.5px solid var(--sky-bd);}
+.act-rdg{font-size:.66rem;color:var(--ink3);font-weight:600;}
+.act-num{font-size:.66rem;font-weight:800;background:var(--navy-bg);color:var(--navy);padding:.18rem .6rem;border-radius:20px;margin-left:auto;}
+.act-body{padding:1.5rem 1.4rem;}
+.q-en{font-size:1rem;font-weight:700;line-height:1.52;color:var(--ink);margin-bottom:1.1rem;}
+.sub-row{display:flex;justify-content:flex-end;margin-top:1rem;}
+.btn-sub{padding:.54rem 1.4rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.84rem;cursor:pointer;transition:all .18s;}
+.btn-sub:hover{background:var(--navy-lt);transform:translateY(-1px);}
+.btn-sub:disabled{background:var(--border2);color:var(--ink3);cursor:default;transform:none;}
+.done-badge{display:inline-flex;align-items:center;gap:.45rem;margin-top:1rem;background:var(--teal-bg);border:1.5px solid var(--teal-bd);border-radius:8px;padding:.52rem 1rem;font-size:.82rem;color:var(--teal);font-weight:600;}
+.btn-next-q{display:block;width:100%;margin-top:.65rem;background:var(--navy);color:#fff;border:none;border-radius:9px;padding:.72rem;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .18s;text-align:center;}
+.btn-next-q:hover{background:var(--navy-lt);}
+.sec-div{display:flex;align-items:center;gap:1rem;margin:2.2rem 0 1.5rem;}
+.sec-div::before,.sec-div::after{content:'';flex:1;height:2px;background:var(--navy-bd);}
+.sec-div span{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);white-space:nowrap;background:var(--navy-bg);padding:.28rem .85rem;border-radius:20px;}
+/* TF */
+.tf-table{width:100%;border-collapse:collapse;margin-bottom:.5rem;}
+.tf-table th{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);padding:.5rem .75rem;text-align:left;border-bottom:2px solid var(--border);}
+.tf-table th.th-tf{text-align:center;width:148px;}
+.tf-row td{padding:.72rem .75rem;border-bottom:1px solid var(--border);font-size:.88rem;line-height:1.5;vertical-align:top;}
+.tf-row:last-child td{border-bottom:none;}
+.tf-btns{display:flex;gap:.4rem;justify-content:center;}
+.tf-btn{padding:.38rem .95rem;border:2px solid var(--border2);border-radius:20px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;background:var(--white);color:var(--ink2);transition:all .18s;min-width:52px;}
+.tf-btn:hover:not(:disabled){border-color:var(--teal);background:var(--teal-bg);color:var(--teal);}
+.tf-btn.sel-t{border-color:var(--teal);background:var(--teal-bg);color:var(--teal);}
+.tf-btn.sel-f{border-color:var(--coral);background:var(--coral-bg);color:var(--coral);}
+.tf-btn:disabled{cursor:default;opacity:.65;}
+.corr-wrap{margin-top:.55rem;animation:up .25s ease;}
+.corr-lbl{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin-bottom:.28rem;display:block;}
+.corr-ta{width:100%;min-height:52px;padding:.38rem .6rem;border:2px solid var(--coral-bd);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.83rem;color:var(--ink);background:var(--coral-bg);outline:none;resize:none;font-weight:400;line-height:1.5;transition:border-color .18s;}
+.corr-ta:focus{border-color:var(--coral);}
+.corr-ta::placeholder{color:#c08880;}
+@media(max-width:500px){.tf-table th.th-tf{width:108px;}.tf-btn{padding:.3rem .52rem;font-size:.74rem;min-width:40px;}}
+/* FILL */
+.fill-sent{font-size:.92rem;line-height:2.7;color:var(--ink);margin-bottom:.9rem;font-weight:500;word-break:break-word;}
+.blank{display:inline-block;min-width:80px;border-bottom:3px solid var(--lime);padding:0 .28rem;margin:0 .12rem;color:var(--lime);font-style:italic;font-weight:600;cursor:pointer;vertical-align:bottom;text-align:center;white-space:nowrap;}
+.blank.filled{color:var(--ink);font-style:normal;font-weight:600;border-color:var(--border2);}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.9rem;}
+.chip{padding:.35rem .9rem;border:2px solid var(--border2);border-radius:20px;font-size:.83rem;cursor:pointer;background:var(--white);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:600;transition:all .18s;touch-action:manipulation;}
+.chip:hover:not(.used):not(:disabled){border-color:var(--lime);background:var(--lime-bg);color:var(--lime);}
+.chip.used{opacity:.28;cursor:default;}
+/* MATCHING */
+.match-hint{font-size:.78rem;color:var(--ink2);font-style:italic;margin-bottom:.75rem;font-weight:500;background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:.6rem .9rem;}
+.match-sel-banner{display:none;background:var(--navy-bg);border:2px solid var(--navy-bd);border-radius:8px;padding:.55rem .9rem;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.7rem;}
+.match-sel-banner.active{display:block;}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:540px){.match-grid{grid-template-columns:1fr;gap:.5rem;}}
+.match-col-lbl{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);margin-bottom:.48rem;}
+.match-items{display:flex;flex-direction:column;gap:.4rem;}
+.match-item{padding:.65rem .85rem;border:2px solid var(--border);border-radius:8px;font-size:.83rem;line-height:1.4;cursor:pointer;background:var(--white);transition:all .18s;font-weight:500;touch-action:manipulation;}
+.match-item.sel{border-color:var(--navy-lt);background:var(--navy-bg);color:var(--navy);font-weight:700;box-shadow:0 0 0 3px rgba(36,80,160,.18);}
+.match-item.matched{border-color:var(--teal-bd);background:var(--teal-bg);color:var(--teal);font-weight:600;}
+.match-item.matched::before{content:'✓ ';font-weight:800;}
+/* MULTIPLE CHOICE */
+.mc-note{font-size:.82rem;color:var(--ink2);background:var(--purple-bg);border:1.5px solid var(--purple-bd);border-left:4px solid var(--purple);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.mc-qs{display:flex;flex-direction:column;gap:1.3rem;}
+.mc-q-block{background:var(--surface);border:2px solid var(--border);border-radius:10px;padding:1rem 1.1rem;}
+.mc-q-text{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.75rem;line-height:1.5;}
+.mc-opts{display:flex;flex-direction:column;gap:.38rem;}
+.mc-opt{display:flex;align-items:flex-start;gap:.65rem;padding:.5rem .75rem;border:2px solid var(--border);border-radius:8px;cursor:pointer;background:var(--white);transition:all .18s;font-size:.87rem;line-height:1.45;font-weight:500;touch-action:manipulation;}
+.mc-opt:hover:not(.mc-disabled){border-color:var(--purple-bd);background:var(--purple-bg);}
+.mc-opt.sel{border-color:var(--purple);background:var(--purple-bg);color:var(--purple);font-weight:600;}
+.mc-opt.mc-disabled{cursor:default;}
+.mc-letter{font-size:.75rem;font-weight:800;color:var(--ink3);min-width:1.1rem;margin-top:.05rem;flex-shrink:0;}
+.mc-opt.sel .mc-letter{color:var(--purple);}
+/* SEQUENCING */
+.sq-note{font-size:.82rem;color:var(--ink2);background:var(--sky-bg);border:1.5px solid var(--sky-bd);border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.sq-items{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.5rem;}
+.sq-item{display:flex;align-items:center;gap:.7rem;padding:.6rem .85rem;border:2px solid var(--border);border-radius:8px;background:var(--white);font-size:.87rem;font-weight:500;line-height:1.4;cursor:grab;user-select:none;transition:box-shadow .18s,border-color .18s,opacity .18s;}
+.sq-item.dragging{opacity:.4;border-color:var(--sky);box-shadow:0 4px 18px rgba(14,127,190,.22);}
+.sq-item.drag-over{border-color:var(--sky);background:var(--sky-bg);}
+.sq-item.tapped{border-color:var(--sky);background:var(--sky-bg);box-shadow:0 0 0 3px rgba(14,127,190,.2);}
+.sq-handle{font-size:1rem;color:var(--ink3);flex-shrink:0;}
+.sq-num{font-size:.72rem;font-weight:800;color:var(--white);background:var(--sky);border-radius:50%;width:1.3rem;height:1.3rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+/* DISCUSSION */
+.rj-note{font-size:.82rem;color:var(--ink2);background:var(--coral-bg);border:1.5px solid var(--coral-bd);border-left:4px solid var(--coral);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:.7rem;font-weight:500;}
+.lang-note{font-size:.78rem;font-weight:600;color:var(--coral);background:rgba(217,79,58,.07);border:1.5px dashed var(--coral-bd);border-radius:7px;padding:.4rem .8rem;margin-bottom:1rem;display:inline-block;}
+.disc-subqs{display:flex;flex-direction:column;gap:1rem;margin-bottom:1rem;}
+.disc-subq{background:var(--surface);border:2px solid var(--border);border-radius:9px;padding:.9rem 1rem;}
+.disc-subq-label{font-size:.63rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:.5rem;display:block;}
+.disc-subq-q{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.55rem;line-height:1.5;}
+.disc-ta{width:100%;min-height:90px;padding:.55rem .8rem;border:2px solid var(--coral-bd);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.86rem;color:var(--ink);background:var(--white);outline:none;resize:none;transition:border-color .18s;font-weight:400;line-height:1.5;}
+.disc-ta:focus{border-color:var(--coral);}
+.disc-ta::placeholder{color:var(--ink3);}
+/* CAUSE & EFFECT */
+.ce-note{font-size:.82rem;color:var(--ink2);background:var(--sky-bg);border:1.5px solid var(--sky-bd);border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:.7rem;font-weight:500;}
+.ce-lang-note{font-size:.78rem;font-weight:600;color:var(--sky);background:rgba(14,127,190,.07);border:1.5px dashed var(--sky-bd);border-radius:7px;padding:.4rem .8rem;margin-bottom:1rem;display:inline-block;}
+.ce-cards{display:flex;flex-direction:column;gap:.75rem;}
+.ce-card{background:var(--surface);border:2px solid var(--border);border-radius:10px;overflow:hidden;}
+.ce-card-head{background:var(--sky-bg);border-bottom:2px solid var(--sky-bd);padding:.55rem 1rem;}
+.ce-card-event{font-size:.85rem;font-weight:800;color:var(--sky);}
+.ce-card-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.ce-card-body{grid-template-columns:1fr;}}
+.ce-field{padding:.7rem .9rem;border-right:1px solid var(--border);}
+.ce-field:last-child{border-right:none;}
+@media(max-width:480px){.ce-field{border-right:none;border-bottom:1px solid var(--border);}.ce-field:last-child{border-bottom:none;}}
+.ce-field-lbl{font-size:.6rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--sky);margin-bottom:.35rem;display:block;}
+.ce-ta{width:100%;min-height:60px;padding:.42rem .6rem;border:2px solid var(--border);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.83rem;color:var(--ink);background:var(--white);outline:none;resize:none;font-weight:400;transition:border-color .18s;line-height:1.5;}
+.ce-ta:focus{border-color:var(--sky);}
+/* FINAL */
+#final-screen{display:none;max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 6rem;animation:up .5s ease;}
+.final-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--sky) 100%);border-radius:var(--r);padding:2.5rem;text-align:center;margin-bottom:1.5rem;box-shadow:0 8px 36px rgba(14,58,120,.28);}
+.final-hero .fi{font-size:2.4rem;margin-bottom:.7rem;}
+.final-hero h2{font-size:1.65rem;font-weight:800;color:#fff;margin-bottom:.3rem;}
+.final-hero p{font-size:.9rem;color:rgba(255,255,255,.75);}
+.final-group-tag{display:inline-block;margin-top:1rem;background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:20px;padding:.35rem 1.2rem;font-size:.82rem;font-weight:700;}
+.score-row{display:inline-flex;gap:2.5rem;margin-top:1.2rem;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.28);border-radius:10px;padding:.7rem 2rem;}
+.score-item{text-align:center;}
+.score-n{font-size:1.9rem;font-weight:800;color:#fff;display:block;}
+.score-l{font-size:.62rem;color:rgba(255,255,255,.6);letter-spacing:.12em;text-transform:uppercase;}
+.ans-section{margin-bottom:1.5rem;}
+.ans-section-title{font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;}
+.ans-section-title::after{content:'';flex:1;height:2px;background:var(--navy-bd);}
+.ans-cards{display:flex;flex-direction:column;gap:.7rem;}
+.ans-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.ans-head{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.1rem;border-bottom:2px solid var(--border);background:var(--surface);flex-wrap:wrap;}
+.ans-qtext{font-size:.8rem;color:var(--ink2);flex:1;font-weight:500;}
+.ans-body{padding:.9rem 1.1rem;}
+.ans-response{font-size:.87rem;line-height:1.65;white-space:pre-wrap;color:var(--ink);font-weight:400;}
+.ans-model{margin-top:.8rem;padding:.8rem 1rem;border-top:2px dashed var(--border);font-size:.83rem;line-height:1.7;color:var(--ink2);background:var(--amber-bg);border-radius:0 0 10px 10px;}
+.ans-model strong{color:var(--ink);font-weight:700;}
+.ans-model ul,.ans-model ol{padding-left:1.1rem;}
+.ans-model li{margin-bottom:.35rem;}
+.ans-model table{border-collapse:collapse;width:100%;font-size:.81rem;margin-top:.5rem;}
+.ans-model th,.ans-model td{border:1px solid var(--border);padding:.4rem .6rem;text-align:left;}
+.ans-model th{background:var(--surface);font-weight:700;}
+.copy-box{background:var(--white);border:2px solid var(--navy-bd);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);}
+.copy-box h3{font-size:1.05rem;font-weight:800;margin-bottom:.25rem;color:var(--navy);}
+.copy-box p{font-size:.8rem;color:var(--ink2);margin-bottom:.9rem;}
+#copy-ta{width:100%;height:160px;background:var(--surface);border:2px solid var(--border);border-radius:8px;padding:.75rem;font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--ink2);resize:none;outline:none;font-weight:400;}
+.copy-btns{display:flex;gap:.7rem;margin-top:.8rem;}
+.btn-copy{flex:1;padding:.65rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .18s;}
+.btn-copy:hover{background:var(--navy-lt);}
+.btn-copy.ok{background:var(--teal);}
+.btn-restart{padding:.65rem 1.2rem;background:var(--surface);border:2px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--ink2);cursor:pointer;font-weight:600;transition:all .18s;}
+.btn-restart:hover{border-color:var(--navy);color:var(--navy);}
+</style>
+</head>
+<body>
+<header>
+  <div class="hdr">
+    <div class="hdr-badge">History</div>
+    <div class="hdr-titles">
+      <div class="hdr-h1">1920s Culture · Great Depression · Atomic Age · Baby Boom</div>
+    </div>
+    <div class="hdr-prog" id="hdr-prog" style="display:none;">
+      <div class="hdr-prog-lbl" id="prog-lbl">0 / 8 done</div>
+      <div class="hdr-bar"><div class="hdr-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+<div id="start-screen">
+  <div class="start-card">
+    <h2>👋 Let's Begin</h2>
+    <p class="sub">Enter your group members' names.</p>
+    <div class="member-grid">
+      <div><div class="member-label">1</div><input class="member-input" id="m1" type="text" placeholder="Name"></div>
+      <div><div class="member-label">2</div><input class="member-input" id="m2" type="text" placeholder="Name (optional)"></div>
+      <div><div class="member-label">3</div><input class="member-input" id="m3" type="text" placeholder="Name (optional)"></div>
+      <div><div class="member-label">4</div><input class="member-input" id="m4" type="text" placeholder="Name (optional)"></div>
+    </div>
+    <button class="btn-go" onclick="startActivity()">Start Activity →</button>
+  </div>
+</div>
+<main id="main"></main>
+<div id="final-screen"></div>
+<script>
+const Qs=[
+{id:'q1',r:'11+12',type:'tf',
+ en:'Decide whether each statement is True or False. For any statement you mark <strong>False</strong>, a correction box will appear — fix the mistake in your own words <em>(English or 한국어)</em>.',
+ rows:[
+  {en:'The Lost Generation writers expressed optimism and pride in American progress after World War I.',ans:'F'},
+  {en:'Henry Ford\'s assembly line dropped the Model T\'s price from $850 in 1908 to $300 by 1924, making car ownership possible for ordinary Americans.',ans:'T'},
+  {en:'New household appliances in the 1920s reduced the total amount of domestic work women had to do.',ans:'F'},
+  {en:'The Smoot-Hawley Tariff Act helped the U.S. economy recover by protecting American goods from foreign competition.',ans:'F'},
+  {en:'"Hoovervilles" were makeshift shelters built by unemployed Americans, named to express anger at President Hoover.',ans:'T'},
+  {en:'The stock market crash of 1929 was the single, direct cause of the Great Depression — the economy had been healthy before it.',ans:'F'},
+  {en:'By early 1933, roughly one in four American workers was unemployed.',ans:'T'},
+  {en:'President Hoover believed from the beginning that the federal government should provide direct aid to unemployed individuals.',ans:'F'},
+ ],
+ model:`<table><tr><th>Statement</th><th>T/F</th><th>Correction / Explanation</th></tr>
+ <tr><td>Lost Generation expressed optimism</td><td><strong>F</strong></td><td>They expressed <em>cynicism, doubt, and criticism</em> — WWI shattered faith in progress and moral certainty</td></tr>
+ <tr><td>Model T price dropped</td><td><strong>T</strong></td><td>$850→$300; car ownership became realistic for ordinary families</td></tr>
+ <tr><td>Appliances reduced domestic work</td><td><strong>F</strong></td><td>Higher standards of cleanliness actually <em>increased</em> domestic work rather than reducing it</td></tr>
+ <tr><td>Smoot-Hawley helped the economy</td><td><strong>F</strong></td><td>Other countries <em>retaliated</em> with their own tariffs → trade collapsed, deepening the Depression</td></tr>
+ <tr><td>Hoovervilles — anger at Hoover</td><td><strong>T</strong></td><td>Also "Hoover blankets" (newspapers) and "Hoover flags" (empty pockets turned inside out)</td></tr>
+ <tr><td>Stock crash was the only cause</td><td><strong>F</strong></td><td>Banks already weak, farm prices already low, factories overproduced — the crash was a trigger, not the sole cause</td></tr>
+ <tr><td>One in four unemployed by 1933</td><td><strong>T</strong></td><td>~13 million unemployed = ~25% unemployment rate</td></tr>
+ <tr><td>Hoover wanted direct aid from the start</td><td><strong>F</strong></td><td>He initially believed businesses and charities should lead; shifted to intervention only in 1931</td></tr>
+ </table>`
+},
+{id:'q2',r:'13',type:'fill',
+ en:'Choose the correct word or phrase for each blank.',
+ sent:'The atomic bomb was developed through a top-secret U.S. program called the [A]. The main research center in Los Alamos was led by scientist [B]. The project began after President Roosevelt received a warning from [C] that Nazi Germany might be working on a nuclear weapon. On August 6, 1945, the United States dropped the first atomic bomb on [D]. Three days later, a second bomb was dropped on [E], and Japan surrendered shortly after.',
+ blanks:[{id:'A',ans:'Manhattan Project'},{id:'B',ans:'J. Robert Oppenheimer'},{id:'C',ans:'Albert Einstein'},{id:'D',ans:'Hiroshima'},{id:'E',ans:'Nagasaki'}],
+ choices:['Manhattan Project','J. Robert Oppenheimer','Albert Einstein','Hiroshima','Nagasaki','Leslie Groves','Tokyo','Franklin Roosevelt'],
+ model:`<ul>
+  <li><strong>A: Manhattan Project</strong> — top-secret U.S. nuclear weapons program, ~130,000 workers</li>
+  <li><strong>B: J. Robert Oppenheimer</strong> — scientific director at Los Alamos; "father of the atomic bomb"</li>
+  <li><strong>C: Albert Einstein</strong> — his 1939 letter to Roosevelt warned of German nuclear research</li>
+  <li><strong>D: Hiroshima</strong> — first city bombed, Aug 6 1945; ~140,000 killed</li>
+  <li><strong>E: Nagasaki</strong> — second city bombed, Aug 9 1945; ~80,000 killed; Japan surrendered six days later</li>
+ </ul>`
+},
+{id:'q3',r:'14',type:'fill',
+ en:'Choose the correct word or phrase for each blank.',
+ sent:'After World War II, the United States experienced a dramatic rise in births called the [A]. This period lasted roughly from 1946 to [B], and people born during this time are known as [C]. The [D] helped veterans afford education, housing, and job training, encouraging many families to have children. By the end of the baby boom, this generation made up about [E] of the U.S. population.',
+ blanks:[{id:'A',ans:'baby boom'},{id:'B',ans:'1964'},{id:'C',ans:'baby boomers'},{id:'D',ans:'GI Bill'},{id:'E',ans:'40%'}],
+ choices:['baby boom','1964','baby boomers','GI Bill','40%','1975','25%','Marshall Plan','New Deal'],
+ model:`<ul>
+  <li><strong>A: baby boom</strong> — sharp post-WWII rise in births, 4+ million babies per year</li>
+  <li><strong>B: 1964</strong> — nearly two decades of high birth rates, 1946–1964</li>
+  <li><strong>C: baby boomers</strong> — generational label for those born 1946–1964</li>
+  <li><strong>D: GI Bill</strong> — covered college, housing loans, job training for veterans</li>
+  <li><strong>E: 40%</strong> — boomers made up ~40% of the U.S. population by the end of the boom</li>
+ </ul>`
+},
+{id:'q4',r:'11+12',type:'match',
+ en:'Click a person or term on the left, then click its matching description on the right.',
+ lefts:[
+  {id:'l1',t:'F. Scott Fitzgerald'},
+  {id:'l2',t:'Henry Ford'},
+  {id:'l3',t:'Herbert Hoover'},
+  {id:'l4',t:'Franklin D. Roosevelt'},
+  {id:'l5',t:'Reconstruction Finance Corporation'},
+ ],
+ rights:[
+  {id:'r1',t:'Wrote The Great Gatsby, capturing both the glamour and the moral emptiness of the 1920s.',m:'l1'},
+  {id:'r2',t:'Perfected the assembly line; paid Black and white workers equally; raised wages to $5 a day.',m:'l2'},
+  {id:'r3',t:'Initially opposed direct government relief during the Depression; lost the 1932 election in a landslide.',m:'l3'},
+  {id:'r4',t:'Won over 57% of the vote in 1932; introduced the New Deal to address the Great Depression.',m:'l4'},
+  {id:'r5',t:'A government agency created in 1932 that loaned billions of dollars to banks, railroads, and large businesses.',m:'l5'},
+ ],
+ model:`<ul>
+  <li><strong>F. Scott Fitzgerald →</strong> The Great Gatsby — glamour and emptiness of the 1920s; Lost Generation</li>
+  <li><strong>Henry Ford →</strong> Assembly line + $5/day + equal pay for Black and white workers</li>
+  <li><strong>Herbert Hoover →</strong> Limited government philosophy; lost 1932 election 57%–40%</li>
+  <li><strong>Franklin D. Roosevelt →</strong> Landslide 1932 winner; introduced the New Deal</li>
+  <li><strong>RFC →</strong> Created 1932; loaned billions to large institutions — critics said it ignored ordinary Americans</li>
+ </ul>`
+},
+{id:'q5',r:'11',type:'mc',
+ en:'Choose the best answer for each question.',
+ qs:[
+  {q:'Which of the following was NOT a direct effect of Ford\'s assembly line?',
+   opts:['The price of the Model T fell from $850 to $300.','New industries like steel, rubber, and glass expanded.','Ford became the first car manufacturer to actively support labor unions.','Suburbs grew as more Americans could afford to drive.'],
+   ans:2,
+   exp:'Ford <em>opposed</em> labor unions. The assembly line lowered prices (A), expanded related industries (B), and enabled suburban growth (D) — all described in the reading.'},
+  {q:'Why did new household appliances in the 1920s often fail to reduce women\'s domestic workload?',
+   opts:['The appliances were too expensive for most families to afford.','Higher standards of cleanliness and efficiency raised the expected amount of work.','Women refused to use the new technologies.','The appliances broke down too frequently to be useful.'],
+   ans:1,
+   exp:'The reading states that "higher standards of cleanliness and efficiency often increased domestic work rather than reducing it." The bar for a clean home rose along with the technology.'},
+  {q:'What best describes the mood and themes of Lost Generation writers like Hemingway and Fitzgerald?',
+   opts:['Celebration of American democracy and industrial progress','Nostalgia for the simple life before World War I','Cynicism, moral doubt, and criticism of modern society','Support for government reform and progressive politics'],
+   ans:2,
+   exp:'The Lost Generation expressed cynicism and doubt rooted in WWI\'s senseless destruction — not celebration, nostalgia, or progressive reform.'},
+  {q:'Charles Lindbergh\'s 1927 transatlantic flight was significant mainly because it',
+   opts:['proved that air travel could be commercially profitable','led the U.S. government to invest heavily in military aircraft','symbolized American faith in individual achievement and technological progress','showed that European aviation technology was superior to American design'],
+   ans:2,
+   exp:'The reading says his flight "symbolized Americans\' belief in individual achievement and technological progress" — it was a cultural and symbolic milestone above all.'},
+ ],
+ model:`<ul>
+  <li><strong>Q1: C</strong> — Ford <em>opposed</em> unions; the other three effects are all described in the reading</li>
+  <li><strong>Q2: B</strong> — Appliances raised standards rather than reducing work; explicitly stated in the reading</li>
+  <li><strong>Q3: C</strong> — Cynicism and moral doubt define the Lost Generation; rooted in WWI disillusionment</li>
+  <li><strong>Q4: C</strong> — Symbolic significance of individual achievement and technological progress, per the reading</li>
+ </ul>`
+},
+{id:'q6',r:'12',type:'seq',
+ en:'Drag the events into the correct chronological order — earliest at the top. On mobile, tap two items to swap them.',
+ items:[
+  {id:'s1',t:'Risky stock speculation drives share prices to unsustainable highs',order:1},
+  {id:'s2',t:'Black Thursday & Black Tuesday — stock market collapses in panic selling',order:2},
+  {id:'s3',t:'Unemployment reaches 25%; Hoovervilles appear across the country',order:3},
+  {id:'s4',t:'Congress creates the Reconstruction Finance Corporation (RFC)',order:4},
+  {id:'s5',t:'Franklin D. Roosevelt wins the presidential election in a landslide',order:5},
+ ],
+ model:`<ol>
+  <li><strong>Risky speculation</strong> — borrowed money poured into stocks, inflating prices beyond their real value</li>
+  <li><strong>Black Thursday & Tuesday (Oct 1929)</strong> — panic selling collapses the market; it loses ~90% of its value by 1932</li>
+  <li><strong>Mass unemployment & Hoovervilles</strong> — by 1933 ~25% unemployed; makeshift camps named in anger at Hoover</li>
+  <li><strong>RFC created (1932)</strong> — Hoover's belated intervention; loaned billions to banks and railroads, seen as too little, too late</li>
+  <li><strong>FDR elected (Nov 1932)</strong> — Hoover loses 57%–40%; Roosevelt's New Deal represents a new role for government</li>
+ </ol>`
+},
+{id:'q7',r:'13+14',type:'disc',
+ en:'Discuss as a group, then write your answers. <em>(English or 한국어)</em>',
+ subqs:[
+  {q:'President Truman argued that using the atomic bomb was necessary to end the war quickly and save lives. 이 결정에 대한 너의 생각과 그 근거는 무엇인지? Use at least ONE argument from the reading to support your view, and acknowledge ONE argument on the other side.'},
+  {q:'The reading says that as baby boomers age, they are increasing pressure on healthcare and Social Security. Korea is experiencing a very low birth rate and a rapidly aging population. 출산율을 크게 변화시킬 수 없다면, 어떤 방법으로 sustainable한 사회를 만들 수 있을지? Give at least TWO specific ideas and explain why they would help.'},
+ ],
+ model:`<strong>No right or wrong answers — reasoning and evidence are what count.</strong><br><br>
+ <strong>Q1 — 원자폭탄: 정당했는가?</strong><br>
+ <em>찬성 근거 (FOR):</em>
+ <ul>
+  <li>일본 본토 침공 시 양측 모두 엄청난 사상자가 예상되었음</li>
+  <li>독일 항복 후에도 일본은 항복하지 않았고, 트루먼의 경고도 무시됨</li>
+  <li>실제로 두 번째 폭탄 투하 후 며칠 만에 전쟁이 끝남</li>
+ </ul>
+ <em>반대 근거 (AGAINST):</em>
+ <ul>
+  <li>약 21만 명의 민간인 사망 — 대부분 비전투원</li>
+  <li>소련의 참전만으로도 일본이 항복했을 수 있다는 역사가들의 주장</li>
+  <li>도시 파괴 없이 시연(demonstration)으로 대신할 수 있었는지에 대한 의문</li>
+  <li>인종차별이 의사결정에 영향을 미쳤다는 비판</li>
+ </ul>
+ <strong>Q2 — 저출산·고령화 사회의 해법 아이디어 예시:</strong>
+ <ul>
+  <li><strong>이민 정책 확대</strong> — 노동 인구를 보충하고 세금 기반 유지 (캐나다, 독일 모델)</li>
+  <li><strong>정년 연장 / 고령자 재고용</strong> — 건강한 노년층이 더 오래 일할 수 있도록 지원</li>
+  <li><strong>자동화 및 AI 활용</strong> — 줄어드는 노동 인구의 생산성 보완</li>
+  <li><strong>연금 제도 개혁</strong> — 지속 가능한 수준으로 지출 재조정</li>
+  <li><strong>여성 경제 참여 확대</strong> — 육아 인프라 강화로 경력 단절 방지</li>
+  <li><strong>세대 간 계약 공론화</strong> — 젊은 세대와 노년 세대가 함께 부담을 나누는 사회적 합의</li>
+ </ul>`
+},
+{id:'q8',r:'11–14',type:'ce',
+ en:'For each event, write its main cause AND its most important effect. Use your own words.',
+ rows:[
+  {event:'World War I → The Lost Generation'},
+  {event:'Stock Market Crash (1929)'},
+  {event:'Atomic bomb dropped on Japan (1945)'},
+  {event:'Baby Boom (1946–1964)'},
+ ],
+ model:`<table><tr><th>Event</th><th>Main Cause</th><th>Most Important Effect</th></tr>
+ <tr><td><strong>Lost Generation</strong></td><td>WWI's brutal, pointless violence shattered faith in progress, democracy, and moral certainty</td><td>Writers like Fitzgerald and Hemingway expressed cynicism and moral doubt — permanently reshaping American literature and culture</td></tr>
+ <tr><td><strong>Stock Market Crash</strong></td><td>Risky speculation on borrowed money + already-weak economy (low farm prices, overproduction, fragile banks)</td><td>Bank failures, 25% unemployment by 1933, worst economic crisis in U.S. history — spreading globally and fueling political extremism in Europe</td></tr>
+ <tr><td><strong>Atomic bomb (1945)</strong></td><td>Japan refused to surrender; U.S. leaders feared enormous casualties from a ground invasion</td><td>WWII ended rapidly; ~210,000 civilians killed; USSR developed its own bomb by 1949, starting the Cold War arms race</td></tr>
+ <tr><td><strong>Baby Boom</strong></td><td>Soldiers returned home, economy was strong, GI Bill made housing and education affordable</td><td>Boomers (40% of U.S. population) drove demand for schools and consumer goods; shaped major social movements; today pressure healthcare and retirement systems</td></tr>
+ </table>`
+},
+];
+
+let members=[],cur=0;
+let submitted=new Array(Qs.length).fill(false);
+let responses=new Array(Qs.length).fill('');
+let tfSt={},fillSt={},matchSt={},mcSt={},seqSt={},seqTapSel={};
+
+const LABELS={tf:'✅ True/False + Correction',fill:'✏️ Fill in the Blank',match:'📋 Matching',disc:'💬 Group Discussion',mc:'🔘 Multiple Choice',seq:'🔢 Sequencing',ce:'🔗 Cause & Effect'};
+const PILLS={tf:'p-tf',fill:'p-fl',match:'p-mt',disc:'p-rj',mc:'p-mc',seq:'p-sq',ce:'p-ce'};
+const RNAMES={'11+12':'R11+R12 — 1920s & Great Depression','13':'R13 — The Atomic Bomb','14':'R14 — The Baby Boom','13+14':'R13+R14 — Atomic Age & Baby Boom','11–14':'R11–R14 — Era Summary'};
+
+function startActivity(){
+  members=['m1','m2','m3','m4'].map(id=>document.getElementById(id).value.trim()).filter(Boolean);
+  if(!members.length){alert('Please enter at least one name.');return;}
+  document.getElementById('start-screen').style.display='none';
+  document.getElementById('main').style.display='block';
+  document.getElementById('hdr-prog').style.display='block';
+  render();
+}
+function updProg(){
+  const n=submitted.filter(Boolean).length;
+  document.getElementById('prog-fill').style.width=Math.round(n/Qs.length*100)+'%';
+  document.getElementById('prog-lbl').textContent=`${n} / ${Qs.length} done`;
+}
+function render(){
+  const el=document.getElementById('main');
+  if(cur>=Qs.length){showFinal();return;}
+  const q=Qs[cur],prevR=cur>0?Qs[cur-1].r:null;
+  let html='';
+  if(q.r!==prevR) html+=`<div class="sec-div"><span>${RNAMES[q.r]||''}</span></div>`;
+  html+=buildCard(q);
+  el.innerHTML=html;
+  updProg();
+  if(q.type==='tf'){tfSt[q.id]=new Array(q.rows.length).fill(null);}
+  if(q.type==='fill') fillSt[q.id]={};
+  if(q.type==='match') matchSt[q.id]={leftSel:null,pairs:{}};
+  if(q.type==='mc') mcSt[q.id]=new Array(q.qs.length).fill(null);
+  if(q.type==='seq'){seqSt[q.id]=[...q.items].sort(()=>Math.random()-.5);seqTapSel[q.id]=null;setTimeout(()=>renderSeqItems(q.id),60);}
+}
+function buildCard(q){
+  let h=`<div class="act-card"><div class="act-head">
+    <span class="type-pill ${PILLS[q.type]}">${LABELS[q.type]}</span>
+    <span class="act-rdg">Reading ${q.r}</span>
+    <span class="act-num">Q${cur+1} / ${Qs.length}</span>
+  </div><div class="act-body"><div class="q-en">${q.en}</div>`;
+  if(q.type==='tf')   h+=buildTF(q);
+  if(q.type==='fill') h+=buildFill(q);
+  if(q.type==='match')h+=buildMatch(q);
+  if(q.type==='mc')   h+=buildMC(q);
+  if(q.type==='seq')  h+=buildSeq(q);
+  if(q.type==='disc') h+=buildDisc(q);
+  if(q.type==='ce')   h+=buildCE(q);
+  h+=`</div></div>`;
+  return h;
+}
+
+/* ── TF ── */
+function buildTF(q){
+  let h=`<table class="tf-table"><tr><th>Statement</th><th class="th-tf">True / False</th></tr>`;
+  q.rows.forEach((row,i)=>{
+    h+=`<tr class="tf-row"><td>
+      <div>${row.en}</div>
+      <div id="cw-${q.id}-${i}" class="corr-wrap" style="display:none;">
+        <span class="corr-lbl">✏️ What's wrong? Write the correction: (English or 한국어)</span>
+        <textarea class="corr-ta" id="corr-${q.id}-${i}" placeholder="The statement says … but actually …"></textarea>
+      </div>
+    </td><td><div class="tf-btns">
+      <button class="tf-btn" id="tft-${q.id}-${i}" onclick="pickTF('${q.id}',${i},'T')">True</button>
+      <button class="tf-btn" id="tff-${q.id}-${i}" onclick="pickTF('${q.id}',${i},'F')">False</button>
+    </div></td></tr>`;
+  });
+  h+=`</table><div class="sub-row"><button class="btn-sub" id="tfsub-${q.id}" onclick="subTF('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function pickTF(qid,i,val){
+  if(!tfSt[qid])tfSt[qid]=[];
+  tfSt[qid][i]=val;
+  document.getElementById(`tft-${qid}-${i}`).className='tf-btn'+(val==='T'?' sel-t':'');
+  document.getElementById(`tff-${qid}-${i}`).className='tf-btn'+(val==='F'?' sel-f':'');
+  document.getElementById(`cw-${qid}-${i}`).style.display=val==='F'?'block':'none';
+  const q=Qs.find(x=>x.id===qid);
+  if(tfSt[qid].filter(v=>v!=null).length===q.rows.length)
+    document.getElementById(`tfsub-${qid}`).disabled=false;
+}
+function subTF(qid){
+  const q=Qs.find(x=>x.id===qid);
+  const lines=q.rows.map((row,i)=>{
+    const pick=tfSt[qid][i];
+    const corr=(document.getElementById(`corr-${qid}-${i}`)?.value||'').trim();
+    let line=`${i+1}. [${pick}] ${row.en}`;
+    if(pick==='F'&&corr) line+=`\n   Correction: ${corr}`;
+    return line;
+  });
+  responses[cur]=lines.join('\n');
+  document.querySelectorAll(`[id^="tft-${qid}"],[id^="tff-${qid}"]`).forEach(b=>b.disabled=true);
+  document.querySelectorAll(`[id^="corr-${qid}-"]`).forEach(t=>t.disabled=true);
+  document.getElementById(`tfsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+/* ── FILL ── */
+function buildFill(q){
+  let s=q.sent;
+  q.blanks.forEach(b=>{s=s.replace(`[${b.id}]`,`<span class="blank" id="bl-${q.id}-${b.id}" onclick="rmBlank('${q.id}','${b.id}')">[${b.id}]</span>`);});
+  const sh=[...q.choices].sort(()=>Math.random()-.5);
+  let h=`<div class="fill-sent">${s}</div><div class="chips" id="ch-${q.id}">`;
+  sh.forEach(c=>{h+=`<button class="chip" onclick="placeChip('${q.id}','${encodeURIComponent(c)}')">${c}</button>`;});
+  h+=`</div><div class="sub-row"><button class="btn-sub" id="fsub-${q.id}" onclick="subFill('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function placeChip(qid,enc){
+  const word=decodeURIComponent(enc);
+  const q=Qs.find(x=>x.id===qid),st=fillSt[qid]||{};
+  const empty=q.blanks.find(b=>!st[b.id]);if(!empty)return;
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).find(c=>c.textContent===word&&!c.classList.contains('used'))?.classList.add('used');
+  st[empty.id]=word;fillSt[qid]=st;
+  const slot=document.getElementById(`bl-${qid}-${empty.id}`);
+  slot.textContent=word;slot.classList.add('filled');
+}
+function rmBlank(qid,bid){
+  const st=fillSt[qid]||{},word=st[bid];if(!word)return;
+  delete st[bid];fillSt[qid]=st;
+  const slot=document.getElementById(`bl-${qid}-${bid}`);
+  slot.textContent=`[${bid}]`;slot.classList.remove('filled');
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).find(c=>c.textContent===word&&c.classList.contains('used'))?.classList.remove('used');
+}
+function subFill(qid){
+  const q=Qs.find(x=>x.id===qid),st=fillSt[qid]||{};
+  if(!q.blanks.every(b=>st[b.id])){alert('Please fill in all the blanks.');return;}
+  responses[cur]=q.blanks.map(b=>`[${b.id}] ${st[b.id]}`).join('\n');
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).forEach(c=>c.disabled=true);
+  document.getElementById(`fsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+/* ── MATCH ── */
+function buildMatch(q){
+  const shR=[...q.rights].sort(()=>Math.random()-.5);
+  let h=`<div class="match-hint">Tap a person or term on the left → then tap its matching description on the right. Tap a matched pair to undo it.</div>
+  <div class="match-sel-banner" id="msel-${q.id}"></div>
+  <div class="match-grid">
+    <div><div class="match-col-lbl">Person / Term</div><div class="match-items" id="ml-${q.id}">`;
+  q.lefts.forEach(l=>{h+=`<div class="match-item" id="ml-${l.id}" onclick="clkL('${q.id}','${l.id}')">${l.t}</div>`;});
+  h+=`</div></div><div><div class="match-col-lbl">Description</div><div class="match-items" id="mr-${q.id}">`;
+  shR.forEach(r=>{h+=`<div class="match-item" id="mr-${r.id}" onclick="clkR('${q.id}','${r.id}')">${r.t}</div>`;});
+  h+=`</div></div></div><div class="sub-row" style="margin-top:.9rem;"><button class="btn-sub" id="msub-${q.id}" onclick="subMatch('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function clkL(qid,lid){
+  const st=matchSt[qid];if(!st)return;
+  const el=document.getElementById(`ml-${lid}`),banner=document.getElementById(`msel-${qid}`);
+  if(el.classList.contains('matched')){
+    const pr=st.pairs[lid];
+    if(pr){document.getElementById(`mr-${pr}`).classList.remove('matched');delete st.pairs[lid];}
+    el.classList.remove('matched');updMatchSub(qid);banner.classList.remove('active');return;
+  }
+  const already=el.classList.contains('sel');
+  document.querySelectorAll(`#ml-${qid} .match-item`).forEach(e=>e.classList.remove('sel'));
+  if(!already){st.leftSel=lid;el.classList.add('sel');banner.textContent=`👆 "${el.textContent}" selected — now tap a description on the right`;banner.classList.add('active');}
+  else{st.leftSel=null;banner.classList.remove('active');}
+}
+function clkR(qid,rid){
+  const st=matchSt[qid];if(!st)return;
+  const rEl=document.getElementById(`mr-${rid}`),banner=document.getElementById(`msel-${qid}`);
+  if(rEl.classList.contains('matched')){
+    const pl=Object.keys(st.pairs).find(k=>st.pairs[k]===rid);
+    if(pl){document.getElementById(`ml-${pl}`).classList.remove('matched');delete st.pairs[pl];}
+    rEl.classList.remove('matched');updMatchSub(qid);banner.classList.remove('active');return;
+  }
+  if(!st.leftSel)return;
+  const lEl=document.getElementById(`ml-${st.leftSel}`);
+  rEl.classList.add('matched');lEl.classList.add('matched');lEl.classList.remove('sel');
+  st.pairs[st.leftSel]=rid;st.leftSel=null;banner.classList.remove('active');updMatchSub(qid);
+}
+function updMatchSub(qid){
+  const q=Qs.find(x=>x.id===qid);
+  document.getElementById(`msub-${qid}`).disabled=Object.keys(matchSt[qid].pairs).length<q.lefts.length;
+}
+function subMatch(qid){
+  const q=Qs.find(x=>x.id===qid),st=matchSt[qid];
+  responses[cur]=q.lefts.map(l=>{const r=q.rights.find(r=>r.id===st.pairs[l.id]);return `${l.t}\n  → ${r?r.t:'(unmatched)'}`;}).join('\n\n');
+  document.getElementById(`msub-${qid}`).disabled=true;
+  document.querySelectorAll(`#ml-${qid} .match-item,#mr-${qid} .match-item`).forEach(el=>el.style.pointerEvents='none');
+  markDone(qid);
+}
+
+/* ── MULTIPLE CHOICE ── */
+function buildMC(q){
+  let h=`<div class="mc-note">🔘 Choose the ONE best answer for each question.</div><div class="mc-qs">`;
+  q.qs.forEach((item,qi)=>{
+    h+=`<div class="mc-q-block"><div class="mc-q-text">${qi+1}. ${item.q}</div><div class="mc-opts">`;
+    item.opts.forEach((opt,oi)=>{
+      const letter=String.fromCharCode(65+oi);
+      h+=`<div class="mc-opt" id="mc-${q.id}-${qi}-${oi}" onclick="pickMC('${q.id}',${qi},${oi})">
+        <span class="mc-letter">${letter}</span><span>${opt}</span></div>`;
+    });
+    h+=`</div></div>`;
+  });
+  h+=`</div><div class="sub-row"><button class="btn-sub" id="mcsub-${q.id}" onclick="subMC('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function pickMC(qid,qi,oi){
+  if(!mcSt[qid])mcSt[qid]=[];
+  mcSt[qid][qi]=oi;
+  const q=Qs.find(x=>x.id===qid);
+  q.qs[qi].opts.forEach((_,i)=>document.getElementById(`mc-${qid}-${qi}-${i}`)?.classList.remove('sel'));
+  document.getElementById(`mc-${qid}-${qi}-${oi}`)?.classList.add('sel');
+  if(mcSt[qid].filter(v=>v!=null).length===q.qs.length)
+    document.getElementById(`mcsub-${qid}`).disabled=false;
+}
+function subMC(qid){
+  const q=Qs.find(x=>x.id===qid);
+  responses[cur]=q.qs.map((item,i)=>{
+    const sel=mcSt[qid][i];
+    const letter=sel!=null?String.fromCharCode(65+sel):'?';
+    return `Q${i+1}: ${letter}) ${sel!=null?item.opts[sel]:''}`;
+  }).join('\n');
+  document.querySelectorAll(`[id^="mc-${qid}-"]`).forEach(el=>el.classList.add('mc-disabled'));
+  document.getElementById(`mcsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+/* ── SEQUENCING ── */
+function buildSeq(q){
+  return `<div class="sq-note">⬆⬇ Drag the events into chronological order — earliest at the top.<br>📱 On mobile: tap one item, then tap another to swap them.</div>
+  <div class="sq-items" id="sq-${q.id}"></div>
+  <div class="sub-row"><button class="btn-sub" id="sqsub-${q.id}" onclick="subSeq('${q.id}')">Submit →</button></div>`;
+}
+function renderSeqItems(qid){
+  const container=document.getElementById(`sq-${qid}`);
+  if(!container)return;
+  container.innerHTML='';
+  seqSt[qid].forEach((item,idx)=>{
+    const div=document.createElement('div');
+    div.className='sq-item';div.id='sqitem-'+item.id;div.draggable=true;
+    div.innerHTML=`<span class="sq-handle">⠿</span><span class="sq-num">${idx+1}</span><span>${item.t}</span>`;
+    div.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',item.id);setTimeout(()=>div.classList.add('dragging'),0);});
+    div.addEventListener('dragend',()=>div.classList.remove('dragging'));
+    div.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over');});
+    div.addEventListener('dragleave',()=>div.classList.remove('drag-over'));
+    div.addEventListener('drop',e=>{
+      e.preventDefault();div.classList.remove('drag-over');
+      const fromId=e.dataTransfer.getData('text/plain');
+      const toId=item.id;if(fromId===toId)return;
+      const arr=seqSt[qid];
+      const fi=arr.findIndex(x=>x.id===fromId),ti=arr.findIndex(x=>x.id===toId);
+      if(fi<0||ti<0)return;
+      const tmp=arr[fi];arr[fi]=arr[ti];arr[ti]=tmp;
+      renderSeqItems(qid);
+    });
+    div.addEventListener('click',()=>{
+      const sel=seqTapSel[qid];
+      if(!sel){seqTapSel[qid]=item.id;div.classList.add('tapped');}
+      else if(sel===item.id){seqTapSel[qid]=null;div.classList.remove('tapped');}
+      else{
+        const arr=seqSt[qid];
+        const fi=arr.findIndex(x=>x.id===sel),ti=arr.findIndex(x=>x.id===item.id);
+        if(fi>=0&&ti>=0){const tmp=arr[fi];arr[fi]=arr[ti];arr[ti]=tmp;}
+        seqTapSel[qid]=null;
+        renderSeqItems(qid);
+      }
+    });
+    container.appendChild(div);
+  });
+}
+function subSeq(qid){
+  responses[cur]=seqSt[qid].map((item,i)=>`${i+1}. ${item.t}`).join('\n');
+  document.querySelectorAll(`#sq-${qid} .sq-item`).forEach(el=>{el.draggable=false;el.style.cursor='default';el.style.pointerEvents='none';});
+  document.getElementById(`sqsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+/* ── DISCUSSION ── */
+function buildDisc(q){
+  let h=`<div class="rj-note">💬 Discuss as a group first, then write your group's answers below.</div>
+  <div class="lang-note">✏️ You may write in English or 한국어 — or both.</div>
+  <div class="disc-subqs">`;
+  q.subqs.forEach((sq,i)=>{
+    h+=`<div class="disc-subq"><span class="disc-subq-label">Question ${i+1}</span>
+    <div class="disc-subq-q">${sq.q}</div>
+    <textarea class="disc-ta" id="disc-${q.id}-${i}" placeholder="Your group's answer… (English or 한국어)"></textarea></div>`;
+  });
+  h+=`</div><div class="sub-row"><button class="btn-sub" id="discsub-${q.id}" onclick="subDisc('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function subDisc(qid){
+  const q=Qs.find(x=>x.id===qid);
+  const vals=q.subqs.map((_,i)=>document.getElementById(`disc-${qid}-${i}`).value.trim());
+  if(vals.some(v=>!v)){alert('Please answer all questions.');return;}
+  responses[cur]=vals.map((v,i)=>`Q${i+1}: ${v}`).join('\n\n');
+  q.subqs.forEach((_,i)=>document.getElementById(`disc-${qid}-${i}`).disabled=true);
+  document.getElementById(`discsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+/* ── CAUSE & EFFECT ── */
+function buildCE(q){
+  let h=`<div class="ce-note">📖 For each event, write its main cause and most important effect.</div>
+  <div class="ce-lang-note">✏️ You may write in English or 한국어 — or both.</div>
+  <div class="ce-cards">`;
+  q.rows.forEach((row,i)=>{
+    h+=`<div class="ce-card"><div class="ce-card-head"><span class="ce-card-event">${row.event}</span></div>
+    <div class="ce-card-body">
+      <div class="ce-field"><span class="ce-field-lbl">Main Cause</span>
+        <textarea class="ce-ta" id="ce-c-${q.id}-${i}" placeholder="Why did this happen? (English or 한국어)"></textarea></div>
+      <div class="ce-field"><span class="ce-field-lbl">Most Important Effect</span>
+        <textarea class="ce-ta" id="ce-e-${q.id}-${i}" placeholder="What changed? (English or 한국어)"></textarea></div>
+    </div></div>`;
+  });
+  h+=`</div><div class="sub-row" style="margin-top:.75rem;"><button class="btn-sub" id="cesub-${q.id}" onclick="subCE('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function subCE(qid){
+  const q=Qs.find(x=>x.id===qid);
+  if(!q.rows.some((_,i)=>document.getElementById(`ce-c-${qid}-${i}`).value.trim())){alert('Please fill in at least one row.');return;}
+  responses[cur]=q.rows.map((row,i)=>{
+    const c=document.getElementById(`ce-c-${qid}-${i}`).value.trim();
+    const e=document.getElementById(`ce-e-${qid}-${i}`).value.trim();
+    return `${row.event}:\n  Cause: ${c||'—'}\n  Effect: ${e||'—'}`;
+  }).join('\n\n');
+  q.rows.forEach((_,i)=>{
+    document.getElementById(`ce-c-${qid}-${i}`).disabled=true;
+    document.getElementById(`ce-e-${qid}-${i}`).disabled=true;
+  });
+  document.getElementById(`cesub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+/* ── DONE / NEXT ── */
+function markDone(qid){
+  submitted[cur]=true;updProg();
+  const body=document.querySelector('.act-body');
+  const badge=document.createElement('div');badge.className='done-badge';
+  badge.innerHTML='✅ Answer recorded — check the model answer on the results screen';
+  body.appendChild(badge);
+  const btn=document.createElement('button');btn.className='btn-next-q';
+  btn.textContent=cur+1<Qs.length?'Next Question →':'See Results ✓';
+  btn.onclick=nextQ;body.appendChild(btn);
+}
+function nextQ(){cur++;document.getElementById('main').innerHTML='';render();window.scrollTo({top:0,behavior:'smooth'});}
+
+/* ── FINAL ── */
+function showFinal(){
+  document.getElementById('main').style.display='none';
+  const screen=document.getElementById('final-screen');screen.style.display='block';
+  const memberStr=members.join(' · ');
+  let copyText=`=== 1920s · GREAT DEPRESSION · ATOMIC AGE · BABY BOOM (R11-14) ===\nMembers: ${memberStr}\n\n`;
+  Qs.forEach((q,i)=>{
+    let resp=responses[i]||'(no answer)';
+    if(q.type==='mc'&&mcSt[q.id]){
+      resp=q.qs.map((item,qi)=>{
+        const sel=mcSt[q.id][qi];
+        const letter=sel!=null?String.fromCharCode(65+sel):'?';
+        const correct=sel===item.ans;
+        const corrLetter=String.fromCharCode(65+item.ans);
+        return (correct?'✅':'❌')+' Q'+(qi+1)+': '+letter+') '+(sel!=null?item.opts[sel]:'?')+(correct?'':' → Correct: '+corrLetter+') '+item.opts[item.ans]);
+      }).join('\n');
+    }
+    if(q.type==='seq'&&seqSt[q.id]){
+      resp=seqSt[q.id].map((item,idx)=>(item.order===idx+1?'✅':'❌')+' '+(idx+1)+'. '+item.t).join('\n');
+    }
+    copyText+=`[Q${i+1} · R${q.r} · ${LABELS[q.type]}]\n${q.en.replace(/<[^>]+>/g,'')}\n→ ${resp}\n\n`;
+  });
+
+  const rGroups=[
+    {r:'11+12',label:'R11+R12 — 1920s & Great Depression'},
+    {r:'13',label:'R13 — The Atomic Bomb'},
+    {r:'14',label:'R14 — The Baby Boom'},
+    {r:'13+14',label:'R13+R14 — Atomic Age & Baby Boom'},
+    {r:'11–14',label:'R11–R14 — Era Summary'},
+  ];
+
+  let html=`<div class="final-hero"><div class="fi">🎉</div><h2>Activity Complete!</h2>
+  <p>Great work! Copy your answers below and post them to Padlet.</p>
+  <div class="final-group-tag">👥 ${memberStr}</div>
+  <div class="score-row">
+    <div class="score-item"><span class="score-n">${Qs.length}</span><span class="score-l">Questions</span></div>
+    <div class="score-item"><span class="score-n">${submitted.filter(Boolean).length}</span><span class="score-l">Completed</span></div>
+  </div></div>`;
+
+  rGroups.forEach(({r,label})=>{
+    const rQs=Qs.map((q,i)=>({q,i})).filter(({q})=>q.r===r);
+    if(!rQs.length)return;
+    html+=`<div class="ans-section"><div class="ans-section-title">${label}</div><div class="ans-cards">`;
+    rQs.forEach(({q,i})=>{
+      const qNum=i+1;
+      let respDisplay=responses[i]||'(no answer)';
+      if(q.type==='mc'&&mcSt[q.id]){
+        respDisplay=q.qs.map((item,qi)=>{
+          const sel=mcSt[q.id][qi];
+          const letter=sel!=null?String.fromCharCode(65+sel):'?';
+          const correct=sel===item.ans;
+          const mark=correct?'\u2705':'\u274c';
+          const corrLetter=String.fromCharCode(65+item.ans);
+          return mark+' Q'+(qi+1)+': '+letter+') '+(sel!=null?item.opts[sel]:'(no answer)')+(correct?'':'\n   \u2192 Correct: '+corrLetter+') '+item.opts[item.ans]);
+        }).join('\n');
+      }
+      if(q.type==='seq'&&seqSt[q.id]){
+        const correctOrder=[...q.items].sort((a,b)=>a.order-b.order);
+        const yourLines=seqSt[q.id].map((item,idx)=>{
+          const correct=item.order===idx+1;
+          return (correct?'\u2705':'\u274c')+' '+(idx+1)+'. '+item.t;
+        }).join('\n');
+        const corrLines=correctOrder.map((item,idx)=>(idx+1)+'. '+item.t).join('\n');
+        respDisplay=yourLines+'\n\n\u2714 Correct order:\n'+corrLines;
+      }
+      html+=`<div class="ans-card"><div class="ans-head">
+        <span class="type-pill ${PILLS[q.type]}" style="font-size:.57rem;">${LABELS[q.type]}</span>
+        <span class="ans-qtext"><strong>Q${qNum}.</strong> ${q.en.replace(/<[^>]+>/g,'')}</span>
+      </div><div class="ans-body">
+        <div class="ans-response">${respDisplay}</div>
+        <div class="ans-model"><strong>💡 Model Answer:</strong><br>${q.model}</div>
+      </div></div>`;
+    });
+    html+=`</div></div>`;
+  });
+
+  html+=`<div class="copy-box"><h3>📋 Post to Padlet</h3>
+  <p>Copy the text below and paste it into Padlet.</p>
+  <textarea id="copy-ta" readonly onclick="this.select()">${copyText.trim()}</textarea>
+  <div class="copy-btns">
+    <button class="btn-copy" id="bcopy" onclick="doCopy()">📋 Copy All</button>
+    <button class="btn-restart" onclick="location.reload()">↺ Restart</button>
+  </div></div>`;
+  screen.innerHTML=html;window.scrollTo({top:0,behavior:'smooth'});
+}
+function doCopy(){
+  const ta=document.getElementById('copy-ta');ta.select();
+  navigator.clipboard.writeText(ta.value).then(()=>{
+    const b=document.getElementById('bcopy');b.textContent='✓ Copied!';b.classList.add('ok');
+    setTimeout(()=>{b.textContent='📋 Copy All';b.classList.remove('ok');},2500);
+  }).catch(()=>document.execCommand('copy'));
+}
+</script>
+</body>
+</html>
