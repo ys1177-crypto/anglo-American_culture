@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,6 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: pointer;
+    }
 
     :root {
       --bg: #faf8f3;
@@ -523,8 +531,8 @@
             <div class="q-text">${q.text}</div>
           </div>
           <div class="tf-row">
-            <button class="tf-btn" id="btn-${q.num}-T" onclick="select(${q.num}, 'T')">T — True</button>
-            <button class="tf-btn" id="btn-${q.num}-F" onclick="select(${q.num}, 'F')">F — False</button>
+            <button class="tf-btn" id="btn-${q.num}-T" data-num="${q.num}" data-val="T">T — True</button>
+            <button class="tf-btn" id="btn-${q.num}-F" data-num="${q.num}" data-val="F">F — False</button>
           </div>
           <div class="feedback" id="fb-${q.num}"></div>
         `;
@@ -612,10 +620,40 @@
       document.getElementById('btn-submit').style.display = '';
       renderQuiz();
       updateProgress();
+      addQuizListeners();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     renderQuiz();
+
+    function addQuizListeners() {
+      const body = document.getElementById('quiz-body');
+
+      body.addEventListener('touchstart', function(e) {
+        const btn = e.target.closest('.tf-btn');
+        if (!btn || submitted) return;
+        e.preventDefault();
+        select(parseInt(btn.dataset.num), btn.dataset.val);
+      }, { passive: false });
+
+      body.addEventListener('click', function(e) {
+        const btn = e.target.closest('.tf-btn');
+        if (!btn || submitted) return;
+        select(parseInt(btn.dataset.num), btn.dataset.val);
+      });
+
+      document.getElementById('btn-submit').addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        submitQuiz();
+      }, { passive: false });
+
+      document.getElementById('btn-reset').addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        resetQuiz();
+      }, { passive: false });
+    }
+
+    addQuizListeners();
   </script>
 </body>
 </html>
