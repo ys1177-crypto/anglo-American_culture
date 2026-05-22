@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feminism in the U.S. — True or False Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf8f3;
+      --surface: #ffffff;
+      --border: #e2ddd6;
+      --text-primary: #1a1714;
+      --text-secondary: #6b6560;
+      --text-muted: #9e9892;
+      --accent: #b8510a;
+      --accent-light: #fef0e6;
+      --true-bg: #eef6ee;
+      --true-border: #4a9e4a;
+      --true-text: #1f5c1f;
+      --false-bg: #fdf0f0;
+      --false-border: #cc4444;
+      --false-text: #7a1f1f;
+      --correct-bg: #e8f5e8;
+      --correct-border: #3d8b3d;
+      --correct-text: #1a4d1a;
+      --wrong-bg: #fde8e8;
+      --wrong-border: #cc3333;
+      --wrong-text: #6b1515;
+      --selected-t-bg: #e8f0fe;
+      --selected-t-border: #3b6fd4;
+      --selected-t-text: #1a3a7a;
+      --selected-f-bg: #fdf0e8;
+      --selected-f-border: #c4621a;
+      --selected-f-text: #6b2d08;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .course-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .progress-bar-wrap {
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .progress-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .progress-count {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .progress-track {
+      height: 3px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+
+    .q-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .q-card:hover {
+      border-color: #ccc7bf;
+    }
+
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 0.875rem;
+    }
+
+    .q-badge {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-top: 1px;
+    }
+
+    .q-text {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-primary);
+      flex: 1;
+    }
+
+    .tf-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .tf-btn {
+      padding: 10px 0;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tf-btn:hover:not(:disabled) {
+      border-color: #b0aa9f;
+      color: var(--text-primary);
+      background: #f5f2ed;
+    }
+
+    .tf-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .tf-btn.sel-t {
+      background: var(--selected-t-bg);
+      border-color: var(--selected-t-border);
+      color: var(--selected-t-text);
+    }
+
+    .tf-btn.sel-f {
+      background: var(--selected-f-bg);
+      border-color: var(--selected-f-border);
+      color: var(--selected-f-text);
+    }
+
+    .tf-btn.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct-border);
+      color: var(--correct-text);
+    }
+
+    .tf-btn.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong-border);
+      color: var(--wrong-text);
+    }
+
+    .tf-btn:disabled {
+      cursor: default;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .feedback.show { display: block; }
+
+    .feedback.fb-correct {
+      background: var(--correct-bg);
+      color: var(--correct-text);
+      border-left: 3px solid var(--correct-border);
+    }
+
+    .feedback.fb-wrong {
+      background: var(--wrong-bg);
+      color: var(--wrong-text);
+      border-left: 3px solid var(--wrong-border);
+    }
+
+    .feedback strong {
+      font-weight: 600;
+    }
+
+    .actions {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-submit {
+      flex: 1;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-submit:hover { background: #9e430a; }
+    .btn-submit:active { transform: scale(0.99); }
+
+    .btn-reset {
+      padding: 14px 20px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: none;
+      transition: background 0.15s;
+    }
+
+    .btn-reset:hover { background: var(--bg); }
+    .btn-reset.visible { display: block; }
+
+    .result-panel {
+      display: none;
+      margin-top: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .result-panel.show { display: block; }
+
+    .result-score-ring {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      background: var(--accent-light);
+    }
+
+    .result-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 30px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .result-denom {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .result-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      margin-bottom: 0.4rem;
+    }
+
+    .result-msg {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .result-breakdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .bd-item {
+      text-align: center;
+    }
+
+    .bd-num {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .bd-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .bd-correct .bd-num { color: var(--correct-text); }
+    .bd-wrong .bd-num { color: var(--wrong-text); }
+
+    @media (max-width: 480px) {
+      body { padding: 1.25rem 0.875rem 3rem; }
+      h1 { font-size: 24px; }
+      .q-card { padding: 1rem 1.125rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header>
+      <div class="course-tag">영미문화의 이해</div>
+      <h1>Feminism in the U.S.<br><em>True or False?</em></h1>
+      <p class="subtitle">Answer all 12 questions, then click Submit to see your score.</p>
+    </header>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-info">
+        <span class="progress-label">Progress</span>
+        <span class="progress-count" id="prog-count">0 / 12</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="prog-fill"></div>
+      </div>
+    </div>
+
+    <div id="quiz-body"></div>
+
+    <div class="actions">
+      <button class="btn-submit" id="btn-submit" onclick="submitQuiz()">Submit answers</button>
+      <button class="btn-reset" id="btn-reset" onclick="resetQuiz()">Try again</button>
+    </div>
+
+    <div class="result-panel" id="result-panel">
+      <div class="result-score-ring">
+        <span class="result-num" id="res-num">0</span>
+        <span class="result-denom">/ 12</span>
+      </div>
+      <div class="result-title" id="res-title"></div>
+      <div class="result-msg" id="res-msg"></div>
+      <div class="result-breakdown">
+        <div class="bd-item bd-correct">
+          <div class="bd-num" id="bd-correct">0</div>
+          <div class="bd-label">Correct</div>
+        </div>
+        <div class="bd-item bd-wrong">
+          <div class="bd-num" id="bd-wrong">0</div>
+          <div class="bd-label">Incorrect</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        num: 1,
+        text: "Lucretia Mott, a female abolitionist, was warmly welcomed at an antislavery convention held in London, England, in 1840.",
+        answer: "F",
+        explanation: "She was <strong>denied a seat</strong> at the convention because she was a woman — that exclusion motivated her to fight for women's rights alongside Elizabeth Cady Stanton."
+      },
+      {
+        num: 2,
+        text: "Most Americans supported the goals of the Seneca Falls Convention.",
+        answer: "F",
+        explanation: "Reactions ranged from <strong>outrage to ridicule</strong>. Critics called it 'the most shocking and unnatural incident ever recorded' and dismissed it as a 'petticoat rebellion.'"
+      },
+      {
+        num: 3,
+        text: "Elizabeth Cady Stanton organized the Seneca Falls Convention with Lucretia Mott.",
+        answer: "T",
+        explanation: "After meeting in London in 1840, Mott and Stanton together organized the first women's rights convention in <strong>Seneca Falls, New York, in July 1848</strong>."
+      },
+      {
+        num: 4,
+        text: "Elizabeth Cady Stanton contributed to the approval for the 13th Amendment.",
+        answer: "T",
+        explanation: "During the Civil War, Stanton and Susan B. Anthony campaigned for the <strong>13th Amendment</strong>, which abolished slavery in the United States."
+      },
+      {
+        num: 5,
+        text: "Frederick Douglass was not much concerned with women's rights.",
+        answer: "F",
+        explanation: "Douglass was actually described as a <strong>'strong defender of women's rights.'</strong> He asked women to wait before pushing for inclusion in the 14th Amendment — not because he didn't care, but for strategic reasons."
+      },
+      {
+        num: 6,
+        text: "Many abolitionists opposed the inclusion of women's rights in the 14th Amendment, arguing that it would make the amendment harder to pass.",
+        answer: "T",
+        explanation: "Abolitionist leaders told women to wait, arguing that adding women's rights would <strong>jeopardize the passage</strong> of the 14th Amendment guaranteeing Black males' citizenship and voting rights."
+      },
+      {
+        num: 7,
+        text: "In 1878, Congress passed the Susan B. Anthony Amendment.",
+        answer: "F",
+        explanation: "Senator Sargent <strong>introduced</strong> the amendment in 1878, but it was not passed by Congress until <strong>1919</strong> — it was re-introduced almost every year for over 40 years."
+      },
+      {
+        num: 8,
+        text: "In 1919, the Susan B. Anthony Amendment was ratified by the states as the 19th Amendment.",
+        answer: "F",
+        explanation: "Congress <strong>passed</strong> the amendment in 1919, but the states <strong>ratified</strong> it in <strong>1920</strong>, when it officially became the 19th Amendment granting women the right to vote."
+      },
+      {
+        num: 9,
+        text: "The author of The Feminine Mystique helped found the National Organization for Women.",
+        answer: "T",
+        explanation: "<strong>Betty Friedan</strong>, who wrote The Feminine Mystique (1963), co-founded NOW (National Organization for Women) in <strong>1966</strong> to push for stronger women's rights laws, with the ERA as its top priority."
+      },
+      {
+        num: 10,
+        text: "Many people were against the ERA because they thought it would remove laws protecting women.",
+        answer: "T",
+        explanation: "Opposition leader <strong>Phyllis Schlafly</strong> argued the ERA would remove existing legal protections for women and destroy the traditional family — her campaign was a major reason the ERA lost momentum."
+      },
+      {
+        num: 11,
+        text: "The Feminine Mystique adequately addressed the concerns of Black and minority women.",
+        answer: "F",
+        explanation: "The Feminine Mystique focused mainly on <strong>white middle-class women</strong>. The second-wave feminist movement as a whole largely failed to address the distinct concerns of Black and minority women."
+      },
+      {
+        num: 12,
+        text: "The Equal Rights Amendment finally became law in 1972.",
+        answer: "F",
+        explanation: "Congress <strong>passed</strong> the ERA in 1972, but it needed ratification from 38 states — it only got 35. The ERA has <strong>never officially become law</strong>. (Virginia became the 38th state to ratify in 2020, but its legal status remains disputed.)"
+      }
+    ];
+
+    let answers = {};
+    let submitted = false;
+
+    function renderQuiz() {
+      const body = document.getElementById('quiz-body');
+      body.innerHTML = '';
+      questions.forEach(q => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.id = 'card-' + q.num;
+        card.innerHTML = `
+          <div class="q-header">
+            <div class="q-badge">${q.num}</div>
+            <div class="q-text">${q.text}</div>
+          </div>
+          <div class="tf-row">
+            <button class="tf-btn" id="btn-${q.num}-T" onclick="select(${q.num}, 'T')">T — True</button>
+            <button class="tf-btn" id="btn-${q.num}-F" onclick="select(${q.num}, 'F')">F — False</button>
+          </div>
+          <div class="feedback" id="fb-${q.num}"></div>
+        `;
+        body.appendChild(card);
+      });
+    }
+
+    function select(num, val) {
+      if (submitted) return;
+      answers[num] = val;
+      const tBtn = document.getElementById('btn-' + num + '-T');
+      const fBtn = document.getElementById('btn-' + num + '-F');
+      tBtn.className = 'tf-btn' + (val === 'T' ? ' sel-t' : '');
+      fBtn.className = 'tf-btn' + (val === 'F' ? ' sel-f' : '');
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const count = Object.keys(answers).length;
+      document.getElementById('prog-count').textContent = count + ' / 12';
+      document.getElementById('prog-fill').style.width = (count / 12 * 100) + '%';
+    }
+
+    function submitQuiz() {
+      if (Object.keys(answers).length < 12) {
+        alert('Please answer all 12 questions before submitting.');
+        return;
+      }
+      submitted = true;
+      let score = 0;
+
+      questions.forEach(q => {
+        const userAns = answers[q.num];
+        const correct = userAns === q.answer;
+        if (correct) score++;
+
+        const tBtn = document.getElementById('btn-' + q.num + '-T');
+        const fBtn = document.getElementById('btn-' + q.num + '-F');
+        tBtn.disabled = true;
+        fBtn.disabled = true;
+
+        if (q.answer === 'T') {
+          tBtn.className = 'tf-btn correct';
+          if (userAns === 'F') fBtn.className = 'tf-btn wrong';
+          else fBtn.className = 'tf-btn';
+        } else {
+          fBtn.className = 'tf-btn correct';
+          if (userAns === 'T') tBtn.className = 'tf-btn wrong';
+          else tBtn.className = 'tf-btn';
+        }
+
+        const fb = document.getElementById('fb-' + q.num);
+        fb.innerHTML = '<strong>' + (correct ? '✓ Correct' : '✗ Incorrect') + '</strong> — ' + q.explanation;
+        fb.className = 'feedback show ' + (correct ? 'fb-correct' : 'fb-wrong');
+      });
+
+      const titles = ['Keep studying!', 'Good effort!', 'Nice work!', 'Excellent!', 'Perfect score!'];
+      const msgs = [
+        'Review the slides and try again. You\'ll get there!',
+        'You\'re getting there — a few more to review.',
+        'Almost there! Check the explanations for the ones you missed.',
+        'Really well done! Just a couple more to nail.',
+        'Outstanding! You\'ve mastered this material.'
+      ];
+      const idx = score <= 4 ? 0 : score <= 7 ? 1 : score <= 9 ? 2 : score <= 11 ? 3 : 4;
+
+      document.getElementById('res-num').textContent = score;
+      document.getElementById('res-title').textContent = titles[idx];
+      document.getElementById('res-msg').textContent = msgs[idx];
+      document.getElementById('bd-correct').textContent = score;
+      document.getElementById('bd-wrong').textContent = 12 - score;
+
+      document.getElementById('result-panel').className = 'result-panel show';
+      document.getElementById('btn-reset').className = 'btn-reset visible';
+      document.getElementById('btn-submit').style.display = 'none';
+
+      document.getElementById('result-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetQuiz() {
+      answers = {};
+      submitted = false;
+      document.getElementById('result-panel').className = 'result-panel';
+      document.getElementById('btn-reset').className = 'btn-reset';
+      document.getElementById('btn-submit').style.display = '';
+      renderQuiz();
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    renderQuiz();
+  </script>
+</body>
+</html>
