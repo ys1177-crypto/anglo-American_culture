@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R15–R20 · 1950s–1980s America</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef2f9;--white:#fff;--surface:#f5f7fc;--border:#d4dcea;--border2:#b0bdd6;
+  --ink:#0f1e36;--ink2:#3a4f6e;--ink3:#8294b0;
+  --navy:#1a3a6e;--navy-lt:#2450a0;--navy-bg:#e8eef9;--navy-bd:#adc0e8;
+  --sky:#0e7fbe;--sky-bg:#e6f4fc;--sky-bd:#90cef0;
+  --teal:#0c8a78;--teal-bg:#e6f7f4;--teal-bd:#8ed6cc;
+  --coral:#d94f3a;--coral-bg:#fdf0ee;--coral-bd:#f0b0a6;
+  --amber:#c47a0a;--amber-bg:#fdf6e6;--amber-bd:#f0d080;
+  --lime:#4d8c1e;--lime-bg:#eef7e6;--lime-bd:#b0d890;
+  --purple:#6b3fa0;--purple-bg:#f3eefe;--purple-bd:#c9aaf0;
+  --shadow:0 2px 20px rgba(26,58,110,.09);--shadow-lg:0 8px 48px rgba(26,58,110,.14);--r:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;min-height:100vh;}
+header{background:var(--navy);padding:1rem 2rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(10,20,50,.25);}
+.hdr{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;}
+.hdr-badge{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:6px;padding:.25rem .65rem;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);flex-shrink:0;}
+.hdr-titles{flex:1;}
+.hdr-h1{font-size:clamp(.78rem,1.9vw,.95rem);font-weight:700;color:#fff;}
+.hdr-prog{width:155px;flex-shrink:0;}
+@media(max-width:480px){.hdr-prog{display:none!important;}.hdr-h1{font-size:.78rem;}}
+.hdr-prog-lbl{font-size:.62rem;color:rgba(255,255,255,.55);text-align:right;margin-bottom:.25rem;font-weight:500;}
+.hdr-bar{height:5px;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden;}
+.hdr-fill{height:100%;background:linear-gradient(90deg,#5eb3f5,#38e0c0);border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+#start-screen{max-width:420px;margin:4rem auto;padding:0 1.5rem;animation:up .4s ease;}
+.start-card{background:var(--white);border:2px solid var(--navy-bd);border-radius:var(--r);padding:2.2rem 2rem;box-shadow:var(--shadow-lg);}
+.start-card h2{font-size:1.3rem;font-weight:800;margin-bottom:.2rem;color:var(--navy);}
+.start-card>.sub{font-size:.84rem;color:var(--ink2);margin-bottom:1.4rem;}
+.member-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.3rem;}
+.member-label{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-lt);margin-bottom:.28rem;display:block;}
+.member-input{padding:.55rem .75rem;border:2px solid var(--border);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);background:var(--white);outline:none;transition:border-color .18s;width:100%;font-weight:500;}
+.member-input:focus{border-color:var(--navy-lt);}
+.btn-go{width:100%;padding:.82rem;background:var(--navy);color:#fff;border:none;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:background .18s;}
+.btn-go:hover{background:var(--navy-lt);}
+main{display:none;max-width:900px;margin:0 auto;padding:2rem 1.5rem 6rem;}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.act-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);animation:up .4s ease;margin-bottom:1rem;}
+.act-head{display:flex;align-items:center;gap:.65rem;padding:.82rem 1.4rem;border-bottom:2px solid var(--border);background:var(--surface);flex-wrap:wrap;}
+.type-pill{font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .65rem;border-radius:20px;flex-shrink:0;}
+.p-tf{background:var(--teal-bg);color:var(--teal);border:1.5px solid var(--teal-bd);}
+.p-fl{background:var(--lime-bg);color:var(--lime);border:1.5px solid var(--lime-bd);}
+.p-mt{background:var(--amber-bg);color:var(--amber);border:1.5px solid var(--amber-bd);}
+.p-mc{background:var(--purple-bg);color:var(--purple);border:1.5px solid var(--purple-bd);}
+.p-sq{background:var(--sky-bg);color:var(--sky);border:1.5px solid var(--sky-bd);}
+.p-ce{background:var(--sky-bg);color:var(--sky);border:1.5px solid var(--sky-bd);}
+.act-rdg{font-size:.66rem;color:var(--ink3);font-weight:600;}
+.act-num{font-size:.66rem;font-weight:800;background:var(--navy-bg);color:var(--navy);padding:.18rem .6rem;border-radius:20px;margin-left:auto;}
+.act-body{padding:1.5rem 1.4rem;}
+.q-en{font-size:1rem;font-weight:700;line-height:1.52;color:var(--ink);margin-bottom:1.1rem;}
+.sub-row{display:flex;justify-content:flex-end;margin-top:1rem;}
+.btn-sub{padding:.54rem 1.4rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.84rem;cursor:pointer;transition:all .18s;}
+.btn-sub:hover{background:var(--navy-lt);transform:translateY(-1px);}
+.btn-sub:disabled{background:var(--border2);color:var(--ink3);cursor:default;transform:none;}
+.done-badge{display:inline-flex;align-items:center;gap:.45rem;margin-top:1rem;background:var(--teal-bg);border:1.5px solid var(--teal-bd);border-radius:8px;padding:.52rem 1rem;font-size:.82rem;color:var(--teal);font-weight:600;}
+.btn-next-q{display:block;width:100%;margin-top:.65rem;background:var(--navy);color:#fff;border:none;border-radius:9px;padding:.72rem;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .18s;text-align:center;}
+.btn-next-q:hover{background:var(--navy-lt);}
+.sec-div{display:flex;align-items:center;gap:1rem;margin:2.2rem 0 1.5rem;}
+.sec-div::before,.sec-div::after{content:'';flex:1;height:2px;background:var(--navy-bd);}
+.sec-div span{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);white-space:nowrap;background:var(--navy-bg);padding:.28rem .85rem;border-radius:20px;}
+/* TF */
+.tf-table{width:100%;border-collapse:collapse;margin-bottom:.5rem;}
+.tf-table th{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);padding:.5rem .75rem;text-align:left;border-bottom:2px solid var(--border);}
+.tf-table th.th-tf{text-align:center;width:148px;}
+.tf-row td{padding:.72rem .75rem;border-bottom:1px solid var(--border);font-size:.88rem;line-height:1.5;vertical-align:top;}
+.tf-row:last-child td{border-bottom:none;}
+.tf-btns{display:flex;gap:.4rem;justify-content:center;}
+.tf-btn{padding:.38rem .95rem;border:2px solid var(--border2);border-radius:20px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;background:var(--white);color:var(--ink2);transition:all .18s;min-width:52px;}
+.tf-btn:hover:not(:disabled){border-color:var(--teal);background:var(--teal-bg);color:var(--teal);}
+.tf-btn.sel-t{border-color:var(--teal);background:var(--teal-bg);color:var(--teal);}
+.tf-btn.sel-f{border-color:var(--coral);background:var(--coral-bg);color:var(--coral);}
+.tf-btn:disabled{cursor:default;opacity:.65;}
+.corr-wrap{margin-top:.5rem;animation:up .25s ease;}
+.corr-lbl{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin-bottom:.28rem;display:block;}
+.corr-ta{width:100%;min-height:48px;padding:.38rem .6rem;border:2px solid var(--coral-bd);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.83rem;color:var(--ink);background:var(--coral-bg);outline:none;resize:none;font-weight:400;line-height:1.5;transition:border-color .18s;}
+.corr-ta:focus{border-color:var(--coral);}
+.corr-ta::placeholder{color:#c08880;}
+@media(max-width:500px){.tf-table th.th-tf{width:108px;}.tf-btn{padding:.3rem .52rem;font-size:.74rem;min-width:40px;}}
+/* FILL */
+.fill-sent{font-size:.92rem;line-height:2.7;color:var(--ink);margin-bottom:.9rem;font-weight:500;word-break:break-word;}
+.blank{display:inline-block;min-width:80px;border-bottom:3px solid var(--lime);padding:0 .28rem;margin:0 .12rem;color:var(--lime);font-style:italic;font-weight:600;cursor:pointer;vertical-align:bottom;text-align:center;white-space:nowrap;}
+.blank.filled{color:var(--ink);font-style:normal;font-weight:600;border-color:var(--border2);}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.9rem;}
+.chip{padding:.35rem .9rem;border:2px solid var(--border2);border-radius:20px;font-size:.83rem;cursor:pointer;background:var(--white);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:600;transition:all .18s;touch-action:manipulation;}
+.chip:hover:not(.used):not(:disabled){border-color:var(--lime);background:var(--lime-bg);color:var(--lime);}
+.chip.used{opacity:.28;cursor:default;}
+/* MATCH */
+.match-hint{font-size:.78rem;color:var(--ink2);font-style:italic;margin-bottom:.75rem;font-weight:500;background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:.6rem .9rem;}
+.match-sel-banner{display:none;background:var(--navy-bg);border:2px solid var(--navy-bd);border-radius:8px;padding:.55rem .9rem;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.7rem;}
+.match-sel-banner.active{display:block;}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:540px){.match-grid{grid-template-columns:1fr;gap:.5rem;}}
+.match-col-lbl{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);margin-bottom:.48rem;}
+.match-items{display:flex;flex-direction:column;gap:.4rem;}
+.match-item{padding:.65rem .85rem;border:2px solid var(--border);border-radius:8px;font-size:.83rem;line-height:1.4;cursor:pointer;background:var(--white);transition:all .18s;font-weight:500;touch-action:manipulation;}
+.match-item.sel{border-color:var(--navy-lt);background:var(--navy-bg);color:var(--navy);font-weight:700;box-shadow:0 0 0 3px rgba(36,80,160,.18);}
+.match-item.matched{border-color:var(--teal-bd);background:var(--teal-bg);color:var(--teal);font-weight:600;}
+.match-item.matched::before{content:'✓ ';font-weight:800;}
+/* MC */
+.mc-note{font-size:.82rem;color:var(--ink2);background:var(--purple-bg);border:1.5px solid var(--purple-bd);border-left:4px solid var(--purple);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.mc-qs{display:flex;flex-direction:column;gap:1.3rem;}
+.mc-q-block{background:var(--surface);border:2px solid var(--border);border-radius:10px;padding:1rem 1.1rem;}
+.mc-q-text{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.75rem;line-height:1.5;}
+.mc-opts{display:flex;flex-direction:column;gap:.38rem;}
+.mc-opt{display:flex;align-items:flex-start;gap:.65rem;padding:.5rem .75rem;border:2px solid var(--border);border-radius:8px;cursor:pointer;background:var(--white);transition:all .18s;font-size:.87rem;line-height:1.45;font-weight:500;touch-action:manipulation;}
+.mc-opt:hover:not(.mc-disabled){border-color:var(--purple-bd);background:var(--purple-bg);}
+.mc-opt.sel{border-color:var(--purple);background:var(--purple-bg);color:var(--purple);font-weight:600;}
+.mc-opt.mc-disabled{cursor:default;}
+.mc-letter{font-size:.75rem;font-weight:800;color:var(--ink3);min-width:1.1rem;margin-top:.05rem;flex-shrink:0;}
+.mc-opt.sel .mc-letter{color:var(--purple);}
+/* SEQUENCING */
+.sq-note{font-size:.82rem;color:var(--ink2);background:var(--sky-bg);border:1.5px solid var(--sky-bd);border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:1rem;font-weight:500;}
+.sq-items{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.5rem;}
+.sq-item{display:flex;align-items:center;gap:.7rem;padding:.6rem .85rem;border:2px solid var(--border);border-radius:8px;background:var(--white);font-size:.87rem;font-weight:500;line-height:1.4;cursor:grab;user-select:none;transition:box-shadow .18s,border-color .18s,opacity .18s;}
+.sq-item.dragging{opacity:.4;border-color:var(--sky);box-shadow:0 4px 18px rgba(14,127,190,.22);}
+.sq-item.drag-over{border-color:var(--sky);background:var(--sky-bg);}
+.sq-item.tapped{border-color:var(--sky);background:var(--sky-bg);box-shadow:0 0 0 3px rgba(14,127,190,.2);}
+.sq-handle{font-size:1rem;color:var(--ink3);flex-shrink:0;}
+.sq-num{font-size:.72rem;font-weight:800;color:var(--white);background:var(--sky);border-radius:50%;width:1.3rem;height:1.3rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+/* CE CARDS */
+.ce-note{font-size:.82rem;color:var(--ink2);background:var(--sky-bg);border:1.5px solid var(--sky-bd);border-left:4px solid var(--sky);border-radius:0 8px 8px 0;padding:.65rem 1rem;margin-bottom:.7rem;font-weight:500;}
+.ce-lang{font-size:.78rem;font-weight:600;color:var(--sky);background:rgba(14,127,190,.07);border:1.5px dashed var(--sky-bd);border-radius:7px;padding:.4rem .8rem;margin-bottom:1rem;display:inline-block;}
+.ce-cards{display:flex;flex-direction:column;gap:.75rem;}
+.ce-card{background:var(--surface);border:2px solid var(--border);border-radius:10px;overflow:hidden;}
+.ce-card-head{background:var(--sky-bg);border-bottom:2px solid var(--sky-bd);padding:.55rem 1rem;}
+.ce-card-event{font-size:.85rem;font-weight:800;color:var(--sky);}
+.ce-card-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.ce-card-body{grid-template-columns:1fr;}}
+.ce-field{padding:.7rem .9rem;border-right:1px solid var(--border);}
+.ce-field:last-child{border-right:none;}
+@media(max-width:480px){.ce-field{border-right:none;border-bottom:1px solid var(--border);}.ce-field:last-child{border-bottom:none;}}
+.ce-field-lbl{font-size:.6rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--sky);margin-bottom:.35rem;display:block;}
+.ce-ta{width:100%;min-height:60px;padding:.42rem .6rem;border:2px solid var(--border);border-radius:7px;font-family:'Outfit',sans-serif;font-size:.83rem;color:var(--ink);background:var(--white);outline:none;resize:none;font-weight:400;transition:border-color .18s;line-height:1.5;}
+.ce-ta:focus{border-color:var(--sky);}
+/* FINAL */
+#final-screen{display:none;max-width:900px;margin:0 auto;padding:2.5rem 1.5rem 6rem;animation:up .5s ease;}
+.final-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--sky) 100%);border-radius:var(--r);padding:2.5rem;text-align:center;margin-bottom:1.5rem;box-shadow:0 8px 36px rgba(14,58,120,.28);}
+.final-hero .fi{font-size:2.4rem;margin-bottom:.7rem;}
+.final-hero h2{font-size:1.65rem;font-weight:800;color:#fff;margin-bottom:.3rem;}
+.final-hero p{font-size:.9rem;color:rgba(255,255,255,.75);}
+.final-group-tag{display:inline-block;margin-top:1rem;background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:20px;padding:.35rem 1.2rem;font-size:.82rem;font-weight:700;}
+.score-row{display:inline-flex;gap:2.5rem;margin-top:1.2rem;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.28);border-radius:10px;padding:.7rem 2rem;}
+.score-item{text-align:center;}
+.score-n{font-size:1.9rem;font-weight:800;color:#fff;display:block;}
+.score-l{font-size:.62rem;color:rgba(255,255,255,.6);letter-spacing:.12em;text-transform:uppercase;}
+.ans-section{margin-bottom:1.5rem;}
+.ans-section-title{font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;}
+.ans-section-title::after{content:'';flex:1;height:2px;background:var(--navy-bd);}
+.ans-cards{display:flex;flex-direction:column;gap:.7rem;}
+.ans-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.ans-head{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.1rem;border-bottom:2px solid var(--border);background:var(--surface);flex-wrap:wrap;}
+.ans-qtext{font-size:.8rem;color:var(--ink2);flex:1;font-weight:500;}
+.ans-body{padding:.9rem 1.1rem;}
+.ans-response{font-size:.87rem;line-height:1.65;white-space:pre-wrap;color:var(--ink);font-weight:400;}
+.ans-model{margin-top:.8rem;padding:.8rem 1rem;border-top:2px dashed var(--border);font-size:.83rem;line-height:1.7;color:var(--ink2);background:var(--amber-bg);border-radius:0 0 10px 10px;}
+.ans-model strong{color:var(--ink);font-weight:700;}
+.ans-model ul,.ans-model ol{padding-left:1.1rem;}
+.ans-model li{margin-bottom:.35rem;}
+.ans-model table{border-collapse:collapse;width:100%;font-size:.81rem;margin-top:.5rem;}
+.ans-model th,.ans-model td{border:1px solid var(--border);padding:.4rem .6rem;text-align:left;}
+.ans-model th{background:var(--surface);font-weight:700;}
+.copy-box{background:var(--white);border:2px solid var(--navy-bd);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);}
+.copy-box h3{font-size:1.05rem;font-weight:800;margin-bottom:.25rem;color:var(--navy);}
+.copy-box p{font-size:.8rem;color:var(--ink2);margin-bottom:.9rem;}
+#copy-ta{width:100%;height:160px;background:var(--surface);border:2px solid var(--border);border-radius:8px;padding:.75rem;font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--ink2);resize:none;outline:none;font-weight:400;}
+.copy-btns{display:flex;gap:.7rem;margin-top:.8rem;}
+.btn-copy{flex:1;padding:.65rem;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .18s;}
+.btn-copy:hover{background:var(--navy-lt);}
+.btn-copy.ok{background:var(--teal);}
+.btn-restart{padding:.65rem 1.2rem;background:var(--surface);border:2px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--ink2);cursor:pointer;font-weight:600;transition:all .18s;}
+.btn-restart:hover{border-color:var(--navy);color:var(--navy);}
+</style>
+</head>
+<body>
+<header>
+  <div class="hdr">
+    <div class="hdr-badge">History</div>
+    <div class="hdr-titles">
+      <div class="hdr-h1">1950s Culture · Civil Rights · Feminism · Stagflation · Reagan</div>
+    </div>
+    <div class="hdr-prog" id="hdr-prog" style="display:none;">
+      <div class="hdr-prog-lbl" id="prog-lbl">0 / 9 done</div>
+      <div class="hdr-bar"><div class="hdr-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+<div id="start-screen">
+  <div class="start-card">
+    <h2>👋 Let's Begin</h2>
+    <p class="sub">Enter your group members' names.</p>
+    <div class="member-grid">
+      <div><div class="member-label">1</div><input class="member-input" id="m1" type="text" placeholder="Name"></div>
+      <div><div class="member-label">2</div><input class="member-input" id="m2" type="text" placeholder="Name (optional)"></div>
+      <div><div class="member-label">3</div><input class="member-input" id="m3" type="text" placeholder="Name (optional)"></div>
+      <div><div class="member-label">4</div><input class="member-input" id="m4" type="text" placeholder="Name (optional)"></div>
+    </div>
+    <button class="btn-go" onclick="startActivity()">Start Activity →</button>
+  </div>
+</div>
+<main id="main"></main>
+<div id="final-screen"></div>
+<script>
+const Qs=[
+
+// Q1 · R15+R16 · True/False + Correction
+{id:'q1',r:'15+16',type:'tf',
+ en:'Decide whether each statement is True or False. For any <strong>False</strong> statement, a correction box will appear — fix the mistake in your own words.',
+ rows:[
+  {en:'Rock and roll helped challenge racial barriers in popular culture — white performers gained fame using styles developed by Black musicians, while many white teenagers also began listening directly to Black artists.',ans:'T'},
+  {en:'The Supreme Court\'s 1948 ruling broke up Hollywood\'s studio system by allowing studios to own movie theaters.',ans:'F'},
+  {en:'Under Jim Crow, African Americans in the South were effectively prevented from voting through tools such as poll taxes and literacy tests that were intentionally designed to exclude Black voters.',ans:'T'},
+  {en:'"Jim Crow" refers only to formal laws passed by the federal government during Reconstruction.',ans:'F'},
+  {en:'Homer Plessy deliberately got himself arrested in order to challenge Louisiana\'s segregation law in court.',ans:'T'},
+  {en:'The Plessy v. Ferguson ruling (1896) declared segregation unconstitutional under the Fourteenth Amendment.',ans:'F'},
+ ],
+ model:`<table><tr><th>Statement</th><th>T/F</th><th>Correction / Explanation</th></tr>
+ <tr><td>Rock and roll challenged racial barriers</td><td><strong>T</strong></td><td>White stars (e.g., Elvis) gained fame using Black musical styles — a form of cultural borrowing that raised uncomfortable questions; at the same time, white teens increasingly listened to Black artists like Chuck Berry and Little Richard directly, weakening racial barriers in popular culture</td></tr>
+ <tr><td>1948 ruling let studios own theaters</td><td><strong>F</strong></td><td>The Court ruled that studios could <em>no longer</em> own theaters — this broke up the existing studio system, not reinforced it</td></tr>
+ <tr><td>Poll taxes and literacy tests blocked Black voters</td><td><strong>T</strong></td><td>These tools were deliberately designed to be confusing or financially burdensome and were applied selectively to Black voters — a key way Jim Crow denied equal citizenship even to legally free people</td></tr>
+ <tr><td>Jim Crow = only federal laws</td><td><strong>F</strong></td><td>Jim Crow was a system of <em>state and local</em> laws <em>AND</em> social/cultural practices — far broader than federal law; it was strongest in the South</td></tr>
+ <tr><td>Plessy deliberately got arrested</td><td><strong>T</strong></td><td>He planned the act of civil disobedience specifically to create a legal case to challenge segregation law</td></tr>
+ <tr><td>Plessy v. Ferguson = unconstitutional</td><td><strong>F</strong></td><td>The opposite: the Court ruled segregation <em>was</em> constitutional as long as facilities were "separate but equal" — a ruling not overturned until Brown v. Board in 1954</td></tr>
+ </table>`
+},
+
+// Q2 · R15 · Fill in the Blank
+{id:'q2',r:'15',type:'fill',
+ en:'Choose the correct word or phrase for each blank.',
+ sent:'After World War II, the large generation born during the postwar boom — the [A] — grew into teenagers who had money to spend, creating a new youth consumer culture for the first time. At the same time, Hollywood came under pressure from [B] (the House Un-American Activities Committee), which investigated the film industry for communist influence. Studios responded by creating a [C] — refusing to hire anyone accused of communist ties. Television sitcoms, meanwhile, portrayed [D] suburban families as the American norm and promoted values like family unity and [E].',
+ blanks:[{id:'A',ans:'baby boomers'},{id:'B',ans:'HUAC'},{id:'C',ans:'blacklist'},{id:'D',ans:'idealized white'},{id:'E',ans:'conformity'}],
+ choices:['baby boomers','HUAC','blacklist','idealized white','conformity','the Silent Generation','the Supreme Court','a boycott','working-class','individualism'],
+ model:`<ul>
+  <li><strong>A: baby boomers</strong> — the large generation born after WWII; as they became teenagers with spending money, businesses created music, movies, and products specifically aimed at them — the first "youth consumer culture"</li>
+  <li><strong>B: HUAC (House Un-American Activities Committee)</strong> — investigated Hollywood claiming communists used films for propaganda; part of the broader Cold War climate of fear</li>
+  <li><strong>C: blacklist</strong> — studios refused to hire anyone accused of communist ties; many talented careers were destroyed on little or no evidence</li>
+  <li><strong>D: idealized white</strong> — TV sitcoms projected a narrow image of "normal" American life, erasing the diversity of actual American families</li>
+  <li><strong>E: conformity</strong> — TV promoted conformity alongside family unity and independence; fitting in was presented as a core American value during the Cold War era</li>
+ </ul>`
+},
+
+// Q3 · R16+R17 · Matching — events, people, rulings
+{id:'q3',r:'16+17',type:'match',
+ en:'Match each person, event, or ruling on the left with the correct description on the right.',
+ lefts:[
+  {id:'l1',t:'Plessy v. Ferguson (1896)'},
+  {id:'l2',t:'Brown v. Board of Education (1954)'},
+  {id:'l3',t:'Montgomery Bus Boycott (1955)'},
+  {id:'l4',t:'March on Washington (1963)'},
+  {id:'l5',t:'Malcolm X'},
+ ],
+ rights:[
+  {id:'r1',t:'Ruled that "separate but equal" facilities were constitutional, legalizing segregation nationwide.',m:'l1'},
+  {id:'r2',t:'Overturned the "separate but equal" doctrine, ruling that segregated schools were inherently unequal.',m:'l2'},
+  {id:'r3',t:'The first mass direct action of the modern Civil Rights Movement, launched after Rosa Parks was arrested.',m:'l3'},
+  {id:'r4',t:'The largest civil rights protest in U.S. history; helped lead to the Civil Rights Act of 1964.',m:'l4'},
+  {id:'r5',t:'Advocated black self-reliance, cultural pride, and self-defense — a key figure in the Black Power movement.',m:'l5'},
+ ],
+ model:`<ul>
+  <li><strong>Plessy v. Ferguson (1896) →</strong> "Separate but equal" ruled constitutional; legalized segregation across the U.S.</li>
+  <li><strong>Brown v. Board (1954) →</strong> Overturned Plessy; segregated schools declared "inherently unequal"</li>
+  <li><strong>Montgomery Bus Boycott (1955) →</strong> First mass direct action; launched after Rosa Parks' arrest; MLK emerged as leader</li>
+  <li><strong>March on Washington (1963) →</strong> Largest U.S. civil rights protest; contributed to Civil Rights Act of 1964</li>
+  <li><strong>Malcolm X →</strong> Black Power advocate; promoted self-reliance, cultural pride, and self-defense</li>
+ </ul>`
+},
+
+// Q4 · R17 · Multiple Choice
+{id:'q4',r:'17',type:'mc',
+ en:'Choose the best answer for each question.',
+ qs:[
+  {q:'Why did some African American veterans become more determined to fight for civil rights after World War II?',
+   opts:['They were promised full citizenship rights in exchange for service.','They experienced equal treatment in the military and wanted to keep it.','They fought for democracy abroad while facing segregation and inequality at home.','They were encouraged by new civil rights laws passed during the war.'],
+   ans:2,
+   exp:'The reading says African Americans "fought in a segregated military while being exposed to US propaganda emphasizing liberty, justice, and equality." This contradiction — fighting for democracy abroad while denied rights at home — motivated many veterans.'},
+  {q:'Why did the Black Power movement emerge within the Civil Rights Movement?',
+   opts:['Black activists felt nonviolent protest had already achieved all its goals.','Some felt nonviolent tactics were insufficient and white involvement was distorting the movement\'s direction.','The assassination of Rosa Parks pushed many activists toward more militant tactics.','Black Power emerged mainly because the Civil Rights Act of 1964 had failed completely.'],
+   ans:1,
+   exp:'The reading identifies two factors: (1) the persistence of white power structures convinced some that nonviolence was insufficient, and (2) concerns that northern white participation (e.g., Freedom Summer 1964) was imposing white leadership on a Black-led movement. Malcolm X became its key voice, advocating self-reliance and self-defense.'},
+  {q:'Why did mass direct action (protests, boycotts, marches) prove so effective in advancing civil rights?',
+   opts:['It forced Southern states to immediately comply with desegregation orders.','It convinced most white Southerners to support desegregation voluntarily.','Media coverage of nonviolent protesters being beaten created national pressure.','It led foreign governments to pressure the U.S. to reform its racial policies.'],
+   ans:2,
+   exp:'The reading states mass direct action "was highly effective, particularly due to widespread news media coverage of nonviolent protestors being harassed and physically beaten by law enforcement officers" — images and footage shocked the nation and built political momentum.'},
+ ],
+ model:`<ul>
+  <li><strong>Q1: C</strong> — The contradiction of fighting for democracy abroad while denied rights at home radicalized many Black veterans</li>
+  <li><strong>Q2: B</strong> — Nonviolence alone felt insufficient to some; concerns about white leadership in Freedom Summer also fueled a push for Black-led, more militant approaches</li>
+  <li><strong>Q3: C</strong> — TV and press coverage of police brutality against peaceful protesters was the key driver of public opinion and legislative change</li>
+ </ul>`
+},
+
+// Q5 · R16+R17 · Sequencing
+{id:'q5',r:'16+17',type:'seq',
+ en:'The events below are all part of the long struggle against racial segregation in America. Drag them into the correct chronological order — earliest at the top.',
+ items:[
+  {id:'s1',t:'Plessy v. Ferguson: Supreme Court rules "separate but equal" is constitutional — segregation is now legal nationwide',order:1},
+  {id:'s2',t:'Jackie Robinson breaks the color line in professional baseball; Truman desegregates the U.S. military',order:2},
+  {id:'s3',t:'Brown v. Board of Education overturns Plessy — but Southern states pledge "massive resistance"',order:3},
+  {id:'s4',t:'Rosa Parks is arrested; the Montgomery Bus Boycott begins — the first major mass direct action',order:4},
+  {id:'s5',t:'March on Washington: 250,000 people demand civil rights legislation',order:5},
+  {id:'s6',t:'Civil Rights Act and Voting Rights Act passed — Jim Crow is legally dismantled',order:6},
+ ],
+ model:`<strong>This sequence shows how the Civil Rights Movement built on each step:</strong>
+ <ol>
+  <li><strong>1896</strong> — Plessy v. Ferguson: "separate but equal" gives legal cover to Jim Crow for 60 years</li>
+  <li><strong>1947–1948</strong> — Robinson and Truman crack open institutional segregation before the mass movement begins</li>
+  <li><strong>1954</strong> — Brown v. Board removes the legal foundation of segregation — but law alone isn't enough; resistance is fierce</li>
+  <li><strong>1955</strong> — Montgomery Boycott proves mass economic pressure works; MLK emerges as a national leader</li>
+  <li><strong>1963</strong> — March on Washington builds the political momentum needed for federal legislation</li>
+  <li><strong>1964–1965</strong> — Civil Rights Act and Voting Rights Act finally translate the movement's victories into law</li>
+ </ol>`
+},
+
+// Q6 · R18 · Fill in the Blank
+{id:'q6',r:'18',type:'fill',
+ en:'Choose the correct word or phrase for each blank.',
+ sent:'Second-wave feminism was partly inspired by the [A] of the 1960s. In 1963, [B] published The Feminine Mystique, arguing that the postwar ideal of the suburban housewife robbed women of their individuality — a bestseller that raised the consciousness of millions. She later helped found [C] (the National Organization for Women) in 1966. One of its goals was the [D], a proposed Constitutional Amendment guaranteeing equal rights for women, which passed Congress in 1972 but was never ratified. A separate but equally important tool of women\'s liberation was [E], approved by the FDA in 1960 — though opponents argued it would undermine marriage and destroy the nation\'s moral code, and 30 states made it a criminal offense to sell contraceptive devices.',
+ blanks:[{id:'A',ans:'Civil Rights Movement'},{id:'B',ans:'Betty Friedan'},{id:'C',ans:'NOW'},{id:'D',ans:'Equal Rights Amendment'},{id:'E',ans:'the birth control pill'}],
+ choices:['Civil Rights Movement','Betty Friedan','NOW','Equal Rights Amendment','the birth control pill','Vietnam War protests','Gloria Steinem','NAACP','Title VII','the abortion rights movement'],
+ model:`<ul>
+  <li><strong>A: Civil Rights Movement</strong> — second-wave feminism was directly inspired by civil rights activism, which raised awareness of inequality and proved mass organizing could work</li>
+  <li><strong>B: Betty Friedan</strong> — argued that the postwar suburban housewife ideal suppressed women's individuality; her book raised the consciousness of women who felt unfulfilled but had no language for it</li>
+  <li><strong>C: NOW (National Organization for Women)</strong> — founded 1966; led the push for the ERA and broader workplace equality</li>
+  <li><strong>D: Equal Rights Amendment</strong> — passed by Congress in 1972, but failed to be ratified by enough states; still not part of the Constitution</li>
+  <li><strong>E: the birth control pill</strong> — FDA-approved 1960; ~6 million women used it within 5 years; enabled women to plan education and careers more freely. Crucially, it also faced fierce opposition — opponents said it promoted promiscuity and would destroy marriage; 30 states criminalized selling contraceptives, showing how contested women's reproductive freedom remained</li>
+ </ul>`
+},
+
+// Q7 · R19 · True/False + Correction
+{id:'q7',r:'19',type:'tf',
+ en:'Decide whether each statement is True or False. For any <strong>False</strong> statement, write the correction.',
+ rows:[
+  {en:'Stagflation refers to a situation of simultaneous unemployment and inflation — unusual because the two typically do not occur together.',ans:'T'},
+  {en:'Nixon\'s 90-day wage and price freeze and removal of the dollar from the gold standard successfully resolved the underlying causes of stagflation.',ans:'F'},
+  {en:'One reason for U.S. economic decline in the 1970s was that American manufacturing — especially in the auto industry — had become less competitive against rivals in Germany and Japan.',ans:'T'},
+  {en:'The OPEC oil embargo was declared because the U.S. supported Egypt and Syria in the Yom Kippur War.',ans:'F'},
+  {en:'Even after the oil embargo ended in March 1974, oil prices remained significantly higher than before the crisis.',ans:'T'},
+ ],
+ model:`<table><tr><th>Statement</th><th>T/F</th><th>Correction / Explanation</th></tr>
+ <tr><td>Stagflation = simultaneous unemployment + inflation</td><td><strong>T</strong></td><td>This was economically puzzling because normally the two moved in opposite directions; the 1970s broke that pattern</td></tr>
+ <tr><td>Nixon's measures resolved stagflation</td><td><strong>F</strong></td><td>Nixon's wage-price freeze and taking the dollar off the gold standard produced only a <em>short-term</em> improvement — just enough to help him win reelection in 1972 — but did nothing to fix the underlying causes: Vietnam costs, declining manufacturing, and a crowded labor market</td></tr>
+ <tr><td>U.S. manufacturing lost competitiveness to Germany and Japan</td><td><strong>T</strong></td><td>American factories — especially auto — could no longer compete on price or efficiency; more jobs shifted to lower-wage service work; by 1970 the U.S. ran its first trade deficit since 1893</td></tr>
+ <tr><td>Embargo because U.S. supported Egypt/Syria</td><td><strong>F</strong></td><td>The U.S. supported <em>Israel</em> in the Yom Kippur War; OPEC nations, already angry about dollar devaluation, declared the embargo in retaliation for U.S. support of Israel</td></tr>
+ <tr><td>Prices stayed high after embargo ended</td><td><strong>T</strong></td><td>Oil prices remained ~33% higher than pre-crisis levels even after March 1974; the "cheap oil" era was permanently over</td></tr>
+ </table>`
+},
+
+// Q8 · R19+R20 · Multiple Choice
+{id:'q8',r:'19+20',type:'mc',
+ en:'Choose the best answer for each question.',
+ qs:[
+  {q:'According to the reading, what long-term structural shift in the U.S. economy contributed to declining wages and worker vulnerability in the 1970s?',
+   opts:['A sharp decline in agricultural output reduced food exports and weakened the dollar.','The shift from manufacturing jobs to lower-wage service-sector jobs reduced workers\' earning power.','The federal government cut funding for job training programs, leaving workers unprepared.','Baby boomers refused to enter the workforce, creating a severe labor shortage.'],
+   ans:1,
+   exp:'The reading states that "more and more American jobs were in the service sector, which had lower wages and fewer benefits than manufacturing jobs." This structural shift — away from high-wage factory work — weakened workers\' purchasing power even before the oil embargo hit.'},
+  {q:'What economic philosophy did Reagan\'s "Reaganomics" rely on? (R20)',
+   opts:['That raising taxes on corporations would create more revenue for public investment','That reducing government spending alone was enough to control inflation','That cutting taxes on corporations and the wealthy would encourage reinvestment and job creation','That the federal government should directly control wages and prices'],
+   ans:2,
+   exp:'Supply-side economics held that corporations and wealthy individuals would reinvest money saved from lower taxes — creating jobs and growing the economy. This "trickle-down" logic was the foundation of Reaganomics.'},
+  {q:'In addition to his economic agenda, Reagan also addressed social and cultural concerns. Which of the following best describes his position on these issues?',
+   opts:['Reagan avoided social issues entirely, focusing exclusively on economic and foreign policy.','Reagan called for a return to spiritual values, and supported Constitutional amendments to ban abortion and allow organized prayer in public schools.','Reagan publicly supported the Equal Rights Amendment as part of his appeal to working-class voters.','Reagan argued that social issues like abortion should be decided at the state level without any federal position.'],
+   ans:1,
+   exp:'The reading states Reagan "called for a \'return to spiritual values\'" and "advocated a Constitutional amendment to ban abortion, and another Constitutional amendment to permit organized prayer in public schools." This Religious Right agenda was central to his "New Right" coalition — and it directly opposed many of the gains second-wave feminism had fought for.'},
+ ],
+ model:`<ul>
+  <li><strong>Q1: B</strong> — The shift from high-wage manufacturing to lower-wage service jobs reduced workers' earning power; this structural weakness made the economy more vulnerable when the oil embargo hit</li>
+  <li><strong>Q2: C</strong> — Supply-side / "trickle-down" economics: tax cuts on wealthy and corporations would drive reinvestment and growth</li>
+  <li><strong>Q3: B</strong> — Reagan's social conservatism was as important as his economics: he pushed to ban abortion and allow school prayer, connecting his coalition to the Religious Right and directly opposing feminist gains</li>
+ </ul>`
+},
+
+// Q9 · R20 · Matching — Reaganomics concepts
+{id:'q9',r:'20',type:'match',
+ en:'Match each term or phrase on the left with the correct description on the right.',
+ lefts:[
+  {id:'l1',t:'Supply-side economics'},
+  {id:'l2',t:'Deregulation'},
+  {id:'l3',t:'Title VII of the Civil Rights Act'},
+  {id:'l4',t:'"Morning in America" (1984)'},
+  {id:'l5',t:'"New Right" coalition'},
+ ],
+ rights:[
+  {id:'r1',t:'The idea that tax cuts for corporations and the wealthy would stimulate investment, job creation, and broader economic growth.',m:'l1'},
+  {id:'r2',t:'The removal of government rules from certain industries, intended to lower costs and boost profits.',m:'l2'},
+  {id:'r3',t:'The section of the 1964 Civil Rights Act that prohibited employers from discriminating on the basis of sex.',m:'l3'},
+  {id:'r4',t:'Reagan\'s 1984 reelection campaign message — conveying that after the crises of the 1970s, America was optimistic, prosperous, and proud again.',m:'l4'},
+  {id:'r5',t:'Reagan\'s political base: economic conservatives, the Christian Right, working-class whites, and Cold War hawks.',m:'l5'},
+ ],
+ model:`<ul>
+  <li><strong>Supply-side economics →</strong> Tax cuts for wealthy/corporations → reinvestment → jobs and growth (trickle-down logic)</li>
+  <li><strong>Deregulation →</strong> Removing government rules from industries to lower costs; trucking and telephone industries were deregulated under Reagan</li>
+  <li><strong>Title VII →</strong> Section of the Civil Rights Act of 1964 banning employment discrimination based on sex — a key legal gain for women even before NOW was founded</li>
+  <li><strong>"Morning in America" →</strong> Reagan's 1984 reelection campaign theme — a deliberate contrast to the gloom of the 1970s (Vietnam, Watergate, stagflation, oil crisis); the message was that confidence and prosperity had returned under Reagan</li>
+  <li><strong>"New Right" coalition →</strong> The broad alliance Reagan assembled: fiscal conservatives + Christian Right + working-class whites + Cold War hawks</li>
+ </ul>`
+},
+
+];// end Qs
+
+let members=[],cur=0;
+let submitted=new Array(Qs.length).fill(false);
+let responses=new Array(Qs.length).fill('');
+let tfSt={},fillSt={},matchSt={},mcSt={},seqSt={},seqTapSel={};
+
+const LABELS={tf:'✅ True/False + Correction',fill:'✏️ Fill in the Blank',match:'📋 Matching',mc:'🔘 Multiple Choice',seq:'🔢 Sequencing',ce:'🔗 Cause & Effect'};
+const PILLS={tf:'p-tf',fill:'p-fl',match:'p-mt',mc:'p-mc',seq:'p-sq',ce:'p-ce'};
+const RNAMES={'15+16':'R15+R16 — 1950s Culture & Jim Crow','17':'R17 — Civil Rights Movement','16+17':'R16+R17 — Jim Crow & Civil Rights','18':'R18 — Second-Wave Feminism','19':'R19 — Stagflation & Oil Crisis','19+20':'R19+R20 — Economic Crisis & Reagan','20':'R20 — Ronald Reagan'};
+
+function startActivity(){
+  members=['m1','m2','m3','m4'].map(id=>document.getElementById(id).value.trim()).filter(Boolean);
+  if(!members.length){alert('Please enter at least one name.');return;}
+  document.getElementById('start-screen').style.display='none';
+  document.getElementById('main').style.display='block';
+  document.getElementById('hdr-prog').style.display='block';
+  render();
+}
+function updProg(){
+  const n=submitted.filter(Boolean).length;
+  document.getElementById('prog-fill').style.width=Math.round(n/Qs.length*100)+'%';
+  document.getElementById('prog-lbl').textContent=`${n} / ${Qs.length} done`;
+}
+function render(){
+  const el=document.getElementById('main');
+  if(cur>=Qs.length){showFinal();return;}
+  const q=Qs[cur],prevR=cur>0?Qs[cur-1].r:null;
+  let html='';
+  if(q.r!==prevR) html+=`<div class="sec-div"><span>${RNAMES[q.r]||''}</span></div>`;
+  html+=buildCard(q);
+  el.innerHTML=html;
+  updProg();
+  if(q.type==='tf') tfSt[q.id]=new Array(q.rows.length).fill(null);
+  if(q.type==='fill') fillSt[q.id]={};
+  if(q.type==='match') matchSt[q.id]={leftSel:null,pairs:{}};
+  if(q.type==='mc') mcSt[q.id]=new Array(q.qs.length).fill(null);
+  if(q.type==='seq'){seqSt[q.id]=[...q.items].sort(()=>Math.random()-.5);seqTapSel[q.id]=null;setTimeout(()=>renderSeqItems(q.id),60);}
+}
+function buildCard(q){
+  let h=`<div class="act-card"><div class="act-head">
+    <span class="type-pill ${PILLS[q.type]}">${LABELS[q.type]}</span>
+    <span class="act-rdg">Reading ${q.r}</span>
+    <span class="act-num">Q${cur+1} / ${Qs.length}</span>
+  </div><div class="act-body"><div class="q-en">${q.en}</div>`;
+  if(q.type==='tf')   h+=buildTF(q);
+  if(q.type==='fill') h+=buildFill(q);
+  if(q.type==='match')h+=buildMatch(q);
+  if(q.type==='mc')   h+=buildMC(q);
+  if(q.type==='seq')  h+=buildSeq(q);
+  if(q.type==='ce')   h+=buildCE(q);
+  h+=`</div></div>`;
+  return h;
+}
+
+// TF
+function buildTF(q){
+  let h=`<table class="tf-table"><tr><th>Statement</th><th class="th-tf">True / False</th></tr>`;
+  q.rows.forEach((row,i)=>{
+    h+=`<tr class="tf-row"><td><div>${row.en}</div>
+      <div id="cw-${q.id}-${i}" class="corr-wrap" style="display:none;">
+        <span class="corr-lbl">✏️ What's wrong? Write the correction:</span>
+        <textarea class="corr-ta" id="corr-${q.id}-${i}" placeholder="The statement says … but actually …"></textarea>
+      </div>
+    </td><td><div class="tf-btns">
+      <button class="tf-btn" id="tft-${q.id}-${i}" onclick="pickTF('${q.id}',${i},'T')">True</button>
+      <button class="tf-btn" id="tff-${q.id}-${i}" onclick="pickTF('${q.id}',${i},'F')">False</button>
+    </div></td></tr>`;
+  });
+  h+=`</table><div class="sub-row"><button class="btn-sub" id="tfsub-${q.id}" onclick="subTF('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function pickTF(qid,i,val){
+  if(!tfSt[qid])tfSt[qid]=[];
+  tfSt[qid][i]=val;
+  document.getElementById(`tft-${qid}-${i}`).className='tf-btn'+(val==='T'?' sel-t':'');
+  document.getElementById(`tff-${qid}-${i}`).className='tf-btn'+(val==='F'?' sel-f':'');
+  document.getElementById(`cw-${qid}-${i}`).style.display=val==='F'?'block':'none';
+  const q=Qs.find(x=>x.id===qid);
+  if(tfSt[qid].filter(v=>v!=null).length===q.rows.length) document.getElementById(`tfsub-${qid}`).disabled=false;
+}
+function subTF(qid){
+  const q=Qs.find(x=>x.id===qid);
+  const lines=q.rows.map((row,i)=>{
+    const pick=tfSt[qid][i];
+    const corr=(document.getElementById(`corr-${qid}-${i}`)?.value||'').trim();
+    let line=`${i+1}. [${pick}] ${row.en}`;
+    if(pick==='F'&&corr) line+=`\n   Correction: ${corr}`;
+    return line;
+  });
+  responses[cur]=lines.join('\n');
+  document.querySelectorAll(`[id^="tft-${qid}"],[id^="tff-${qid}"]`).forEach(b=>b.disabled=true);
+  document.querySelectorAll(`[id^="corr-${qid}-"]`).forEach(t=>t.disabled=true);
+  document.getElementById(`tfsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// FILL
+function buildFill(q){
+  let s=q.sent;
+  q.blanks.forEach(b=>{s=s.replace(`[${b.id}]`,`<span class="blank" id="bl-${q.id}-${b.id}" onclick="rmBlank('${q.id}','${b.id}')">[${b.id}]</span>`);});
+  const sh=[...q.choices].sort(()=>Math.random()-.5);
+  let h=`<div class="fill-sent">${s}</div><div class="chips" id="ch-${q.id}">`;
+  sh.forEach(c=>{h+=`<button class="chip" onclick="placeChip('${q.id}','${encodeURIComponent(c)}')">${c}</button>`;});
+  h+=`</div><div class="sub-row"><button class="btn-sub" id="fsub-${q.id}" onclick="subFill('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function placeChip(qid,enc){
+  const word=decodeURIComponent(enc);
+  const q=Qs.find(x=>x.id===qid),st=fillSt[qid]||{};
+  const empty=q.blanks.find(b=>!st[b.id]);if(!empty)return;
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).find(c=>c.textContent===word&&!c.classList.contains('used'))?.classList.add('used');
+  st[empty.id]=word;fillSt[qid]=st;
+  const slot=document.getElementById(`bl-${qid}-${empty.id}`);
+  slot.textContent=word;slot.classList.add('filled');
+}
+function rmBlank(qid,bid){
+  const st=fillSt[qid]||{},word=st[bid];if(!word)return;
+  delete st[bid];fillSt[qid]=st;
+  const slot=document.getElementById(`bl-${qid}-${bid}`);
+  slot.textContent=`[${bid}]`;slot.classList.remove('filled');
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).find(c=>c.textContent===word&&c.classList.contains('used'))?.classList.remove('used');
+}
+function subFill(qid){
+  const q=Qs.find(x=>x.id===qid),st=fillSt[qid]||{};
+  if(!q.blanks.every(b=>st[b.id])){alert('Please fill in all the blanks.');return;}
+  responses[cur]=q.blanks.map(b=>`[${b.id}] ${st[b.id]}`).join('\n');
+  Array.from(document.querySelectorAll(`#ch-${qid} .chip`)).forEach(c=>c.disabled=true);
+  document.getElementById(`fsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// MATCH
+function buildMatch(q){
+  const shR=[...q.rights].sort(()=>Math.random()-.5);
+  let h=`<div class="match-hint">Tap an item on the left → then tap its matching description on the right. Tap a matched pair to undo.</div>
+  <div class="match-sel-banner" id="msel-${q.id}"></div>
+  <div class="match-grid">
+    <div><div class="match-col-lbl">Person / Event / Term</div><div class="match-items" id="ml-${q.id}">`;
+  q.lefts.forEach(l=>{h+=`<div class="match-item" id="ml-${l.id}" onclick="clkL('${q.id}','${l.id}')">${l.t}</div>`;});
+  h+=`</div></div><div><div class="match-col-lbl">Description</div><div class="match-items" id="mr-${q.id}">`;
+  shR.forEach(r=>{h+=`<div class="match-item" id="mr-${r.id}" onclick="clkR('${q.id}','${r.id}')">${r.t}</div>`;});
+  h+=`</div></div></div>
+  <div class="sub-row" style="margin-top:.9rem;"><button class="btn-sub" id="msub-${q.id}" onclick="subMatch('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function clkL(qid,lid){
+  const st=matchSt[qid];if(!st)return;
+  const el=document.getElementById(`ml-${lid}`),banner=document.getElementById(`msel-${qid}`);
+  if(el.classList.contains('matched')){
+    const pr=st.pairs[lid];
+    if(pr){document.getElementById(`mr-${pr}`).classList.remove('matched');delete st.pairs[lid];}
+    el.classList.remove('matched');updMatchSub(qid);banner.classList.remove('active');return;
+  }
+  const already=el.classList.contains('sel');
+  document.querySelectorAll(`#ml-${qid} .match-item`).forEach(e=>e.classList.remove('sel'));
+  if(!already){st.leftSel=lid;el.classList.add('sel');banner.textContent=`👆 "${el.textContent}" selected — now tap a description on the right`;banner.classList.add('active');}
+  else{st.leftSel=null;banner.classList.remove('active');}
+}
+function clkR(qid,rid){
+  const st=matchSt[qid];if(!st)return;
+  const rEl=document.getElementById(`mr-${rid}`),banner=document.getElementById(`msel-${qid}`);
+  if(rEl.classList.contains('matched')){
+    const pl=Object.keys(st.pairs).find(k=>st.pairs[k]===rid);
+    if(pl){document.getElementById(`ml-${pl}`).classList.remove('matched');delete st.pairs[pl];}
+    rEl.classList.remove('matched');updMatchSub(qid);banner.classList.remove('active');return;
+  }
+  if(!st.leftSel)return;
+  const lEl=document.getElementById(`ml-${st.leftSel}`);
+  rEl.classList.add('matched');lEl.classList.add('matched');lEl.classList.remove('sel');
+  st.pairs[st.leftSel]=rid;st.leftSel=null;banner.classList.remove('active');updMatchSub(qid);
+}
+function updMatchSub(qid){
+  const q=Qs.find(x=>x.id===qid);
+  document.getElementById(`msub-${qid}`).disabled=Object.keys(matchSt[qid].pairs).length<q.lefts.length;
+}
+function subMatch(qid){
+  const q=Qs.find(x=>x.id===qid),st=matchSt[qid];
+  responses[cur]=q.lefts.map(l=>{
+    const r=q.rights.find(r=>r.id===st.pairs[l.id]);
+    const ok=r&&r.m===l.id;
+    return `${ok?'✅':'❌'} ${l.t}\n  → ${r?r.t:'(unmatched)'}`;
+  }).join('\n\n');
+  document.getElementById(`msub-${qid}`).disabled=true;
+  document.querySelectorAll(`#ml-${qid} .match-item,#mr-${qid} .match-item`).forEach(el=>el.style.pointerEvents='none');
+  markDone(qid);
+}
+
+// MC
+function buildMC(q){
+  let h=`<div class="mc-note">🔘 Choose the ONE best answer for each question.</div><div class="mc-qs">`;
+  q.qs.forEach((item,qi)=>{
+    h+=`<div class="mc-q-block"><div class="mc-q-text">${qi+1}. ${item.q}</div><div class="mc-opts">`;
+    item.opts.forEach((opt,oi)=>{
+      const letter=String.fromCharCode(65+oi);
+      h+=`<div class="mc-opt" id="mc-${q.id}-${qi}-${oi}" onclick="pickMC('${q.id}',${qi},${oi})">
+        <span class="mc-letter">${letter}</span><span>${opt}</span></div>`;
+    });
+    h+=`</div></div>`;
+  });
+  h+=`</div><div class="sub-row"><button class="btn-sub" id="mcsub-${q.id}" onclick="subMC('${q.id}')" disabled>Submit →</button></div>`;
+  return h;
+}
+function pickMC(qid,qi,oi){
+  if(!mcSt[qid])mcSt[qid]=[];
+  mcSt[qid][qi]=oi;
+  const q=Qs.find(x=>x.id===qid);
+  q.qs[qi].opts.forEach((_,i)=>document.getElementById(`mc-${qid}-${qi}-${i}`)?.classList.remove('sel'));
+  document.getElementById(`mc-${qid}-${qi}-${oi}`)?.classList.add('sel');
+  if(mcSt[qid].filter(v=>v!=null).length===q.qs.length) document.getElementById(`mcsub-${qid}`).disabled=false;
+}
+function subMC(qid){
+  const q=Qs.find(x=>x.id===qid);
+  responses[cur]=q.qs.map((item,i)=>{
+    const sel=mcSt[qid][i];
+    const letter=sel!=null?String.fromCharCode(65+sel):'?';
+    const correct=sel===item.ans;
+    return `${correct?'✅':'❌'} Q${i+1}: ${letter}) ${sel!=null?item.opts[sel]:''}${correct?'':'\n   → Correct: '+String.fromCharCode(65+item.ans)+') '+item.opts[item.ans]}`;
+  }).join('\n');
+  document.querySelectorAll(`[id^="mc-${qid}-"]`).forEach(el=>el.classList.add('mc-disabled'));
+  document.getElementById(`mcsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// SEQ
+function buildSeq(q){
+  return `<div class="sq-note">⬆⬇ Drag the events into chronological order — earliest at the top.<br>📱 On mobile: tap one item, then tap another to swap them.</div>
+  <div class="sq-items" id="sq-${q.id}"></div>
+  <div class="sub-row"><button class="btn-sub" id="sqsub-${q.id}" onclick="subSeq('${q.id}')">Submit →</button></div>`;
+}
+function renderSeqItems(qid){
+  const container=document.getElementById(`sq-${qid}`);if(!container)return;
+  container.innerHTML='';
+  seqSt[qid].forEach((item,idx)=>{
+    const div=document.createElement('div');
+    div.className='sq-item';div.id='sqitem-'+item.id;div.draggable=true;
+    div.innerHTML=`<span class="sq-handle">⠿</span><span class="sq-num">${idx+1}</span><span>${item.t}</span>`;
+    div.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',item.id);setTimeout(()=>div.classList.add('dragging'),0);});
+    div.addEventListener('dragend',()=>div.classList.remove('dragging'));
+    div.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over');});
+    div.addEventListener('dragleave',()=>div.classList.remove('drag-over'));
+    div.addEventListener('drop',e=>{
+      e.preventDefault();div.classList.remove('drag-over');
+      const fromId=e.dataTransfer.getData('text/plain');
+      if(fromId===item.id)return;
+      const arr=seqSt[qid];
+      const fi=arr.findIndex(x=>x.id===fromId),ti=arr.findIndex(x=>x.id===item.id);
+      if(fi<0||ti<0)return;
+      const tmp=arr[fi];arr[fi]=arr[ti];arr[ti]=tmp;renderSeqItems(qid);
+    });
+    div.addEventListener('click',()=>{
+      const sel=seqTapSel[qid];
+      if(!sel){seqTapSel[qid]=item.id;div.classList.add('tapped');}
+      else if(sel===item.id){seqTapSel[qid]=null;div.classList.remove('tapped');}
+      else{
+        const arr=seqSt[qid];
+        const fi=arr.findIndex(x=>x.id===sel),ti=arr.findIndex(x=>x.id===item.id);
+        if(fi>=0&&ti>=0){const tmp=arr[fi];arr[fi]=arr[ti];arr[ti]=tmp;}
+        seqTapSel[qid]=null;renderSeqItems(qid);
+      }
+    });
+    container.appendChild(div);
+  });
+}
+function subSeq(qid){
+  const arr=seqSt[qid];
+  const q=Qs.find(x=>x.id===qid);
+  responses[cur]=arr.map((item,i)=>{
+    const correct=item.order===i+1;
+    return `${correct?'✅':'❌'} ${i+1}. ${item.t}`;
+  }).join('\n');
+  document.querySelectorAll(`#sq-${qid} .sq-item`).forEach(el=>{el.draggable=false;el.style.cursor='default';el.style.pointerEvents='none';});
+  document.getElementById(`sqsub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+// CE
+function buildCE(q){
+  let h=`<div class="ce-note">📖 For each event, write its main cause and most important effect. Use your own words.</div>
+  <div class="ce-lang">✏️ English or 한국어 — or both</div>
+  <div class="ce-cards">`;
+  q.rows.forEach((row,i)=>{
+    h+=`<div class="ce-card"><div class="ce-card-head"><span class="ce-card-event">${row.event}</span></div>
+    <div class="ce-card-body">
+      <div class="ce-field"><span class="ce-field-lbl">Main Cause</span>
+        <textarea class="ce-ta" id="ce-c-${q.id}-${i}" placeholder="Why did this happen?"></textarea></div>
+      <div class="ce-field"><span class="ce-field-lbl">Most Important Effect</span>
+        <textarea class="ce-ta" id="ce-e-${q.id}-${i}" placeholder="What changed or resulted?"></textarea></div>
+    </div></div>`;
+  });
+  h+=`</div><div class="sub-row" style="margin-top:.75rem;"><button class="btn-sub" id="cesub-${q.id}" onclick="subCE('${q.id}')">Submit →</button></div>`;
+  return h;
+}
+function subCE(qid){
+  const q=Qs.find(x=>x.id===qid);
+  if(!q.rows.some((_,i)=>document.getElementById(`ce-c-${qid}-${i}`).value.trim())){alert('Please fill in at least one row.');return;}
+  responses[cur]=q.rows.map((row,i)=>{
+    const c=document.getElementById(`ce-c-${qid}-${i}`).value.trim();
+    const e=document.getElementById(`ce-e-${qid}-${i}`).value.trim();
+    return `${row.event}:\n  Cause: ${c||'—'}\n  Effect: ${e||'—'}`;
+  }).join('\n\n');
+  q.rows.forEach((_,i)=>{
+    document.getElementById(`ce-c-${qid}-${i}`).disabled=true;
+    document.getElementById(`ce-e-${qid}-${i}`).disabled=true;
+  });
+  document.getElementById(`cesub-${qid}`).disabled=true;
+  markDone(qid);
+}
+
+function markDone(qid){
+  submitted[cur]=true;updProg();
+  const body=document.querySelector('.act-body');
+  const badge=document.createElement('div');badge.className='done-badge';
+  badge.innerHTML='✅ Answer recorded — check the model answer on the results screen';
+  body.appendChild(badge);
+  const btn=document.createElement('button');btn.className='btn-next-q';
+  btn.textContent=cur+1<Qs.length?'Next Question →':'See Results ✓';
+  btn.onclick=nextQ;body.appendChild(btn);
+}
+function nextQ(){cur++;document.getElementById('main').innerHTML='';render();window.scrollTo({top:0,behavior:'smooth'});}
+
+function showFinal(){
+  document.getElementById('main').style.display='none';
+  const screen=document.getElementById('final-screen');screen.style.display='block';
+  const memberStr=members.join(' · ');
+  let copyText=`=== R15–R20: 1950s–1980s AMERICA ===\nMembers: ${memberStr}\n\n`;
+  Qs.forEach((q,i)=>{copyText+=`[Q${i+1} · R${q.r} · ${LABELS[q.type]}]\n${q.en.replace(/<[^>]+>/g,'')}\n→ ${responses[i]||'(no answer)'}\n\n`;});
+
+  const rGroups=[
+    {r:'15+16',label:'R15+R16 — 1950s Culture & Jim Crow'},
+    {r:'16+17',label:'R16+R17 — Jim Crow & Civil Rights'},
+    {r:'17',label:'R17 — Civil Rights Movement'},
+    {r:'18',label:'R18 — Second-Wave Feminism'},
+    {r:'19',label:'R19 — Stagflation & Oil Crisis'},
+    {r:'19+20',label:'R19+R20 — Economic Crisis & Reagan'},
+    {r:'20',label:'R20 — Ronald Reagan'},
+  ];
+
+  let html=`<div class="final-hero"><div class="fi">🎉</div><h2>Activity Complete!</h2>
+  <p>Great work! Copy your answers below and post them to Padlet.</p>
+  <div class="final-group-tag">👥 ${memberStr}</div>
+  <div class="score-row">
+    <div class="score-item"><span class="score-n">${Qs.length}</span><span class="score-l">Questions</span></div>
+    <div class="score-item"><span class="score-n">${submitted.filter(Boolean).length}</span><span class="score-l">Completed</span></div>
+  </div></div>`;
+
+  rGroups.forEach(({r,label})=>{
+    const rQs=Qs.map((q,i)=>({q,i})).filter(({q})=>q.r===r);
+    if(!rQs.length)return;
+    html+=`<div class="ans-section"><div class="ans-section-title">${label}</div><div class="ans-cards">`;
+    rQs.forEach(({q,i})=>{
+      let respDisplay=responses[i]||'(no answer)';
+      html+=`<div class="ans-card"><div class="ans-head">
+        <span class="type-pill ${PILLS[q.type]}" style="font-size:.57rem;">${LABELS[q.type]}</span>
+        <span class="ans-qtext"><strong>Q${i+1}.</strong> ${q.en.replace(/<[^>]+>/g,'').substring(0,90)}${q.en.length>90?'…':''}</span>
+      </div><div class="ans-body">
+        <div class="ans-response">${respDisplay}</div>
+        <div class="ans-model"><strong>💡 Model Answer:</strong><br>${q.model}</div>
+      </div></div>`;
+    });
+    html+=`</div></div>`;
+  });
+
+  html+=`<div class="copy-box"><h3>📋 Post to Padlet</h3>
+  <p>Copy the text below and paste it into Padlet.</p>
+  <textarea id="copy-ta" readonly onclick="this.select()">${copyText.trim()}</textarea>
+  <div class="copy-btns">
+    <button class="btn-copy" id="bcopy" onclick="doCopy()">📋 Copy All</button>
+    <button class="btn-restart" onclick="location.reload()">↺ Restart</button>
+  </div></div>`;
+  screen.innerHTML=html;window.scrollTo({top:0,behavior:'smooth'});
+}
+function doCopy(){
+  const ta=document.getElementById('copy-ta');ta.select();
+  navigator.clipboard.writeText(ta.value).then(()=>{
+    const b=document.getElementById('bcopy');b.textContent='✓ Copied!';b.classList.add('ok');
+    setTimeout(()=>{b.textContent='📋 Copy All';b.classList.remove('ok');},2500);
+  }).catch(()=>document.execCommand('copy'));
+}
+</script>
+</body>
+</html>
